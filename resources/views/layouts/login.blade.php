@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="token" content="{{ Session::token() }}"/>
 
     <title>INSPINIA | Login</title>
 
@@ -25,7 +26,7 @@
         </div>
         <h3>Welcome to Kyokai AccSys+</h3>
 
-        <p>Accounting System for GFCCM</p>
+        <p>Accounting System</p>
 
             @section('main-body')
                 <div class="col-lg-6">
@@ -33,14 +34,15 @@
                 </div>
             @show
         <p class="m-t">
-            <small>GFCCM 2015</small>
+            <small> 2015</small>
         </p>
     </div>
 </div>
 
 
-<script src="js/vendor/jquery/jquery-2.1.4.min.js"></script>
-<script src="js/vendor/bootstrap/bootstrap.js"></script>
+<script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
+<script src="/js/vendor/bootstrap/bootstrap.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 

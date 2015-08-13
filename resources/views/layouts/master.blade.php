@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="token" content="{{ Session::token() }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <title>Kyokai Accsys</title>
@@ -30,6 +31,7 @@
     @include('layouts.partials.nav')
     <div id="page-wrapper" class="gray-bg">
         @include('layouts.partials.header')
+        @include('layouts.partials.breadcrumbs')
 
         @section('main-body')
             <div class="col-lg-6">
@@ -42,18 +44,18 @@
 
 </div>
 
-<script src="js/vendor/jquery/jquery-2.1.4.min.js"></script>
-<script src="js/vendor/bootstrap/bootstrap.js"></script>
-<script src="js/vendor/metis/metisMenu.min.js"></script>
-<script src="js/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
+<script src="/js/vendor/bootstrap/bootstrap.js"></script>
+<script src="/js/vendor/metis/metisMenu.min.js"></script>
+<script src="/js/vendor/slimscroll/jquery.slimscroll.min.js"></script>
 
-<script src="js/vendor/dataTables/jquery.dataTables.js"></script>
-<script src="js/vendor/dataTables/dataTables.bootstrap.js"></script>
-<script src="js/vendor/dataTables/dataTables.responsive.js"></script>
-<script src="js/vendor/dataTables/dataTables.tableTools.min.js"></script>
+<script src="/js/vendor/dataTables/jquery.dataTables.js"></script>
+<script src="/js/vendor/dataTables/dataTables.bootstrap.js"></script>
+<script src="/js/vendor/dataTables/dataTables.responsive.js"></script>
+<script src="/js/vendor/dataTables/dataTables.tableTools.min.js"></script>
 
-<script src="js/inspinia.js"></script>
-<script src="js/vendor/pace/pace.min.js"></script>
+<script src="/js/inspinia.js"></script>
+<script src="/js/vendor/pace/pace.min.js"></script>
 
 </body>
 </html>
