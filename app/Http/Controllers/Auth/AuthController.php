@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -20,6 +21,10 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
+    /**
+     * @var Request
+     */
+    protected $request;
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
@@ -28,9 +33,26 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
+
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+
+    /**
+     * Show the login form
+     *
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        if ($this->request->ajax()) {
+            $this->session->forget('url.intended');
+        }
+
+        return view('auth.login');
     }
 
     /**
