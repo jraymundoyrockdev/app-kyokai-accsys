@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace KyokaiAccSys\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -18,7 +18,6 @@ class RedirectIfAuthenticated
      * Create a new filter instance.
      *
      * @param  Guard  $auth
-     * @return void
      */
     public function __construct(Guard $auth)
     {

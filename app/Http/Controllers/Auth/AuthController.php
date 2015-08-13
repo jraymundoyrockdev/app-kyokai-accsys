@@ -1,64 +1,100 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace KyokaiAccSys\Http\Controllers\Auth;
 
-use App\User;
+use KyokaiAccSys\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use KyokaiAccSys\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Facades\Redirect;
+use KyokaiAccSys\Services\KyokaiApiClient;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    /**
+     * @var KyokaiApiClient
+     */
+    protected $client;
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
+     * @param $request Request
+     * @param $client KyokaiApiClient
      *
-     * @return void
      */
-    public function __construct()
+    public function __construct(Request $request, KyokaiApiClient $client)
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->request = $request;
+        $this->client = $client;
+    }
+
+
+    /**
+     * Show the login form
+     *
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        if ($this->request->ajax()) {
+            $this->session->forget('url.intended');
+        }
+
+        return view('auth.login');
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Log the user in
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return mixed
      */
-    protected function validator(array $data)
+    public function postIndex()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        try {
+            $result = $this->client->call('POST', 'api-token-auth', $this->request->only(['username', 'password']));
+            $this->request->session()->put('userToken', $result->token);
+
+            return Redirect::to('/');
+
+        } catch (ClientException $e) {
+            $result = $e->getResponse()->getBody()->getContents();
+
+            return Redirect::to('/auth/login')->with('errorMessage', $result);
+        }
+    }
+
+    /**
+     * Logout the user in
+     *
+     * @return mixed
+     */
+    public function logout()
+    {
+        //@todo invalidate jwt token
+        $this->request->session()->flush();
+        return redirect()->route('login');
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }

@@ -19,7 +19,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Model
+    | Authentication Models
     |--------------------------------------------------------------------------
     |
     | When using the "Eloquent" authentication driver, we need to know which
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => KyokaiAccSys\User::class,
 
     /*
     |--------------------------------------------------------------------------
