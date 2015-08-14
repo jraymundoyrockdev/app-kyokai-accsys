@@ -37,4 +37,6 @@
             </div>
         </div>
     </div>
+
+    <input type="button" value="test" id="test">
 @endsection

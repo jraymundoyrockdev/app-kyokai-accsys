@@ -28,11 +28,11 @@
 
         <p>Accounting System</p>
 
-            @section('main-body')
-                <div class="col-lg-6">
-                    default page
-                </div>
-            @show
+        @section('main-body')
+            <div class="col-lg-6">
+                default page
+            </div>
+        @show
         <p class="m-t">
             <small> 2015</small>
         </p>
@@ -42,6 +42,14 @@
 
 <script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
 <script src="/js/vendor/bootstrap/bootstrap.js"></script>
+<script src="/js/vendor/cookie/js.cookie.js"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <script src="/js/main.js"></script>
 
 </body>

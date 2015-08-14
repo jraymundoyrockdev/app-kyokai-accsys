@@ -6,5 +6,8 @@ Route::post('auth/login', 'Auth\AuthController@postIndex');
 Route::resource('/', 'DashboardController', [
 ]);
 
-Route::resource('admin/users', 'AdminUsersController', [
-]);
+Route::group(['domain' => 'app-kyokai-accsys.com'], function () {
+    Route::resource('admin/users', 'AdminUsersController', [
+    ]);
+});
+

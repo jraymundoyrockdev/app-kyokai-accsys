@@ -26,7 +26,7 @@
 <body>
 <div id="wrapper">
 
-    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+    {!! csrf_field() !!}
 
     @include('layouts.partials.nav')
     <div id="page-wrapper" class="gray-bg">
@@ -54,8 +54,18 @@
 <script src="/js/vendor/dataTables/dataTables.responsive.js"></script>
 <script src="/js/vendor/dataTables/dataTables.tableTools.min.js"></script>
 
+<script src="/js/vendor/cookie/js.cookie.js"></script>
+
 <script src="/js/inspinia.js"></script>
 <script src="/js/vendor/pace/pace.min.js"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>
