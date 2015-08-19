@@ -56,6 +56,16 @@ class AuthController extends Controller
     }
 
     /**
+     * Log the user in
+     *
+     * @return mixed
+     */
+    public function postIndex()
+    {
+        print_r($this->request->all()); die;
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data

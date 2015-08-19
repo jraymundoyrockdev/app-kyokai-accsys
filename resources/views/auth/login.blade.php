@@ -1,12 +1,12 @@
 @extends('layouts.login')
 @section('main-body')
-    <form class="m-t" role="form" action="index.html">
+    {!! Form::open(['route' => 'login']) !!}
         <div class="form-group">
-            <input type="email" class="form-control" placeholder="Username" required="" id="login-username">
+        {!! Form::text('username', '', ['class' => 'form-control','placeholder' => 'Username']) !!}
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="" id="login-password">
+            {!! Form::password('password', ['class' => 'form-control','placeholder' => 'Password']) !!}
         </div>
-        <button type="button" class="btn btn-primary block full-width m-b" id="login">Login</button>
-    </form>
+        {!! Form::submit('Login', ['class' => 'btn btn-primary block full-width m-b']) !!}
+    {!! Form::close() !!}
 @endsection
