@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -38,14 +39,13 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      * @param $request Request
-     * @param $guzzle GuzzleClient
+     * @param $client GuzzleClient
      *
      */
     public function __construct(Request $request, GuzzleClient $client)
     {
         $this->request = $request;
         $this->client = $client;
-        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
 
@@ -71,35 +71,28 @@ class AuthController extends Controller
     public function postIndex()
     {
         try {
-            $response = $this->client->post(
-                'http://api-gfccm-systems.com:8080/api/api-token-auth',
-                [
-                    'form_params' => [
-                        'username' => $this->request->input('username'),
-                        'password' => $this->request->input('password')
-                    ]
-                ]
-            );
+            $response = $this->login($this->request);
+            $result = json_decode($response->getBody()->getContents(), true);
+            $this->request->session()->put('jwt', $result['token']);
 
-            return json_decode($response->getBody()->getContents(), true);
+            return Redirect::to('/');
+
         } catch (ClientException $e) {
-            return json_decode(($e->getResponse()->getBody()->getContents()), true);
+            $result = $e->getResponse()->getBody()->getContents();
+            return Redirect::to('/auth/login')->with('errorMessage', $result);
         }
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    protected function login($request)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        return $this->client->post('http://api-gfccm-systems.com:8080/api/api-token-auth',
+            [
+                'form_params' => [
+                    'username' => $request->input('username'),
+                    'password' => $request->input('password')
+                ]
+            ]
+        );
     }
 
     /**
@@ -111,8 +104,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }

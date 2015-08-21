@@ -2,6 +2,7 @@
 @section('main-body')
     {!! Form::open(['route' => 'login']) !!}
         <div class="form-group">
+            {!! Session::get('errorMessage') !!}
         {!! Form::text('username', '', ['class' => 'form-control','placeholder' => 'Username', 'id' => 'login-username']) !!}
         </div>
         <div class="form-group">
