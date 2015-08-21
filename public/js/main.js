@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $('#login').click(function () {
 
-        $.post("http://kyokai.accsys.dev/api/api-token-auth",
+        $.post("http://api-gfccm-systems.com:8080/api/api-token-auth",
             {
                 username: $('#login-username').val(),
                 password: $('#login-password').val()

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ClientException;
 
 class AuthController extends Controller
 {
@@ -26,17 +28,23 @@ class AuthController extends Controller
      */
     protected $request;
 
+    /**
+     * @var GuzzleClient
+     */
+    protected $client;
+
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
+     * @param $request Request
+     * @param $guzzle GuzzleClient
      *
-     * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, GuzzleClient $client)
     {
         $this->request = $request;
-
+        $this->client = $client;
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
@@ -62,13 +70,27 @@ class AuthController extends Controller
      */
     public function postIndex()
     {
-        print_r($this->request->all()); die;
+        try {
+            $response = $this->client->post(
+                'http://api-gfccm-systems.com:8080/api/api-token-auth',
+                [
+                    'form_params' => [
+                        'username' => $this->request->input('username'),
+                        'password' => $this->request->input('password')
+                    ]
+                ]
+            );
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (ClientException $e) {
+            return json_decode(($e->getResponse()->getBody()->getContents()), true);
+        }
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -83,7 +105,7 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)

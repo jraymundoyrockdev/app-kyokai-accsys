@@ -2,10 +2,7 @@
 
 
 Route::get('auth/login', ['as' => 'login','uses'=>'Auth\AuthController@getIndex']);
-
-
-
-Route::post('auth/login', 'Auth\AuthController@postIndex');
+Route::post('auth/login', ['as' => 'login','uses'=>'Auth\AuthController@postIndex']);
 
 
 Route::resource('/', 'DashboardController', [
