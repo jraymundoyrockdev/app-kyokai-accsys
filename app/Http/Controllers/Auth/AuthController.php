@@ -73,7 +73,7 @@ class AuthController extends Controller
         try {
             $response = $this->login($this->request);
             $result = json_decode($response->getBody()->getContents(), true);
-            $this->request->session()->put('jwt', $result['token']);
+            $this->request->session()->put('userToken', $result['token']);
 
             return Redirect::to('/');
 

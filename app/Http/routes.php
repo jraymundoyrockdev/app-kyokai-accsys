@@ -5,11 +5,12 @@ Route::get('auth/login', ['as' => 'login','uses'=>'Auth\AuthController@getIndex'
 Route::post('auth/login', ['as' => 'login','uses'=>'Auth\AuthController@postIndex']);
 
 
-Route::resource('/', 'DashboardController', [
-]);
 
-Route::group(['domain' => 'app-kyokai-accsys.com' ,'middleware' => 'api_auth'], function () {
+
+Route::group(['domain' => 'app-kyokai-accsys.com'], function () {
     Route::resource('admin/users', 'AdminUsersController', [
+    ]);
+    Route::resource('/', 'DashboardController', [
     ]);
 });
 
