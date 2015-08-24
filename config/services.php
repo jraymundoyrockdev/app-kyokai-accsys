@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => App\User::class,
+        'model'  => KyokaiAccSys\User::class,
         'key'    => '',
         'secret' => '',
     ],

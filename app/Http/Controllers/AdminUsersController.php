@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace KyokaiAccSys\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use KyokaiAccSys\Http\Requests;
 
 
 class AdminUsersController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace KyokaiAccSys\Http\Middleware;
 
 use Closure;
 

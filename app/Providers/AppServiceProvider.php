@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace KyokaiAccSys\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

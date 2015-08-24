@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: KyokaiAccSys
+        psr4_prefix: KyokaiAccSys
         src_path: app

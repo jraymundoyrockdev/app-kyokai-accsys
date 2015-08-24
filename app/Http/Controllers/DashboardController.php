@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace KyokaiAccSys\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use KyokaiAccSys\Http\Requests;
+use KyokaiAccSys\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
