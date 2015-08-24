@@ -29,6 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \KyokaiAccSys\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \KyokaiAccSys\Http\Middleware\RedirectIfAuthenticated::class,
-        'token_session_validator' => \KyokaiAccSys\Http\Middleware\ValidateTokenSession::class
+        'validate_token' => \KyokaiAccSys\Http\Middleware\ValidateToken::class
     ];
 }

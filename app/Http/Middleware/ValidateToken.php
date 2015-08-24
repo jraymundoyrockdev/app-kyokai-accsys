@@ -4,7 +4,7 @@ namespace KyokaiAccSys\Http\Middleware;
 
 use Closure;
 
-class ValidateTokenSession
+class ValidateToken
 {
     /**
      * Handle an incoming request.

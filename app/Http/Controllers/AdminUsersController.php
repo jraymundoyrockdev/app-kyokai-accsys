@@ -3,12 +3,19 @@
 namespace KyokaiAccSys\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use KyokaiAccSys\Http\Requests;
+use KyokaiAccSys\Services\KyokaiApiClient;
 
 
 class AdminUsersController extends Controller
 {
+
+    protected $apiClient;
+
+    public function __construct(KyokaiApiClient $apiClient){
+        $this->apiClient = $apiClient;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +23,11 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
+
+    $test = $this->apiClient->call('GET','users/1');
+
+        print_r($test);
+        die;
         return view('admin.users.index');
     }
 
