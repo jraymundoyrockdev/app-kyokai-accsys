@@ -31,20 +31,19 @@ class ValidateToken
             $result = $this->apiClient->call('POST', 'api-token-refresh');
 
             echo "<pre>";
-print_r($result);
+            print_r($result);
             echo "</pre>";
 
-            if(is_array($result)){
+            if (!empty($result['token'])) {
                 $request->session()->put('userToken', $result['token']);
+
+                return $next($request);
             }
 
-            //$request->session()->put('userToken', $result['token']);
-          //  $result = $this->apiClient->call('POST', 'api-token-refresh');
+            $request->session()->flush();
 
-         //   print_r($result); die;
-//die;
+            return redirect()->route('login');
 
-            return $next($request);
         }
 
         return redirect()->route('login');

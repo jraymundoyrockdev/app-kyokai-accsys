@@ -75,25 +75,15 @@ class KyokaiApiClient
         echo "<pre>";
         print_r($headers);
         echo "</pre>";
-        
-        try {
-            // $request = new psr7Request($method, $apiUrl, $headers);
-          //   return $result = $this->client->send($request, ['timeout' => 2]);
 
+        try {
 
             $result = $this->client->{$method}($apiUrl, $headers);
 
-            $newToken = json_decode($result->getBody()->getContents(), true);
-
-
-            //echo "deleted token";
-//            print_r($newToken); die;
-            return $newToken;
+            return json_decode($result->getBody()->getContents(), true);
 
         } catch (ClientException $e) {
-            echo "catch";
             return json_decode($e->getResponse()->getBody()->getContents());
-
         }
 
     }
