@@ -41,7 +41,7 @@ class KyokaiApiClient
     protected $guzzleMethods = [
         'get' => 'query',
         'post' => 'form_params',
-        'put' => 'body'
+        'put' => 'json'
     ];
 
     public function __construct(Request $request, GuzzleClient $client)
@@ -66,24 +66,20 @@ class KyokaiApiClient
     {
         $apiUrl = $this->buildUrl($this->server, $this->environment, $endpoint);
 
-        $guzzleMethodParam = $this->guzzleMethods[strtolower($method)];
+        $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-        $params = $this->buildParams($params);
-
-        $headers = $this->buildHeaders();
-
-        echo "<pre>";
-        print_r($headers);
-        echo "</pre>";
+        /*        echo "<pre>";
+                print_r($params);
+                echo "</pre>";*/
 
         try {
 
-            $result = $this->client->{$method}($apiUrl, $headers);
+            $result = $this->client->{$method}($apiUrl, $params);
 
             return json_decode($result->getBody()->getContents(), true);
 
         } catch (ClientException $e) {
-            return json_decode($e->getResponse()->getBody()->getContents());
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
         }
 
     }
@@ -105,9 +101,11 @@ class KyokaiApiClient
      * @param array $params
      * @return array
      */
-    protected function buildParams($params = [])
+    protected function buildParamsWithHeaders($params, $guzzleMethodParam)
     {
-        return array_merge($params, ['Authorization' => 'Bearer ' . $this->request->session()->get('userToken')]);
+        $params = [$guzzleMethodParam => $params];
+
+        return array_merge($params, $this->buildHeaders());
     }
 
     /**

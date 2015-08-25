@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84e9d029-7f75-4ec6-9a79-ec4a9111ddf5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/KyokaiApiClient.php" afterPath="$PROJECT_DIR$/app/Services/KyokaiApiClient.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/ValidateToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/ValidateToken.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="ValidateToken.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Middleware/ValidateToken.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.346153">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state vertical-scroll-proportion="-18.038462">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="e#48#60#0#PHP" expanded="true" />
               </folding>
@@ -38,24 +39,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KyokaiApiClient.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KyokaiApiClient.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/KyokaiApiClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8478747">
-              <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
+            <state vertical-scroll-proportion="-7.576923">
+              <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
               <folding>
                 <element signature="e#40#78#0#PHP" expanded="true" />
-                <marker date="1440498303673" expanded="true" signature="1774:2118" placeholder="..." />
+                <marker date="1440499292626" expanded="true" signature="1738:2088" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminUsersController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminUsersController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
-              <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.01901566">
+              <caret line="26" column="45" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="45" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
               </folding>
@@ -753,20 +754,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/ValidateToken.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.346153">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state vertical-scroll-proportion="-18.038462">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#48#60#0#PHP" expanded="true" />
           </folding>
@@ -775,11 +766,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/KyokaiApiClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8478747">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
+        <state vertical-scroll-proportion="-7.576923">
+          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
           <folding>
             <element signature="e#40#78#0#PHP" expanded="true" />
-            <marker date="1440498303673" expanded="true" signature="1774:2118" placeholder="..." />
+            <marker date="1440499292626" expanded="true" signature="1738:2088" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.01901566">
+          <caret line="26" column="45" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="45" />
+          <folding>
+            <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
