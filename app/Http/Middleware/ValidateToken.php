@@ -30,7 +30,19 @@ class ValidateToken
 
             $result = $this->apiClient->call('POST', 'api-token-refresh');
 
-            print_r($result->error);
+            echo "<pre>";
+print_r($result);
+            echo "</pre>";
+
+            if(is_array($result)){
+                $request->session()->put('userToken', $result['token']);
+            }
+
+            //$request->session()->put('userToken', $result['token']);
+          //  $result = $this->apiClient->call('POST', 'api-token-refresh');
+
+         //   print_r($result); die;
+//die;
 
             return $next($request);
         }

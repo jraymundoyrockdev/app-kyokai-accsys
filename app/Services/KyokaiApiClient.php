@@ -36,6 +36,8 @@ class KyokaiApiClient
      */
     protected $environment;
 
+    protected $psr7Request;
+
     protected $guzzleMethods = [
         'get' => 'query',
         'post' => 'form_params',
@@ -68,12 +70,30 @@ class KyokaiApiClient
 
         $params = $this->buildParams($params);
 
-        try {
-            $result =  $this->client->{$method}($apiUrl, [$guzzleMethodParam => $params]);
+        $headers = $this->buildHeaders();
 
-            return json_decode($result->getBody()->getContents(), true);
+        echo "<pre>";
+        print_r($headers);
+        echo "</pre>";
+        
+        try {
+            // $request = new psr7Request($method, $apiUrl, $headers);
+          //   return $result = $this->client->send($request, ['timeout' => 2]);
+
+
+            $result = $this->client->{$method}($apiUrl, $headers);
+
+            $newToken = json_decode($result->getBody()->getContents(), true);
+
+
+            //echo "deleted token";
+//            print_r($newToken); die;
+            return $newToken;
+
         } catch (ClientException $e) {
-            return json_decode($e->getResponse()->getBody()->getContents()); die;
+            echo "catch";
+            return json_decode($e->getResponse()->getBody()->getContents());
+
         }
 
     }
@@ -97,7 +117,22 @@ class KyokaiApiClient
      */
     protected function buildParams($params = [])
     {
-        return array_merge($params, ['token' => $this->request->session()->get('userToken')]);
+        return array_merge($params, ['Authorization' => 'Bearer ' . $this->request->session()->get('userToken')]);
+    }
+
+    /**
+     * Build Headers
+     *
+     * @return array
+     */
+    protected function buildHeaders()
+    {
+        return [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->request->session()->get('userToken'),
+                'Accept' => 'application/json'
+            ]
+        ];
     }
 
     /**

@@ -25,8 +25,8 @@ class AdminUsersController extends Controller
     public function index()
     {
         $result = $this->apiClient->call('GET', 'users');
-die;
-print_r($result); die;
+
+//print_r($result); die;
         return view('admin.users.index', ['users' => ($result['Users'])]);
     }
 
