@@ -73,8 +73,7 @@ class KyokaiApiClient
 
             return json_decode($result->getBody()->getContents(), true);
         } catch (ClientException $e) {
-
-            die;
+            return json_decode($e->getResponse()->getBody()->getContents()); die;
         }
 
     }

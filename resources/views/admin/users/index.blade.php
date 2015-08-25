@@ -11,26 +11,25 @@
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                             <tr>
                                 <th>Username</th>
                                 <th>Firstname</th>
                                 <th>Lastname</th>
+                                <th>Role</th>
+                                <th>Ministry</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                            </tr>
+                            @forelse ($users as $user)
+                                <tr>
+                                    <td>{!! $user['username'] !!}</td>
+                                </tr>
+                            @empty
+                                <tr>No Data Found</tr>
+                            @endforelse
                         </table>
                     </div>
                 </div>

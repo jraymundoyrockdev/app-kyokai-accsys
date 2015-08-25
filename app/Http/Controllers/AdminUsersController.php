@@ -12,7 +12,8 @@ class AdminUsersController extends Controller
 
     protected $apiClient;
 
-    public function __construct(KyokaiApiClient $apiClient){
+    public function __construct(KyokaiApiClient $apiClient)
+    {
         $this->apiClient = $apiClient;
     }
 
@@ -23,12 +24,10 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-
-    $test = $this->apiClient->call('GET','users/1');
-
-        print_r($test);
-        die;
-        return view('admin.users.index');
+        $result = $this->apiClient->call('GET', 'users');
+die;
+print_r($result); die;
+        return view('admin.users.index', ['users' => ($result['Users'])]);
     }
 
     /**
@@ -44,7 +43,7 @@ class AdminUsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -55,7 +54,7 @@ class AdminUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -66,7 +65,7 @@ class AdminUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -77,8 +76,8 @@ class AdminUsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param  Request $request
+     * @param  int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -89,7 +88,7 @@ class AdminUsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
