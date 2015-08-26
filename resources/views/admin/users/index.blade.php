@@ -7,7 +7,7 @@
             <div class="col-lg-8">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Users List</h5>
+                        <h5>Users Account List</h5>
                     </div>
                     <div class="ibox-content">
 
@@ -15,10 +15,9 @@
                             <thead>
                             <tr>
                                 <th>Username</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Role</th>
+                                <th>Name</th>
                                 <th>Ministry</th>
+                                <th>Role</th>
                             </tr>
                             </thead>
 
@@ -26,6 +25,7 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td>{!! $user->username !!}</td>
+                                    <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
                                     <td>{!! $user->ministry->name !!}</td>
                                 </tr>
                             @empty
