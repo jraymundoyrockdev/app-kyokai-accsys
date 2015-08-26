@@ -17,7 +17,7 @@
                             <a href="/admin/users" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
-                                    <strong>Users Management</strong> <br>
+                                    <strong>Users Account</strong> <br>
                                     <small class="text-muted">Manage Users Accounts and Information</small>
                                 </div>
                             </a>

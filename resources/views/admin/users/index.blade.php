@@ -4,7 +4,7 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Users Account List</h5>
@@ -18,6 +18,7 @@
                                 <th>Name</th>
                                 <th>Ministry</th>
                                 <th>Role</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
 
@@ -27,6 +28,8 @@
                                     <td>{!! $user->username !!}</td>
                                     <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
                                     <td>{!! $user->ministry->name !!}</td>
+                                    <td>{!! $user->role->name !!}</td>
+                                    <td>set active</td>
                                 </tr>
                             @empty
                                 <tr>No Data Found</tr>
@@ -37,6 +40,4 @@
             </div>
         </div>
     </div>
-
-    <input type="button" value="test" id="test">
 @endsection
