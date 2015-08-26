@@ -36,7 +36,7 @@ class KyokaiApiClient
      */
     protected $environment;
 
-    protected $psr7Request;
+    protected $returnData = true;
 
     protected $guzzleMethods = [
         'get' => 'query',
@@ -76,10 +76,10 @@ class KyokaiApiClient
 
             $result = $this->client->{$method}($apiUrl, $params);
 
-            return json_decode($result->getBody()->getContents(), true);
+            return json_decode($result->getBody()->getContents(), $this->returnData);
 
         } catch (ClientException $e) {
-            return json_decode($e->getResponse()->getBody()->getContents(), true);
+            return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);
         }
 
     }
@@ -145,6 +145,16 @@ class KyokaiApiClient
         if ($environment) {
             $this->environment = $environment;
         }
+
+        return $this;
+    }
+
+    /**
+     * Convert returned data JSON object
+     * @return $this
+     */
+    public function asJSON(){
+        $this->returnData = false;
 
         return $this;
     }

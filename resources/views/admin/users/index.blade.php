@@ -25,7 +25,8 @@
                             <tbody>
                             @forelse ($users as $user)
                                 <tr>
-                                    <td>{!! $user['username'] !!}</td>
+                                    <td>{!! $user->username !!}</td>
+                                    <td>{!! $user->ministry->name !!}</td>
                                 </tr>
                             @empty
                                 <tr>No Data Found</tr>
