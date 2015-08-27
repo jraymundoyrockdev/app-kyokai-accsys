@@ -34,9 +34,7 @@
         @include('layouts.partials.breadcrumbs')
 
         @section('main-body')
-            <div class="col-lg-6">
-                default page
-            </div>
+      
         @show
 
         @include('layouts.partials.footer')
