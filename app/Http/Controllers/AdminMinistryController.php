@@ -50,7 +50,7 @@ class AdminMinistryController extends AbstractController
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -61,7 +61,9 @@ class AdminMinistryController extends AbstractController
      */
     public function edit($id)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('GET', 'ministry/' . $id);
+
+        return view('admin.ministries.update', ['ministry' => reset($result->Ministry)]);
     }
 
     /**
@@ -73,7 +75,9 @@ class AdminMinistryController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('PUT', 'ministry/' . $id, $request->all(), $id);
+
+        return redirect()->route('admin.ministry.index');
     }
 
     /**

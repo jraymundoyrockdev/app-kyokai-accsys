@@ -27,7 +27,8 @@
                                     <td>{!! $m->name !!}</td>
                                     <td>{!! $m->description !!}</td>
                                     <td>
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                        <a href="{!! route('admin.ministry.edit', [$m->id]) !!}"
+                                           class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>
                             @empty
