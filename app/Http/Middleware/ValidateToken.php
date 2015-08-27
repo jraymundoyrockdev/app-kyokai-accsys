@@ -26,6 +26,8 @@ class ValidateToken
      */
     public function handle($request, Closure $next)
     { //$request->session()->put('userToken', 'ss');
+
+       // echo $request->session()->get('userToken'); die;
         if ($request->session()->get('userToken')) {
             return $next($request);
             $result = $this->apiClient->call('POST', 'api-token-refresh');

@@ -30,6 +30,14 @@
                                 </div>
                             </a>
 
+                            <a href="/admin/ministry" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Ministries</strong> <br>
+                                    <small class="text-muted">Manage Ministries</small>
+                                </div>
+                            </a>
+
                         </div>
                     </li>
                     <li class="divider"></li>

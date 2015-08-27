@@ -20,7 +20,7 @@
                             </thead>
 
                             <tbody>
-                            @forelse ($ministry as $m)
+                            @forelse ($ministries as $m)
                                 <tr>
                                     <td>{!! $m->name !!}</td>
                                     <td>{!! $m->description !!}</td>

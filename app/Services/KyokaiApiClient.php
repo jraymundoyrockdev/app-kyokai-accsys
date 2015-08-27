@@ -4,6 +4,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use KyokaiAccSys\Services\ClientResponseEvaluator;
 
 /**
  * Class KyokaiApiClient
@@ -44,10 +45,16 @@ class KyokaiApiClient
         'put' => 'json'
     ];
 
-    public function __construct(Request $request, GuzzleClient $client)
-    {
+    protected $clientResponseEvaluator;
+
+    public function __construct(
+        Request $request,
+        GuzzleClient $client,
+        ClientResponseEvaluator $clientResponseEvaluator
+    ) {
         $this->request = $request;
         $this->client = $client;
+        $this->clientResponseEvaluator = $clientResponseEvaluator;
 
         $this->server = 'gfccm';
         $this->environment = 'dev';
@@ -73,12 +80,14 @@ class KyokaiApiClient
                 echo "</pre>";*/
 
         try {
-
-            $result = $this->client->{$method}($apiUrl, $params);
-
-            return json_decode($result->getBody(), $this->returnData);
+            $response = $this->client->{$method}($apiUrl, $params);
+            //return $content = $response->getBody()->getContents();
+            return $decodedContent = json_decode($response->getBody()->getContents(), $this->returnData);
 
         } catch (ClientException $e) {
+            echo "<pre>";
+            print_r($e->getResponse()->getStatusCode());
+            die;
             return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);
         }
 
@@ -153,7 +162,8 @@ class KyokaiApiClient
      * Convert returned data JSON object
      * @return $this
      */
-    public function asJSON(){
+    public function asJSON()
+    {
         $this->returnData = false;
 
         return $this;
