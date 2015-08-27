@@ -8,6 +8,7 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Ministry List</h5>
+                        {!! link_to_route('admin.ministry.create', 'Create New Ministry', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
                     </div>
                     <div class="ibox-content">
 
@@ -16,6 +17,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
 
@@ -24,6 +26,9 @@
                                 <tr>
                                     <td>{!! $m->name !!}</td>
                                     <td>{!! $m->description !!}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>No Data Found</tr>

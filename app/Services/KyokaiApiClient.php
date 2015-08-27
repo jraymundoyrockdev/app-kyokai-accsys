@@ -75,11 +75,12 @@ class KyokaiApiClient
 
         $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-        /*        echo "<pre>";
+     /*           echo "<pre>";
                 print_r($params);
                 echo "</pre>";*/
 
         try {
+
             $response = $this->client->{$method}($apiUrl, $params);
             //return $content = $response->getBody()->getContents();
             return $decodedContent = json_decode($response->getBody()->getContents(), $this->returnData);

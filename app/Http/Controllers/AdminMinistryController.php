@@ -3,6 +3,7 @@
 namespace KyokaiAccSys\Http\Controllers;
 
 use KyokaiAccSys\Http\Requests;
+use Illuminate\Http\Request;
 
 class AdminMinistryController extends AbstractController
 {
@@ -25,7 +26,7 @@ class AdminMinistryController extends AbstractController
      */
     public function create()
     {
-        //
+        return view('admin.ministries.create');
     }
 
     /**
@@ -36,7 +37,9 @@ class AdminMinistryController extends AbstractController
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('POST', 'ministry', $request->all());
+
+        return redirect()->route('admin.ministry.index');
     }
 
     /**
