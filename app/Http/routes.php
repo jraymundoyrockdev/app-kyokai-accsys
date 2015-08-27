@@ -8,6 +8,8 @@ Route::post('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@postI
 Route::group(['domain' => 'app-kyokai-accsys.com', 'middleware' => 'validate_token'], function () {
     Route::resource('admin/users', 'AdminUsersController', [
     ]);
+    Route::resource('admin/user-roles', 'AdminUserRolesController', [
+    ]);
     Route::resource('/', 'DashboardController', [
     ]);
 });

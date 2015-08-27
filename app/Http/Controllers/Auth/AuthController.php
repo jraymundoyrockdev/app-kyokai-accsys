@@ -85,7 +85,7 @@ class AuthController extends Controller
 
     protected function login($request)
     {
-        return $this->client->post('http://api-gfccm-systems.com/api/api-token-auth',
+        return $this->client->post('http://api-gfccm-systems.com:8080/api/api-token-auth',
             [
                 'form_params' => [
                     'username' => $request->input('username'),
