@@ -76,7 +76,7 @@ class KyokaiApiClient
 
             $result = $this->client->{$method}($apiUrl, $params);
 
-            return json_decode($result->getBody()->getContents(), $this->returnData);
+            return json_decode($result->getBody(), $this->returnData);
 
         } catch (ClientException $e) {
             return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);

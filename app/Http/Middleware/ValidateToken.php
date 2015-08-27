@@ -25,7 +25,7 @@ class ValidateToken
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    { //$request->session()->put('userToken', 'ss');
         if ($request->session()->get('userToken')) {
             return $next($request);
             $result = $this->apiClient->call('POST', 'api-token-refresh');

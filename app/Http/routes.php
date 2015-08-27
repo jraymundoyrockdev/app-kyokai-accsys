@@ -10,6 +10,8 @@ Route::group(['domain' => 'app-kyokai-accsys.com', 'middleware' => 'validate_tok
     ]);
     Route::resource('admin/user-roles', 'AdminUserRolesController', [
     ]);
+    Route::resource('admin/ministry', 'AdminMinistryController', [
+    ]);
     Route::resource('/', 'DashboardController', [
     ]);
 });
