@@ -16,9 +16,9 @@
     <link rel="stylesheet" type="text/css" href="/css/vendor/dataTables/dataTables.bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/css/vendor/dataTables/dataTables.responsive.css"/>
     <link rel="stylesheet" type="text/css" href="/css/vendor/dataTables/dataTables.tableTools.min.css"/>
-
     <link rel="stylesheet" type="text/css" href="/css/vendor/animate/animate.css"/>
     <link rel="stylesheet" type="text/css" href="/css/inspinia.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 
 
 </head>
@@ -56,13 +56,7 @@
 
 <script src="/js/inspinia.js"></script>
 <script src="/js/vendor/pace/pace.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
+
 <script src="/js/main.js"></script>
 
 </body>
