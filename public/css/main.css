@@ -1,0 +1,16 @@
+.timeline-item .content {
+	min-height: inherit;
+	/*padding-bottom: 10px;*/
+}
+
+.timeline-item .date {
+	width: 50px;
+}
+
+.no-left-border {
+  border-left: 0 !important;
+}
+
+.timeline-item .content:hover {
+  background: none;
+}

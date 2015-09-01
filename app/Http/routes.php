@@ -5,7 +5,7 @@ Route::get('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getInd
 Route::post('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@postIndex']);
 
 
-Route::group(['domain' => 'app-kyokai-accsys.com', 'middleware' => 'validate_token'], function () {
+Route::group([ 'middleware' => 'validate_token'], function () {
     Route::resource('admin/users', 'AdminUsersController', [
     ]);
     Route::resource('admin/user-roles', 'AdminUserRolesController', [
@@ -13,6 +13,8 @@ Route::group(['domain' => 'app-kyokai-accsys.com', 'middleware' => 'validate_tok
     Route::resource('admin/ministry', 'AdminMinistryController', [
     ]);
     Route::resource('/', 'DashboardController', [
+    ]);
+    Route::resource('service', 'ServiceController', [
     ]);
 });
 
