@@ -32,35 +32,64 @@
                             </h3>
                         </div>
                         <div class="ibox-content inspinia-timeline">
-                            <!-- <div class="timeline-item">
-                                <div class="row">
-                                    <div class="col-md-4 no-top-border date text-right">
-                                        <i class="font-bold">10</i>
-                                    </div>
-                                    
-                                    <div class="col-md-8 content no-top-border">
-                                        <a href="#">
-                                            <span> &nbsp;&nbsp;1st</span>
-                                            <span class="pull-right text-right">50,000</span>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                            </div> -->
                             <div class="timeline-item">
                                 <div class="row">
-                                    <div class="col-xs-3 date">
-                                        <i class="fa fa-briefcase"></i>
-                                        6:00 am
-                                        <br>
-                                        <small class="text-navy">2 hour ago</small>
+                                    <div class="col-xs-2 date">
+                                        <i class="font-bold">10</i>
                                     </div>
-                                    <div class="col-xs-7 content no-top-border">
-                                        <p class="m-b-xs"><strong>Meeting</strong></p>
 
-                                        <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products.</p>
-
+                                    <div class="col-xs-9 content no-top-border"><!--foreach here-->
+                                        <div>
+                                            <span class="m-b-xs">
+                                                1st
+                                                <a href="#"  class="pull-right">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil"></i>
+                                                </a>
+                                                <strong class="pull-right text-info">50,000</strong>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="m-b-xs">
+                                                2nd
+                                                <a href="#"  class="pull-right">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil"></i>
+                                                </a>
+                                                <strong class="pull-right text-info">50,000</strong>
+                                            </span>
+                                                
+                                        </div>
                                     </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="row">
+                                    <div class="col-xs-2 date">
+                                        <i class="font-bold">17</i>
+                                    </div>
+
+                                    <div class="col-xs-9 content"><!--foreach here-->
+                                        <div>
+                                            <span class="m-b-xs">
+                                                1st
+                                                <a href="#"  class="pull-right">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil"></i>
+                                                </a>
+                                                <strong class="pull-right text-info">50,000</strong>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="m-b-xs">
+                                                2nd
+                                                <a href="#"  class="pull-right">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil"></i>
+                                                </a>
+                                                <strong class="pull-right text-info">50,000</strong>
+                                            </span>
+                                                
+                                        </div>
+                                    </div>
+                        
                                 </div>
                             </div>
                         </div>
