@@ -2,13 +2,17 @@
 
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content">
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Ministry List</h5>
-                        {!! link_to_route('admin.ministry.create', 'Create New Ministry', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <div class="ibox-tools">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal5">Create New Ministry <i
+                                        class="fa fa-plus"></i></button>
+                        </div>
+
                     </div>
                     <div class="ibox-content">
 
@@ -27,8 +31,8 @@
                                     <td>{!! $m->name !!}</td>
                                     <td>{!! $m->description !!}</td>
                                     <td>
-                                        <a href="{!! route('admin.ministry.edit', [$m->id]) !!}"
-                                           class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                        <button type="button" class="btn btn-primary btn-xs ">Edit <i
+                                                    class="fa fa-pencil"></i></button>
                                     </td>
                                 </tr>
                             @empty
@@ -40,4 +44,5 @@
             </div>
         </div>
     </div>
+    @include('admin.ministries.modal.create-form')
 @endsection
