@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('module-styles')
+    <link rel="stylesheet" type="text/css" href="/css/inspinia.css"/>
+@endsection
+
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight">

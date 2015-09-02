@@ -17,9 +17,11 @@
     <link rel="stylesheet" type="text/css" href="/css/vendor/dataTables/dataTables.responsive.css"/>
     <link rel="stylesheet" type="text/css" href="/css/vendor/dataTables/dataTables.tableTools.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/vendor/animate/animate.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/inspinia.css"/>
+
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 
+    @section('module-styles')
+    @show
 
 </head>
 

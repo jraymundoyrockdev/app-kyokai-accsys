@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('main-body')
 
     <div class="wrapper wrapper-content">
