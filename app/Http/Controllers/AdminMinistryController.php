@@ -16,7 +16,7 @@ class AdminMinistryController extends AbstractController
     {
         $result = $this->apiClient->asJSON()->call('GET', 'ministry');
 
-        return view('admin.ministries.index', ['ministries' => $result->Ministries]);
+        return view('admin.ministries.old-index', ['ministries' => $result->Ministries]);
     }
 
     /**
