@@ -23,11 +23,11 @@
                             <tbody>
                             @forelse ($ministries as $m)
                                 <tr>
-                                    <td>{!! $m->name !!}</td>a
+                                    <td>{!! $m->name !!}</td>
                                     <td>{!! $m->description !!}</td>
                                     <td>
                                         <a href="{!! route('admin.ministry.edit', [$m->id]) !!}"
-                                           class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>
                             @empty
