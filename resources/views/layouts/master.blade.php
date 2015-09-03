@@ -38,6 +38,8 @@
         @show
 
         @include('layouts.partials.footer')
+
+        @yield('breadcrumbs')
     </div>
 
 </div>
