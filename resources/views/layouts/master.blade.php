@@ -6,8 +6,8 @@
     <meta name="token" content="{{ Session::token() }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-    <title>Kyokai Accsys</title>
-    <link rel="stylesheet" type="text/css" href="/css/libraries.css"/>
+    <title>Kyokai AccSys</title>
+    {!! Html::style('css/libraries.css') !!}
 
     @section('module-styles')@show
 
@@ -29,17 +29,10 @@
         </div>
     </div>
 
-    <script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
-    <script src="/js/vendor/bootstrap/bootstrap.js"></script>
-    <script src="/js/vendor/metis/metisMenu.min.js"></script>
-    <script src="/js/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+    {!! Html::script('js/libraries.js') !!}
 
-    <script src="/js/vendor/dataTables/jquery.dataTables.js"></script>
-    <script src="/js/vendor/dataTables/dataTables.bootstrap.js"></script>
-    <script src="/js/vendor/dataTables/dataTables.responsive.js"></script>
-    <script src="/js/vendor/dataTables/dataTables.tableTools.min.js"></script>
-
-    <script src="/js/inspinia.js"></script>
+    @section('module-validation')@show
+    @section('module-scripts')@show
 
     <script src="/js/main.js"></script>
 

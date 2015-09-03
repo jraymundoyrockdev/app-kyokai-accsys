@@ -22,4 +22,16 @@ elixir(function (mix) {
         'vendor/inspinia.css',
         'main.css'
     ], 'public/css/libraries.css');
+
+    mix.scripts([
+        'vendor/jquery-2.1.4.min.js',
+        'vendor/bootstrap.js',
+        'vendor/metisMenu.min.js',
+        'vendor/jquery.slimscroll.min.js',
+        'vendor/jquery.dataTables.js',
+        'vendor/dataTables.bootstrap.js',
+        'vendor/dataTables.responsive.js',
+        'vendor/dataTables.tableTools.min.js',
+        'vendor/inspinia.js'
+    ], 'public/js/libraries.js');
 });

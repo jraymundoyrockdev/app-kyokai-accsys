@@ -2,55 +2,40 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="token" content="{{ Session::token() }}"/>
 
-    <title>INSPINIA | Login</title>
+    <title>Kyokai AccSys</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/vendor/bootstrap/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/vendor/font-awesome/font-awesome.css"/>
-
-    <link rel="stylesheet" type="text/css" href="/css/vendor/animate/animate.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/inspinia.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/css/libraries.css"/>
 </head>
 
 <body class="gray-bg">
 
-<div class="middle-box text-center loginscreen animated fadeInDown">
-    <div>
+    <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <h1 class="logo-name">KAS</h1>
-        </div>
-        <h3>Welcome to Kyokai AccSys+</h3>
-
-        <p>Accounting System</p>
-
-        @section('main-body')
-            <div class="col-lg-6">
-                default page
+            <div>
+                <h1 class="logo-name">KA</h1>
             </div>
-        @show
-        <p class="m-t">
-            <small> 2015</small>
-        </p>
+            <h3>Welcome to Kyokai AccSys</h3>
+
+            <p>Accounting System</p>
+
+            @section('main-body')
+                <div class="col-lg-6">
+                    default page
+                </div>
+            @show
+            <p class="m-t">
+                <small> 2015</small>
+            </p>
+        </div>
     </div>
-</div>
 
 
-<script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
-<script src="/js/vendor/bootstrap/bootstrap.js"></script>
-<script src="/js/vendor/cookie/js.cookie.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
-<script src="/js/main.js"></script>
+    <script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
+    <script src="/js/vendor/bootstrap/bootstrap.js"></script>
 
 </body>
 
