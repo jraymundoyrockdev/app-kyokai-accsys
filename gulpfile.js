@@ -13,7 +13,13 @@ var elixir = require('laravel-elixir');
 
 elixir(function (mix) {
     mix.styles([
-        'inspinia.css',
+        'vendor/bootstrap.css',
+        'vendor/font-awesome.css',
+        'vendor/dataTables.bootstrap.css',
+        'vendor/dataTables.responsive.css',
+        'vendor/dataTables.tableTools.min.css',
+        'vendor/animate.css',
+        'vendor/inspinia.css',
         'main.css'
-    ]);
+    ], 'public/css/libraries.css');
 });
