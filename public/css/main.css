@@ -22,3 +22,12 @@
   background: none;
 }
 
+.logo-name {
+	font-size: 40px;
+	letter-spacing: 40px;
+	color: #a7b1c2;
+}
+
+li.active {
+	font-weight: bold;
+}

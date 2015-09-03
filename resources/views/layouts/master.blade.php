@@ -25,16 +25,19 @@
 
             @section('main-body')@show
 
+
             @include('layouts.partials.footer')
+
+            @yield('breadcrumbs')
+
         </div>
+
+        {!! Html::script('js/libraries.js') !!}
+
+        @section('module-validation')@show
+        @section('module-scripts')@show
+
+        <script src="/js/main.js"></script>
     </div>
-
-    {!! Html::script('js/libraries.js') !!}
-
-    @section('module-validation')@show
-    @section('module-scripts')@show
-
-    <script src="/js/main.js"></script>
-
 </body>
 </html>
