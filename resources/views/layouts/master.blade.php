@@ -21,14 +21,12 @@
 
         <div id="page-wrapper" class="gray-bg">
             @include('layouts.partials.header')
-            @include('layouts.partials.breadcrumbs')
+
+            @section('breadcrumbs')@show
 
             @section('main-body')@show
 
-
             @include('layouts.partials.footer')
-
-            @yield('breadcrumbs')
 
         </div>
 
