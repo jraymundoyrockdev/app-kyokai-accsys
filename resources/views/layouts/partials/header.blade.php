@@ -38,6 +38,14 @@
                                 </div>
                             </a>
 
+                            <a href="/admin/denomination" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Denomination</strong> <br>
+                                    <small class="text-muted">Manage Money Denomination</small>
+                                </div>
+                            </a>
+
                         </div>
                     </li>
                     <li class="divider"></li>

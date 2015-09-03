@@ -12,6 +12,8 @@ Route::group([ 'middleware' => 'validate_token'], function () {
     ]);
     Route::resource('admin/ministry', 'AdminMinistryController', [
     ]);
+    Route::resource('admin/denomination', 'AdminDenominationController', [
+    ]);
     Route::resource('/', 'DashboardController', [
     ]);
     Route::resource('service', 'ServiceController', [
