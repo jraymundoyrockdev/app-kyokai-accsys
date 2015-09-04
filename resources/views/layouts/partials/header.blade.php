@@ -38,7 +38,7 @@
                                 </div>
                             </a>
 
-                            <a href="/admin/denomination" class="pull-left">
+                            <a href="/admin/denominations" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
                                     <strong>Denomination</strong> <br>

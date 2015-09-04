@@ -32,7 +32,9 @@
                                     <td>set active</td>
                                 </tr>
                             @empty
-                                <tr>No Data Found</tr>
+                                <tr>
+                                    <td colspan="5">No Data Found</td>
+                                </tr>
                             @endforelse
                         </table>
                     </div>

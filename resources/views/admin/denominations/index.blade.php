@@ -6,32 +6,34 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Ministry List</h5>
-                        {!! link_to_route('admin.ministry.create', 'Create New Ministry', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <h5>Denomination List</h5>
+                        {!! link_to_route('admin.denominations.create', 'Create New Denomination', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
                     </div>
                     <div class="ibox-content">
 
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Amount</th>
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @forelse ($denomination as $d)
+                            @forelse ($denominations as $d)
                                 <tr>
-                                    <td>{!! $d->name !!}</td>
+                                    <td>{!! $d->amount !!}</td>
                                     <td>{!! $d->description !!}</td>
                                     <td>
-                                        <a href="{!! route('admin.ministry.edit', [$d->id]) !!}"
+                                        <a href="{!! route('admin.denominations.edit', [$d->id]) !!}"
                                            class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>
                             @empty
-                                <tr>No Data Found</tr>
+                                <tr>
+                                    <td colspan="3">No Data Found</td>
+                                </tr>
                             @endforelse
                         </table>
                     </div>

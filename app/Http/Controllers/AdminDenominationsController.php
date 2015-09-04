@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 use KyokaiAccSys\Http\Controllers\Controller;
 
-class AdminDenominationController extends AbstractController
+class AdminDenominationsController extends AbstractController
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class AdminDenominationController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'denomination');
+        $result = $this->apiClient->asJSON()->call('GET', 'denominations');
 
-        return view('admin.denomination.index', ['denomination' => $result->Denominations]);
+        return view('admin.denominations.index', ['denominations' => $result->Denominations]);
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminDenominationController extends AbstractController
      */
     public function create()
     {
-        //
+        return view('admin.denominations.create');
     }
 
     /**
@@ -39,7 +39,9 @@ class AdminDenominationController extends AbstractController
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('POST', 'denominations', $request->all());
+
+        return redirect()->route('admin.denominations.index');
     }
 
     /**
@@ -61,7 +63,9 @@ class AdminDenominationController extends AbstractController
      */
     public function edit($id)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('GET', 'denominations/' . $id);
+
+        return view('admin.denominations.update', ['denomination' => reset($result->Denomination)]);
     }
 
     /**
@@ -73,7 +77,9 @@ class AdminDenominationController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->apiClient->asJSON()->call('PUT', 'denominations/' . $id, $request->all(), $id);
+
+        return redirect()->route('admin.denominations.index');
     }
 
     /**

@@ -26,7 +26,9 @@
                                     <td>{!! $role->description !!}</td>
                                 </tr>
                             @empty
-                                <tr>No Data Found</tr>
+                                <tr>
+                                    <td colspan="2">No Data Found</td>
+                                </tr>
                             @endforelse
                         </table>
                     </div>
