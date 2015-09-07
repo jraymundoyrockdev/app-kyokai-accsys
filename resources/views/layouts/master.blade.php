@@ -8,6 +8,7 @@
 
     <title>Kyokai AccSys</title>
     {!! Html::style('css/libraries.css') !!}
+    {!! Html::style('css/main.css') !!}
 
     @section('module-styles')@show
 
@@ -21,20 +22,21 @@
 
         <div id="page-wrapper" class="gray-bg">
             @include('layouts.partials.header')
-            @include('layouts.partials.breadcrumbs')
+
+            @section('breadcrumbs')@show
 
             @section('main-body')@show
 
             @include('layouts.partials.footer')
+
         </div>
+
+        {!! Html::script('js/libraries.js') !!}
+
+        @section('module-validation')@show
+        @section('module-scripts')@show
+
+        <script src="/js/main.js"></script>
     </div>
-
-    {!! Html::script('js/libraries.js') !!}
-
-    @section('module-validation')@show
-    @section('module-scripts')@show
-
-    <script src="/js/main.js"></script>
-
 </body>
 </html>
