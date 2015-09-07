@@ -46,6 +46,14 @@
                                 </div>
                             </a>
 
+                            <a href="/admin/services" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Services</strong> <br>
+                                    <small class="text-muted">Manage the all type of services</small>
+                                </div>
+                            </a>
+
                         </div>
                     </li>
                     <li class="divider"></li>
