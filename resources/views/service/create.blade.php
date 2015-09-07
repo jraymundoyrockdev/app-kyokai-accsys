@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('breadcrumbs')
+    @include('layouts.partials.breadcrumbs')
+    
+@endsection
+
 @section('main-body')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -13,30 +18,29 @@
                         <div id="tab-1" class="tab-pane active">
                             <div class="panel-body">
                                 <div class="row">
-
                                     <div class="col-sm-12">
                                         <div class="widget lazur-bg no-padding">
                                             <div class="row text-center">
                                                 <div class="col-xs-4">
-                                                    <h2 class="font-bold">26'C</h2>
+                                                    <h2 class="font-bold">50,000</h2>
                                                     <small> Total Offering</small>
                                                 </div>
                                                 <div class="col-xs-4">
-                                                    <h2 class="font-bold">26'C</h2>
+                                                    <h2 class="font-bold">50,000</h2>
                                                     <small> Total Tithes</small>
                                                 </div>
                                                 <div class="col-xs-4">
-                                                    <h2 class="font-bold">26'C</h2>
+                                                    <h2 class="font-bold">100,000</h2>
                                                     <small> Total Income</small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            {!! Form::text('name', null, ['class' => 'form-control input-lg', 'placeholder' => 'Name']) !!}
+                                            <div class="input-group m-b">
+                                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}<span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="row">

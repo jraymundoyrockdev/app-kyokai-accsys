@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <a href="{!!url('/service/create')!!}" role="button" class="btn btn-primary btn-lg pull-right"><i
+                <a href="{!!url('/service/create')!!}" role="button" class="btn btn-primary pull-right"><i
                             class="fa fa-plus"></i> Create</a>
             </div>
         </div>

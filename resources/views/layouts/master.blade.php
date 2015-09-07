@@ -8,6 +8,7 @@
 
     <title>Kyokai AccSys</title>
     {!! Html::style('css/libraries.css') !!}
+    {!! Html::style('css/main.css') !!}
 
     @section('module-styles')@show
 
