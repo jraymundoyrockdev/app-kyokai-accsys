@@ -1,7 +1,15 @@
 @extends('layouts.master')
 
 @section('breadcrumbs')
-    @include('layouts.partials.breadcrumbs',['title' =>'pabebe','route'=>'GET MY CURRENT ROUTE'])
+
+    @include('layouts.partials.breadcrumbs')
+    
+@endsection
+
+@section('module-styles')
+
+    {!! Html::style('css/vendor/bootstrap/datepicker.css') !!}
+
 @endsection
 
 @section('main-body')
@@ -17,8 +25,9 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <a href="{!!url('/service/create')!!}" role="button" class="btn btn-primary pull-right"><i
-                            class="fa fa-plus"></i> Create</a>
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#createServiceModeal">
+                    <i class="fa fa-plus"></i> Create
+                </button>
             </div>
         </div>
 
@@ -125,4 +134,55 @@
             </div>
         </div>
     </div>
+    <div class="modal inmodal fade" id="createServiceModeal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Create New Service</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            {!! Form::open(['class' => 'form-horizontal']) !!}
+
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label">Service</label>
+                                <div class="col-sm-10">
+                                    {!! Form::select('service',['first_service' => '1st Service', 'second_service' => '2nd Service', 'others' => 'Others'], null, ['class' => 'form-control', 'id' => 'service']); !!}
+                                    {!! Form::text('others', null, ['class' => 'form-control', 'id' => 'otherService', 'placeholder' => 'Please type other service']); !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Date</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group date m-b" id="datepicker">
+                                        {!! Form::text('date', null, ['class' => 'form-control']) !!}<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
+
+@section('module-scripts')
+    
+    {!! Html::script('js/vendor/bootstrap/bootstrap.js') !!}
+    {!! Html::script('js/vendor/bootstrap/datepicker.js') !!}
+    {!! Html::script('js/vendor/metis/metisMenu.min.js') !!}
+    {!! Html::script('js/vendor/slimscroll/jquery.slimscroll.min.js') !!}
+    {!! Html::script('js/modules/service/service.js') !!}
+
+@endsection
+

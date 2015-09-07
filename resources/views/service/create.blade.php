@@ -35,16 +35,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group ">
-                                            <div class="input-group m-b">
-                                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}<span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="row">
                                     <div class="col-lg-3 b-r">
+                                        <div class="form-group ">
+                                            <div class="input-group m-b">
+                                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}<span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                            </div>
+                                        </div>
                                         <h5 class="font-bold text-muted">General/Operational Fund</h5>
                                         {!! Form::open(['class' => 'form-horizontal']) !!}
 

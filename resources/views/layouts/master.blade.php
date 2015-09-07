@@ -32,6 +32,7 @@
         </div>
 
         {!! Html::script('js/libraries.js') !!}
+        {!! Html::script('js/vendor/jquery/jquery-2.1.4.min.js') !!}
 
         @section('module-validation')@show
         @section('module-scripts')@show
