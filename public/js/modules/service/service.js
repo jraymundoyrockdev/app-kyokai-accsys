@@ -1,18 +1,18 @@
 $(function () {
     $('#datepicker').datepicker({
-    	autoclose: true,
-    	startDate: new Date()
+        autoclose: true,
+        startDate: new Date()
     });
 });
 
 $(document).ready(function () {
-	$('#otherService').hide();
+    $('#otherService').hide();
 
-	$( "#service" ).change(function() {
-		
-		$('#otherService').hide();
-	  	
-	  	if(this.value == 'others')
-	  		$('#otherService').show();
-	});
+    $("#service").change(function () {
+
+        $('#otherService').hide();
+
+        if (this.value == 'others')
+            $('#otherService').show();
+    });
 });

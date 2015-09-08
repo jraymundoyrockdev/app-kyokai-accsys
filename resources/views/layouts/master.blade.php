@@ -8,9 +8,8 @@
 
     <title>Kyokai AccSys</title>
     {!! Html::style('css/libraries.css') !!}
-    {!! Html::style('css/main.css') !!}
-
     @section('module-styles')@show
+    {!! Html::style('css/main.css') !!}
 
 </head>
 
@@ -32,9 +31,7 @@
         </div>
 
         {!! Html::script('js/libraries.js') !!}
-        {!! Html::script('js/vendor/jquery/jquery-2.1.4.min.js') !!}
 
-        @section('module-validation')@show
         @section('module-scripts')@show
 
         <script src="/js/main.js"></script>
