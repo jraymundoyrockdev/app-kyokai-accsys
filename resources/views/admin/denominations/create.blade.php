@@ -12,8 +12,15 @@
                     <div class="ibox-content">
                         {!! Form::open(['route' => 'admin.denominations.store','class' => 'form-horizontal']) !!}
                         <div class="form-group">
-                            {!! Form::label('amount', 'Amount', ['class' => 'col-sm-2 control-label']) !!}
-                            <div class="col-sm-5">{!! Form::number('amount', '', ['class' => 'form-control']) !!}</div>
+
+                            <label class="col-sm-2 control-label {!! !session('amount') ?: 'error' !!}">Amount</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="amount" id="amount"
+                                       class="form-control {!! !session('amount') ?: 'error' !!}"
+                                       value="{!! session('amountError') !!}">
+                                <label id="-error" class="error" for="">{!! session('amount') !!}</label>
+                            </div>
 
                         </div>
                         <div class="form-group">

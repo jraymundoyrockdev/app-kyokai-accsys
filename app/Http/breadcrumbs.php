@@ -14,17 +14,17 @@ Breadcrumbs::register('service.create', function ($breadcrumbs) {
 
 // Admin Denominations
 Breadcrumbs::register('admin.denominations.index', function ($breadcrumbs) {
-    $breadcrumbs->push('List', route('admin.denominations.index'));
+    $breadcrumbs->push('Denominations', route('admin.denominations.index'));
 });
 
 // Admin Denominations > Create New Denomination
 Breadcrumbs::register('admin.denominations.create', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.denominations.index');
-    $breadcrumbs->push('Create New Denomination', route('admin.denominations.create'));
+    $breadcrumbs->push('Create', route('admin.denominations.create'));
 });
 
 // Admin Denominations > Update Denomination
 Breadcrumbs::register('admin.denominations.edit', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.denominations.index');
-    $breadcrumbs->push('Edit Denomination', route('admin.denominations.edit'));
+    $breadcrumbs->push('Update', route('admin.denominations.edit'));
 });

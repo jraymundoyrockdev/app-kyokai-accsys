@@ -83,15 +83,11 @@ class KyokaiApiClient
                    echo "</pre>";*/
 
         try {
-
             $response = $this->client->{$method}($apiUrl, $params);
             //return $content = $response->getBody()->getContents();
             return $decodedContent = json_decode($response->getBody()->getContents(), $this->returnData);
 
         } catch (ClientException $e) {
-            echo "<pre>";
-            print_r($e->getResponse()->getStatusCode());
-            die;
             return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);
         }
 
