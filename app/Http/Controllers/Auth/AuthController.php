@@ -72,6 +72,18 @@ class AuthController extends Controller
     }
 
     /**
+     * Logout the user in
+     *
+     * @return mixed
+     */
+    public function logout()
+    {
+        //@todo invalidate jwt token
+        $this->request->session()->flush();
+        return redirect()->route('login');
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
