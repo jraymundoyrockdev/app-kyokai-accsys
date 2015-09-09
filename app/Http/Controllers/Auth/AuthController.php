@@ -8,29 +8,19 @@ use KyokaiAccSys\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Redirect;
+use KyokaiAccSys\Services\KyokaiApiClient;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
     /**
      * @var Request
      */
     protected $request;
 
     /**
-     * @var GuzzleClient
+     * @var KyokaiApiClient
      */
     protected $client;
 
@@ -39,10 +29,10 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      * @param $request Request
-     * @param $client GuzzleClient
+     * @param $client KyokaiApiClient
      *
      */
-    public function __construct(Request $request, GuzzleClient $client)
+    public function __construct(Request $request, KyokaiApiClient $client)
     {
         $this->request = $request;
         $this->client = $client;
@@ -71,28 +61,14 @@ class AuthController extends Controller
     public function postIndex()
     {
         try {
-            $response = $this->login($this->request);
-            $result = json_decode($response->getBody()->getContents(), true);
-            $this->request->session()->put('userToken', $result['token']);
-
+            $result = $this->client->call('POST', 'api-token-auth', $this->request->only(['username', 'password']));
+            $this->request->session()->put('userToken', $result->token);
             return Redirect::to('/');
 
         } catch (ClientException $e) {
             $result = $e->getResponse()->getBody()->getContents();
             return Redirect::to('/auth/login')->with('errorMessage', $result);
         }
-    }
-
-    protected function login($request)
-    {
-        return $this->client->post('http://api-gfccm-systems.com/api/api-token-auth',
-            [
-                'form_params' => [
-                    'username' => $request->input('username'),
-                    'password' => $request->input('password')
-                ]
-            ]
-        );
     }
 
     /**

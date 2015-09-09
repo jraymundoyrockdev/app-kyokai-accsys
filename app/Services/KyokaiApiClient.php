@@ -5,6 +5,7 @@ use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use KyokaiAccSys\Services\ClientResponseEvaluator;
+use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class KyokaiApiClient
@@ -50,14 +51,16 @@ class KyokaiApiClient
     public function __construct(
         Request $request,
         GuzzleClient $client,
-        ClientResponseEvaluator $clientResponseEvaluator
-    ) {
+        ClientResponseEvaluator $clientResponseEvaluator,
+        Application $environment
+    )
+    {
         $this->request = $request;
         $this->client = $client;
         $this->clientResponseEvaluator = $clientResponseEvaluator;
 
         $this->server = 'gfccm';
-        $this->environment = 'dev';
+        $this->environment = $environment->environment();
     }
 
     /**
@@ -75,9 +78,9 @@ class KyokaiApiClient
 
         $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-     /*           echo "<pre>";
-                print_r($params);
-                echo "</pre>";*/
+        /*           echo "<pre>";
+                   print_r($params);
+                   echo "</pre>";*/
 
         try {
 
