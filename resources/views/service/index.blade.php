@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
-@section('breadcrumbs')
-
-    @include('layouts.partials.breadcrumbs')
-
-@endsection
+@section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
 
 @section('module-styles')
 

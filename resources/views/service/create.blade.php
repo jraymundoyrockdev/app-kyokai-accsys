@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('breadcrumbs')
-    @include('layouts.partials.breadcrumbs')
-    
+    @include('layouts.partials.breadcrumbs',['title' => 'Income'])
 @endsection
 
 @section('main-body')

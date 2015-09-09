@@ -2,13 +2,13 @@
 
 // Home
 Breadcrumbs::register('service.index', function ($breadcrumbs) {
-    $breadcrumbs->push('Home', route('service.index'), ['test' => 'Home']);
+    $breadcrumbs->push('Home', route('service.index'));
 });
 
 // Home > About
 Breadcrumbs::register('service.create', function ($breadcrumbs) {
     $breadcrumbs->parent('service.index');
-    $breadcrumbs->push('Create Income', route('service.create'), ['test' => 'Create']);
+    $breadcrumbs->push('Service', route('service.create'));
 });
 
 

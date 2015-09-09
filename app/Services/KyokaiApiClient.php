@@ -37,7 +37,7 @@ class KyokaiApiClient
      */
     protected $environment;
 
-    protected $returnData = true;
+    protected $returnData = false;
 
     protected $guzzleMethods = [
         'get' => 'query',
@@ -163,9 +163,9 @@ class KyokaiApiClient
      * Convert returned data JSON object
      * @return $this
      */
-    public function asJSON()
+    public function asArray()
     {
-        $this->returnData = false;
+        $this->returnData = true;
 
         return $this;
     }

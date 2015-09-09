@@ -14,7 +14,7 @@ class AdminUserRolesController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'user-roles');
+        $result = $this->apiClient->call('GET', 'user-roles');
 
         return view('admin.user-roles.index', ['userRoles' => ($result->UserRoles)]);
     }

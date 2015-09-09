@@ -16,7 +16,7 @@ class AdminDenominationsController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'denominations');
+        $result = $this->apiClient->call('GET', 'denominations');
 
         return view('admin.denominations.index', ['denominations' => $result->Denominations]);
     }
@@ -39,7 +39,7 @@ class AdminDenominationsController extends AbstractController
      */
     public function store(Request $request)
     {
-        $result = $this->apiClient->asJSON()->call('POST', 'denominations', $request->all());
+        $result = $this->apiClient->call('POST', 'denominations', $request->all());
 
         return redirect()->route('admin.denominations.index');
     }
@@ -63,7 +63,7 @@ class AdminDenominationsController extends AbstractController
      */
     public function edit($id)
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'denominations/' . $id);
+        $result = $this->apiClient->call('GET', 'denominations/' . $id);
 
         return view('admin.denominations.update', ['denomination' => reset($result->Denomination)]);
     }
@@ -77,7 +77,7 @@ class AdminDenominationsController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->asJSON()->call('PUT', 'denominations/' . $id, $request->all(), $id);
+        $result = $this->apiClient->call('PUT', 'denominations/' . $id, $request->all(), $id);
 
         return redirect()->route('admin.denominations.index');
     }

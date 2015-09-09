@@ -14,7 +14,7 @@ class AdminServicesController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'services');
+        $result = $this->apiClient->call('GET', 'services');
 
         return view('admin.services.index', ['services' => $result->Services]);
     }
@@ -37,7 +37,7 @@ class AdminServicesController extends AbstractController
      */
     public function store(Request $request)
     {
-        $result = $this->apiClient->asJSON()->call('POST', 'services', $request->all());
+        $result = $this->apiClient->call('POST', 'services', $request->all());
 
         return redirect()->route('admin.services.index');
     }
@@ -61,7 +61,7 @@ class AdminServicesController extends AbstractController
      */
     public function edit($id)
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'services/' . $id);
+        $result = $this->apiClient->call('GET', 'services/' . $id);
 
         return view('admin.services.update', ['service' => reset($result->Service)]);
     }
@@ -75,7 +75,7 @@ class AdminServicesController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->asJSON()->call('PUT', 'services/' . $id, $request->all(), $id);
+        $result = $this->apiClient->call('PUT', 'services/' . $id, $request->all(), $id);
 
         return redirect()->route('admin.services.index');
     }
