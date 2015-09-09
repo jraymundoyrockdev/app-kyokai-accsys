@@ -41,15 +41,13 @@ class AdminDenominationsController extends AbstractController
     {
         $result = $this->apiClient->call('POST', 'denominations', $request->all());
 
-        if ($result->message == 'Validation Error') {
+        if (!empty($result->errors)) {
+            $withValues = SomeMEhodtwithfreakinsetter->sets(['amount' => reset($result->errors->amount), 'amountError' => $request->get('amount')]);
             return redirect()->route('admin.denominations.create')->with(
-                ['amount' => reset($result->errors->amount),'amountError' => $request->get('amount')]
+
             );
         }
 
-        echo $result->message;
-        print_r($result);
-        die;
         return redirect()->route('admin.denominations.index');
     }
 
