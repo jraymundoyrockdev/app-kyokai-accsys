@@ -42,10 +42,9 @@ class AdminDenominationsController extends AbstractController
         $result = $this->apiClient->call('POST', 'denominations', $request->all());
 
         if (!empty($result->errors)) {
-            $withValues = SomeMEhodtwithfreakinsetter->sets(['amount' => reset($result->errors->amount), 'amountError' => $request->get('amount')]);
-            return redirect()->route('admin.denominations.create')->with(
+            $errorResponse = $this->errorResponseSetter->set($result->errors, $request->all());
 
-            );
+            return redirect()->route('admin.denominations.create')->with($errorResponse);
         }
 
         return redirect()->route('admin.denominations.index');
@@ -85,6 +84,12 @@ class AdminDenominationsController extends AbstractController
     public function update(Request $request, $id)
     {
         $result = $this->apiClient->call('PUT', 'denominations/' . $id, $request->all(), $id);
+
+        if (!empty($result->errors)) {
+            $errorResponse = $this->errorResponseSetter->set($result->errors, $request->all());
+
+            return redirect()->route('admin.denominations.update', [$id . '/edit'])->with($errorResponse);
+        }
 
         return redirect()->route('admin.denominations.index');
     }

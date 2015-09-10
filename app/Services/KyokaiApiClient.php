@@ -78,7 +78,7 @@ class KyokaiApiClient
 
         $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-        /*           echo "<pre>";
+                   /*echo "<pre>";
                    print_r($params);
                    echo "</pre>";*/
 
