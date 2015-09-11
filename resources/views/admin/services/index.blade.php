@@ -6,8 +6,8 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Ministry List</h5>
-                        {!! link_to_route('admin.ministry.create', 'Create New Ministry', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <h5>Services List</h5>
+                        {!! link_to_route('admin.services.create', 'Create New Service', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
                     </div>
                     <div class="ibox-content">
 
@@ -21,12 +21,12 @@
                             </thead>
 
                             <tbody>
-                            @forelse ($denomination as $d)
+                            @forelse ($services as $s)
                                 <tr>
-                                    <td>{!! $d->name !!}</td>
-                                    <td>{!! $d->description !!}</td>
+                                    <td>{!! $s->name !!}</td>
+                                    <td>{!! $s->description !!}</td>
                                     <td>
-                                        <a href="{!! route('admin.ministry.edit', [$d->id]) !!}"
+                                        <a href="{!! route('admin.services.edit', [$s->id]) !!}"
                                            class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>

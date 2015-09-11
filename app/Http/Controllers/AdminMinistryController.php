@@ -14,7 +14,7 @@ class AdminMinistryController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'ministry');
+        $result = $this->apiClient->call('GET', 'ministry');
 
         return view('admin.ministries.old-index', ['ministries' => $result->Ministries]);
     }
@@ -37,7 +37,7 @@ class AdminMinistryController extends AbstractController
      */
     public function store(Request $request)
     {
-        $result = $this->apiClient->asJSON()->call('POST', 'ministry', $request->all());
+        $result = $this->apiClient->call('POST', 'ministry', $request->all());
 
         return redirect()->route('admin.ministry.index');
     }
@@ -61,7 +61,7 @@ class AdminMinistryController extends AbstractController
      */
     public function edit($id)
     {
-        $result = $this->apiClient->asJSON()->call('GET', 'ministry/' . $id);
+        $result = $this->apiClient->call('GET', 'ministry/' . $id);
 
         return view('admin.ministries.update', ['ministry' => reset($result->Ministry)]);
     }
@@ -75,7 +75,7 @@ class AdminMinistryController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->asJSON()->call('PUT', 'ministry/' . $id, $request->all(), $id);
+        $result = $this->apiClient->call('PUT', 'ministry/' . $id, $request->all(), $id);
 
         return redirect()->route('admin.ministry.index');
     }

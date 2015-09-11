@@ -5,6 +5,7 @@ use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use KyokaiAccSys\Services\ClientResponseEvaluator;
+use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class KyokaiApiClient
@@ -37,7 +38,7 @@ class KyokaiApiClient
      */
     protected $environment;
 
-    protected $returnData = true;
+    protected $returnData = false;
 
     protected $guzzleMethods = [
         'get' => 'query',
@@ -50,14 +51,16 @@ class KyokaiApiClient
     public function __construct(
         Request $request,
         GuzzleClient $client,
-        ClientResponseEvaluator $clientResponseEvaluator
-    ) {
+        ClientResponseEvaluator $clientResponseEvaluator,
+        Application $environment
+    )
+    {
         $this->request = $request;
         $this->client = $client;
         $this->clientResponseEvaluator = $clientResponseEvaluator;
 
         $this->server = 'gfccm';
-        $this->environment = 'dev';
+        $this->environment = $environment->environment();
     }
 
     /**
@@ -75,20 +78,16 @@ class KyokaiApiClient
 
         $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-     /*           echo "<pre>";
-                print_r($params);
-                echo "</pre>";*/
+                   /*echo "<pre>";
+                   print_r($params);
+                   echo "</pre>";*/
 
         try {
-
             $response = $this->client->{$method}($apiUrl, $params);
             //return $content = $response->getBody()->getContents();
             return $decodedContent = json_decode($response->getBody()->getContents(), $this->returnData);
 
         } catch (ClientException $e) {
-            echo "<pre>";
-            print_r($e->getResponse()->getStatusCode());
-            die;
             return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);
         }
 
@@ -163,9 +162,9 @@ class KyokaiApiClient
      * Convert returned data JSON object
      * @return $this
      */
-    public function asJSON()
+    public function asArray()
     {
-        $this->returnData = false;
+        $this->returnData = true;
 
         return $this;
     }

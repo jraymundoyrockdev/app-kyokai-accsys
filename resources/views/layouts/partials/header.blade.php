@@ -38,11 +38,19 @@
                                 </div>
                             </a>
 
-                            <a href="/admin/denomination" class="pull-left">
+                            <a href="/admin/denominations" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
                                     <strong>Denomination</strong> <br>
                                     <small class="text-muted">Manage Money Denomination</small>
+                                </div>
+                            </a>
+
+                            <a href="/admin/services" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Services</strong> <br>
+                                    <small class="text-muted">Manage the all type of services</small>
                                 </div>
                             </a>
 
@@ -52,7 +60,7 @@
                 </ul>
             </li>
             <li>
-                <a href="login.html">
+                <a href="/auth/logout">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
