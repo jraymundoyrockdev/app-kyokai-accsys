@@ -51,7 +51,30 @@ Breadcrumbs::register('admin.ministry.edit', function ($breadcrumbs) {
 });
 
 
+// Admin Services
+Breadcrumbs::register('admin.services.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Services', route('admin.ministry.index'));
+});
+
+// Admin Services > Create New Service
+Breadcrumbs::register('admin.services.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.services.index');
+    $breadcrumbs->push('Create', route('admin.services.create'));
+});
+
+// Admin Services > Update Service
+Breadcrumbs::register('admin.services.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.services.index');
+    $breadcrumbs->push('Update', route('admin.services.edit'));
+});
+
+// Admin Users
+Breadcrumbs::register('admin.users.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Users', route('admin.users.index'));
+});
+
 // Admin Roles
 Breadcrumbs::register('admin.user-roles.index', function ($breadcrumbs) {
     $breadcrumbs->push('User Roles', route('admin.user-roles.index'));
 });
+

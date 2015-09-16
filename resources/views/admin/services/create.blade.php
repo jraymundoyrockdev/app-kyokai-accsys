@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight">
