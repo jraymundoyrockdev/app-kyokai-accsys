@@ -14,6 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function (mix) {
     mix.styles([
         'vendor/bootstrap.css',
+        'vendor/datepicker.css',
         'vendor/font-awesome.css',
         'vendor/dataTables.bootstrap.css',
         'vendor/dataTables.responsive.css',
@@ -26,6 +27,7 @@ elixir(function (mix) {
     mix.scripts([
         'vendor/jquery-2.1.4.min.js',
         'vendor/bootstrap.js',
+        'vendor/datepicker.js',
         'vendor/metisMenu.min.js',
         'vendor/jquery.slimscroll.min.js',
         'vendor/jquery.dataTables.js',

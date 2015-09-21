@@ -1,13 +1,5 @@
 @extends('layouts.master')
-
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
-
-@section('module-styles')
-
-    {!! Html::style('css/vendor/bootstrap/datepicker.css') !!}
-
-@endsection
-
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -179,7 +171,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/vendor/bootstrap/datepicker.js') !!}
     {!! Html::script('js/modules/service/service.js') !!}
 @endsection
 
