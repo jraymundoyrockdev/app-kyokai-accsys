@@ -15,6 +15,7 @@ elixir(function (mix) {
     mix.styles([
         'vendor/bootstrap.css',
         'vendor/datepicker.css',
+        'vendor/bootstrap-switch.css',
         'vendor/font-awesome.css',
         'vendor/dataTables.bootstrap.css',
         'vendor/dataTables.responsive.css',
@@ -28,6 +29,7 @@ elixir(function (mix) {
         'vendor/jquery-2.1.4.min.js',
         'vendor/bootstrap.js',
         'vendor/datepicker.js',
+        'vendor/bootstrap-switch.js',
         'vendor/metisMenu.min.js',
         'vendor/jquery.slimscroll.min.js',
         'vendor/jquery.dataTables.js',

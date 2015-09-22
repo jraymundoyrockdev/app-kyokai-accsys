@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    $('.bootstrap-switch').bootstrapSwitch();
 
     $('#login').click(function () {
 
@@ -37,7 +38,7 @@ $(document).ready(function () {
         height: '520px'
     });
 
-    $('.month-box').each(function() {
+    $('.month-box').each(function () {
         animationHover(this, 'pulse');
     });
 });

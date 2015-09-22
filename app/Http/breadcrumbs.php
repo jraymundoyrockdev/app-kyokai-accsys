@@ -70,7 +70,7 @@ Breadcrumbs::register('admin.services.edit', function ($breadcrumbs) {
 
 // Admin Users
 Breadcrumbs::register('admin.users.index', function ($breadcrumbs) {
-    $breadcrumbs->push('Users', route('admin.users.index'));
+    $breadcrumbs->push('Users Account', route('admin.users.index'));
 });
 
 // Admin Roles

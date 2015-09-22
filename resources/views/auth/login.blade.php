@@ -8,6 +8,6 @@
         <div class="form-group">
             {!! Form::password('password', ['class' => 'form-control','placeholder' => 'Password', 'id' => 'login-password']) !!}
         </div>
-        {!! Form::submit('Login', ['class' => 'btn btn-primary block full-width m-b','id' => 'losgin']) !!}
+        {!! Form::submit('Login', ['class' => 'btn btn-primary block full-width m-b','id' => 'login']) !!}
     {!! Form::close() !!}
 @endsection
