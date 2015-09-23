@@ -54,6 +54,14 @@
                                 </div>
                             </a>
 
+                            <a href="/admin/members" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Members</strong> <br>
+                                    <small class="text-muted">Manage church members</small>
+                                </div>
+                            </a>
+
                         </div>
                     </li>
                     <li class="divider"></li>
