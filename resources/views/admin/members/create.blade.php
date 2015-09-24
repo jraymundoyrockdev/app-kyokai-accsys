@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('lastname', 'Lastname', ['class' => 'col-sm-2 control-label'. session('firstnameErrorClass')]) !!}
+                            {!! Form::label('lastname', 'Lastname', ['class' => 'col-sm-2 control-label'. session('lastnameErrorClass')]) !!}
                             <div class="col-sm-5">
                                 {!! Form::text('lastname', session('lastname'),
                                 ['class' => 'form-control '. session('lastnameErrorClass') ]) !!}
@@ -71,6 +71,15 @@
                                 {!! Form::text('email', session('email'),
                                 ['class' => 'form-control '. session('emailErrorClass') ]) !!}
                                 {!! Form::label('', session('emailError'), ['class' => 'error']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('ministry_id', 'Ministry', ['class' => 'col-sm-2 control-label'. session('ministry_idErrorClass')]) !!}
+                            <div class="col-sm-5">
+
+                                {!! Form::select('ministry_id', $ministries, null, ['class' => 'form-control '. session('ministry_idErrorClass') ]) !!}
+                                {!! Form::label('', session('ministry_idError'), ['class' => 'error']) !!}
                             </div>
                         </div>
 

@@ -27,7 +27,7 @@
                                 <tr>
                                     <td>{!! $user->username !!}</td>
                                     <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
-                                    <td>{!! $user->ministry->name !!}</td>
+                                    <td>{!! $user->member->ministry->name !!}</td>
                                     <td>{!! $user->role->name !!}</td>
                                     <td>
                                         <input id="<?= $user->id ?>"
