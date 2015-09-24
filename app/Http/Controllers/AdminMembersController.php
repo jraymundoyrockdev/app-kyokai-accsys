@@ -28,7 +28,7 @@ class AdminMembersController extends AbstractController
      */
     public function create()
     {
-        //
+        return view('admin.members.create');
     }
 
     /**
@@ -39,7 +39,15 @@ class AdminMembersController extends AbstractController
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->apiClient->call('POST', 'members', $request->all());
+
+        if (!empty($result->errors)) {
+            $errorResponse = $this->errorResponseSetter->set($result->errors, $request->all());
+
+            return redirect()->route('admin.members.create')->with($errorResponse);
+        }
+
+        return redirect()->route('admin.members.index');
     }
 
     /**

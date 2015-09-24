@@ -68,6 +68,24 @@ Breadcrumbs::register('admin.services.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Update', route('admin.services.edit'));
 });
 
+// Admin Members
+Breadcrumbs::register('admin.members.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Members', route('admin.members.index'));
+});
+
+// Admin Members > Create New Member
+Breadcrumbs::register('admin.members.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.members.index');
+    $breadcrumbs->push('Create', route('admin.members.create'));
+});
+
+// Admin Member > Update Member
+Breadcrumbs::register('admin.members.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.members.index');
+    $breadcrumbs->push('Update', route('admin.members.edit'));
+});
+
+
 // Admin Users
 Breadcrumbs::register('admin.users.index', function ($breadcrumbs) {
     $breadcrumbs->push('Users Account', route('admin.users.index'));

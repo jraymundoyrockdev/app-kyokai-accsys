@@ -17,8 +17,7 @@
                             'method' => 'PUT']) !!}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label {!! !session('amountError') ?: 'error' !!}">Amount</label>
-
+                            {!! Form::label('amount', 'Amount', ['class' => 'col-sm-2 control-label'. session('amountError')]) !!}
                             <div class="col-sm-5">
                                 <input type="text" name="amount" id="amount"
                                        class="form-control {!! session('errorClass') !!}"
@@ -28,12 +27,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label {!! !session('descriptionError') ?: 'error' !!}">
-                                Description
-                            </label>
+                            {!! Form::label('description', 'Description', ['class' => 'col-sm-2 control-label'. session('descriptionErrorClass')]) !!}
 
                             <div class="col-sm-5">
-                                {!! Form::textarea('description', session('description') ?: $denomination->description, ['class' => 'form-control']) !!}
+                                {!! Form::textarea('description', session('description'), ['class' => 'form-control'. session('descriptionErrorClass')]) !!}
+                                {!! Form::label('', session('descriptionError'), ['class' => 'error']) !!}
                             </div>
                         </div>
 
