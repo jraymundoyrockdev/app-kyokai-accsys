@@ -83,7 +83,7 @@ class AdminDenominationsController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->call('PUT', 'denominations/' . $id, $request->all(), $id);
+        $result = $this->apiClient->call('PUT', 'denominations/' . $id, $request->all());
 
         if (!empty($result->errors)) {
             $errorResponse = $this->errorResponseSetter->set($result->errors, $request->all());

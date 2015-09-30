@@ -74,13 +74,13 @@ class KyokaiApiClient
      */
     public function call($method, $endpoint, $params = [], $verb = '', $arg = [])
     {
-        $apiUrl = $this->buildUrl($this->server, $this->environment, $endpoint);
+        $apiUrl = $this->buildUrl($this->server, $this->environment, $endpoint, $verb);
 
         $params = $this->buildParamsWithHeaders($params, $this->guzzleMethods[strtolower($method)]);
 
-                   /*echo "<pre>";
-                   print_r($params);
-                   echo "</pre>";*/
+        /*echo "<pre>";
+        print_r($params);
+        echo "</pre>";*/
 
         try {
             $response = $this->client->{$method}($apiUrl, $params);
@@ -99,11 +99,11 @@ class KyokaiApiClient
      * @param $endpoint
      * @return string
      */
-    protected function buildUrl($server, $environment, $endpoint)
+    protected function buildUrl($server, $environment, $endpoint, $verb)
     {
         $api = Config::get('api-server.' . $server);
 
-        return $api[$environment] . $endpoint;
+        return $api[$environment] . $endpoint . ('/' . $verb ?: '');
     }
 
     /**

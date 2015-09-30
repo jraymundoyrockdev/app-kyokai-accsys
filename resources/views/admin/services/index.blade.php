@@ -12,7 +12,7 @@
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTablisizer">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -32,7 +32,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>No Data Found</tr>
+
                             @endforelse
                         </table>
                     </div>

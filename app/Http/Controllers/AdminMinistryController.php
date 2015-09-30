@@ -16,7 +16,7 @@ class AdminMinistryController extends AbstractController
     {
         $result = $this->apiClient->call('GET', 'ministry');
 
-        return view('admin.ministries.old-index', ['ministries' => $result->Ministries]);
+        return view('admin.ministries.index', ['ministries' => $result->Ministries]);
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminMinistryController extends AbstractController
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->call('PUT', 'ministry/' . $id, $request->all(), $id);
+        $result = $this->apiClient->call('PUT', 'ministry/' . $id, $request->all());
 
         return redirect()->route('admin.ministry.index');
     }

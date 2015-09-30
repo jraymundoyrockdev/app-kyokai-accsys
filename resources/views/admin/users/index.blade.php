@@ -11,7 +11,7 @@
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTablisizer">
                             <thead>
                             <tr>
                                 <th>Username</th>

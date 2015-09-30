@@ -51,7 +51,7 @@
                             {!! Form::label('address', 'Address', ['class' => 'col-sm-2 control-label'. session('addressErrorClass')]) !!}
 
                             <div class="col-sm-5">
-                                {!! Form::textarea('address', session('address'), ['class' => 'form-control'. session('addressErrorClass')]) !!}
+                                {!! Form::textarea('address', session('address'), ['class' => 'form-control '. session('addressErrorClass'), 'rows' => 2]) !!}
                                 {!! Form::label('', session('addressError'), ['class' => 'error']) !!}
                             </div>
                         </div>

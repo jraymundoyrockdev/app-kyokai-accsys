@@ -28,9 +28,9 @@ class AdminMembersController extends AbstractController
      */
     public function create()
     {
-        $ministries = $this->apiClient->asArray()->call('GET', 'ministry');
-print_r(reset($ministries['Ministries'])); die;
-        return view('admin.members.create', ['ministries' => reset($ministries['Ministries'])]);
+        $ministries = $this->apiClient->asArray()->call('GET', 'ministry', [], 'list');
+
+        return view('admin.members.create', ['ministries' => $ministries]);
     }
 
     /**
