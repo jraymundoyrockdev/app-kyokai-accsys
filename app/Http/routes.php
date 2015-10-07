@@ -7,22 +7,17 @@ Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logo
 
 
 Route::group(['middleware' => 'validate_token'], function () {
-    Route::resource('admin/users', 'AdminUsersController', [
-    ]);
-    Route::resource('admin/user-roles', 'AdminUserRolesController', [
-    ]);
-    Route::resource('admin/ministry', 'AdminMinistryController', [
-    ]);
-    Route::resource('admin/denominations', 'AdminDenominationsController', [
-    ]);
-    Route::resource('admin/services', 'AdminServicesController', [
-    ]);
-    Route::resource('admin/members', 'AdminMembersController', [
-    ]);
 
-    Route::resource('/', 'DashboardController', [
-    ]);
-    Route::resource('service', 'ServiceController', [
-    ]);
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('users', 'AdminUsersController');
+        Route::resource('user-roles', 'AdminUserRolesController');
+        Route::resource('ministry', 'AdminMinistryController');
+        Route::resource('denominations', 'AdminDenominationsController');
+        Route::resource('services', 'AdminServicesController');
+        Route::resource('members', 'AdminMembersController');
+    });
+
+    Route::resource('/', 'DashboardController');
+    Route::resource('service', 'ServiceController');
 });
 
