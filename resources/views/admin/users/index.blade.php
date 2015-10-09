@@ -16,8 +16,8 @@
                             <tr>
                                 <th>Username</th>
                                 <th>Name</th>
-                                <th>Ministry</th>
                                 <th>Role</th>
+                                <th>Ministry</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -27,8 +27,16 @@
                                 <tr>
                                     <td>{!! $user->username !!}</td>
                                     <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
-                                    <td>{!! $user->member->ministry->name !!}</td>
-                                    <td>{!! $user->role->name !!}</td>
+                                    <td>
+                                        @forelse ($user->role as $r)
+                                            {!! $r->name !!}
+                                        @empty
+                                        @endforelse
+                                    </td>
+                                    <td>@forelse ($user->member->ministry as $member)
+                                            {!! $member->name !!}
+                                        @empty
+                                        @endforelse</td>
                                     <td>
                                         <input id="<?= $user->id ?>"
                                                class="user-switch bootstrap-switch"
