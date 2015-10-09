@@ -10,7 +10,7 @@ Route::group(['middleware' => 'validate_token'], function () {
 
     Route::group(['prefix' => 'admin'], function () {
         Route::resource('users', 'AdminUsersController');
-        Route::resource('user-roles', 'AdminUserRolesController');
+        Route::resource('roles', 'AdminRolesController');
         Route::resource('ministry', 'AdminMinistryController');
         Route::resource('denominations', 'AdminDenominationsController');
         Route::resource('services', 'AdminServicesController');

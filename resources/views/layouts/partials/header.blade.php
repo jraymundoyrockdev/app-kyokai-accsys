@@ -22,11 +22,11 @@
                                 </div>
                             </a>
 
-                            <a href="/admin/user-roles" class="pull-left">
+                            <a href="/admin/roles" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
                                     <strong>Users Roles</strong> <br>
-                                    <small class="text-muted">Shows All types of User in the system</small>
+                                    <small class="text-muted">Shows All types of Roles in the system</small>
                                 </div>
                             </a>
 

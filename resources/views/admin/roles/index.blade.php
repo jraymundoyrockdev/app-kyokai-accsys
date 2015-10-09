@@ -20,7 +20,7 @@
                             </thead>
 
                             <tbody>
-                            @forelse ($userRoles as $role)
+                            @forelse ($roles as $role)
                                 <tr>
                                     <td>{!! $role->name !!}</td>
                                     <td>{!! $role->description !!}</td>

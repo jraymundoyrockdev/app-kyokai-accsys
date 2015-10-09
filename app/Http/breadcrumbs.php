@@ -92,7 +92,7 @@ Breadcrumbs::register('admin.users.index', function ($breadcrumbs) {
 });
 
 // Admin Roles
-Breadcrumbs::register('admin.user-roles.index', function ($breadcrumbs) {
-    $breadcrumbs->push('User Roles', route('admin.user-roles.index'));
+Breadcrumbs::register('admin.roles.index', function ($breadcrumbs) {
+    $breadcrumbs->push('User Roles', route('admin.roles.index'));
 });
 

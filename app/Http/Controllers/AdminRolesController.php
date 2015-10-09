@@ -5,7 +5,7 @@ namespace KyokaiAccSys\Http\Controllers;
 use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 
-class AdminUserRolesController extends AbstractController
+class AdminRolesController extends AbstractController
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AdminUserRolesController extends AbstractController
      */
     public function index()
     {
-        $result = $this->apiClient->call('GET', 'user-roles');
+        $result = $this->apiClient->call('GET', 'roles');
 
-        return view('admin.user-roles.index', ['userRoles' => ($result->UserRoles)]);
+        return view('admin.roles.index', ['roles' => ($result->Roles)]);
     }
 
 }
