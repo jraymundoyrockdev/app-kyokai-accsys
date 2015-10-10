@@ -4,3 +4,4 @@ Homestead.yaml
 .env
 .idea/*
 .idea/workspace.xml
+config/api-server.php

@@ -63,10 +63,12 @@ class AuthController extends Controller
         try {
             $result = $this->client->call('POST', 'api-token-auth', $this->request->only(['username', 'password']));
             $this->request->session()->put('userToken', $result->token);
+
             return Redirect::to('/');
 
         } catch (ClientException $e) {
             $result = $e->getResponse()->getBody()->getContents();
+
             return Redirect::to('/auth/login')->with('errorMessage', $result);
         }
     }

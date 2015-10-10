@@ -1,11 +1,4 @@
-<?php namespace KyokaiAccSys\Services;
-
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\ClientException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-use KyokaiAccSys\Services\ClientResponseEvaluator;
-use Illuminate\Contracts\Foundation\Application;
+<?php
 
 /**
  * Class KyokaiApiClient
@@ -15,6 +8,16 @@ use Illuminate\Contracts\Foundation\Application;
  * @package KyokaiAccSys\Services
  *
  */
+
+namespace KyokaiAccSys\Services;
+
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ClientException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use KyokaiAccSys\Services\ClientResponseEvaluator;
+use Illuminate\Contracts\Foundation\Application;
+
 class KyokaiApiClient
 {
 
@@ -53,8 +56,7 @@ class KyokaiApiClient
         GuzzleClient $client,
         ClientResponseEvaluator $clientResponseEvaluator,
         Application $environment
-    )
-    {
+    ) {
         $this->request = $request;
         $this->client = $client;
         $this->clientResponseEvaluator = $clientResponseEvaluator;
@@ -85,7 +87,7 @@ class KyokaiApiClient
         try {
             $response = $this->client->{$method}($apiUrl, $params);
             //return $content = $response->getBody()->getContents();
-            return $decodedContent = json_decode($response->getBody()->getContents(), $this->returnData);
+            return json_decode($response->getBody()->getContents(), $this->returnData);
 
         } catch (ClientException $e) {
             return json_decode($e->getResponse()->getBody()->getContents(), $this->returnData);
@@ -103,7 +105,7 @@ class KyokaiApiClient
     {
         $api = Config::get('api-server.' . $server);
 
-        return $api[$environment] . $endpoint . ('/' . $verb ?: '');
+        return $api[$environment] . $endpoint . ($verb ? ('/' . $verb) : '');
     }
 
     /**
