@@ -30,4 +30,47 @@
 
 li.active {
 	font-weight: bold;
+    min-height: inherit;
+    padding: 1px;
+}
+
+.timeline-item .date {
+    width: 50px;
+}
+
+.no-left-border {
+    border-left: 0 !important;
+}
+
+.timeline-item .content .service-content {
+    padding: 3px 10px;
+}
+
+.timeline-item .content .service-content:hover {
+    background: #f6f6f6;
+}
+
+.timeline-item .content:hover {
+    background: none;
+}
+
+.logo-name {
+    font-size: 35px;
+    letter-spacing: 40px;
+    color: #a7b1c2;
+}
+
+li.active {
+    font-weight: bold;
+}
+
+/* Custom table Width */
+.table30 {
+    width: 30px;
+}
+.table50 {
+    width: 30px;
+}
+.table100 {
+    width: 100px;
 }

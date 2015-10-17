@@ -2,15 +2,14 @@
 
 namespace KyokaiAccSys\Http\Controllers\Auth;
 
-use KyokaiAccSys\User;
-use Validator;
-use KyokaiAccSys\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Http\Request;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use KyokaiAccSys\Http\Controllers\Controller;
 use KyokaiAccSys\Services\KyokaiApiClient;
+use KyokaiAccSys\User;
 
 class AuthController extends Controller
 {

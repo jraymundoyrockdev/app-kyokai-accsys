@@ -85,6 +85,40 @@ Breadcrumbs::register('admin.members.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Update', route('admin.members.edit'));
 });
 
+// Admin Funds
+Breadcrumbs::register('admin.funds.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Funds', route('admin.funds.index'));
+});
+
+// Admin Funds > Create New Fund
+Breadcrumbs::register('admin.funds.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.funds.index');
+    $breadcrumbs->push('Create', route('admin.funds.create'));
+});
+
+// Admin Funds > Edit Fund
+Breadcrumbs::register('admin.funds.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.funds.index');
+    $breadcrumbs->push('Edit', route('admin.funds.edit'));
+});
+
+// Admin Funds > Items
+Breadcrumbs::register('admin-fund-items', function ($breadcrumbs, $id) {
+    $breadcrumbs->parent('admin.funds.index');
+    $breadcrumbs->push('Items', route('admin-fund-items', $id));
+});
+
+// Admin Funds > Create New Fund Item
+Breadcrumbs::register('admin-fund-item-create', function ($breadcrumbs, $id) {
+    $breadcrumbs->parent('admin-fund-items', $id);
+    $breadcrumbs->push('Create', route('admin-fund-item-create'));
+});
+
+// Admin Funds > Edit New Fund Item
+Breadcrumbs::register('admin-fund-item', function ($breadcrumbs, $id) {
+    $breadcrumbs->parent('admin-fund-items', $id);
+    $breadcrumbs->push('Edit', route('admin-fund-item'));
+});
 
 // Admin Users
 Breadcrumbs::register('admin.users.index', function ($breadcrumbs) {

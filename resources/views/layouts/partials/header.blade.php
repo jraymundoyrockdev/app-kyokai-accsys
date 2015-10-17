@@ -7,6 +7,27 @@
             <li>
                 <span class="m-r-sm text-muted welcome-message">Kyokai Accounting System</span>
             </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i> Acounting Settings
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="/admin/funds" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Service Funds</strong> <br>
+                                    <small class="text-muted">Manage funds on a service</small>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-wrench"></i> Settings
