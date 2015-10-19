@@ -26,6 +26,6 @@ Route::group(['middleware' => 'validate_token'], function () {
     });
 
     Route::resource('/', 'DashboardController');
-    Route::resource('service', 'ServiceController');
+    Route::resource('income-services', 'IncomeServicesController');
 });
 

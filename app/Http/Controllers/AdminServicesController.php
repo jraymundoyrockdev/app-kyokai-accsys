@@ -10,7 +10,7 @@ class AdminServicesController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class AdminServicesController extends BaseController
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -32,12 +32,18 @@ class AdminServicesController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $result = $this->apiClient->call('POST', 'services', $request->all());
+        $service = $this->apiClient->call('POST', 'services', $request->all());
+
+        if (!empty($service->errors)) {
+            $errorResponse = $this->errorResponseSetter->set($service->errors, $request->all());
+
+            return redirect()->route('admin.services.create')->with($errorResponse);
+        }
 
         return redirect()->route('admin.services.index');
     }
@@ -56,38 +62,33 @@ class AdminServicesController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\View\View
      */
     public function edit($id)
     {
         $result = $this->apiClient->call('GET', 'services/' . $id);
 
-        return view('admin.services.update', ['service' => reset($result->Service)]);
+        return view('admin.services.edit', ['service' => reset($result->Service)]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  int $id
-     * @return Response
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        $result = $this->apiClient->call('PUT', 'services/' . $id, $request->all(), $id);
+        $service = $this->apiClient->call('PUT', 'services/' . $id, $request->all());
+
+        if (!empty($service->errors)) {
+            $errorResponse = $this->errorResponseSetter->set($service->errors, $request->all());
+
+            return redirect()->route('admin.services.update', [$id . '/edit'])->with($errorResponse);
+        }
 
         return redirect()->route('admin.services.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

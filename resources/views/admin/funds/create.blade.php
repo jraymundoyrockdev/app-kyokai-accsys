@@ -36,7 +36,7 @@
                             {!! Form::label('category', 'Category', ['class' => 'col-sm-2 control-label']) !!}
 
                             <div class="col-sm-5">
-                                {!! Form::text('category', 'service', ['class' => 'form-control','readonly' ]) !!}
+                                {!! Form::text('category', 'services', ['class' => 'form-control','readonly' ]) !!}
                             </div>
                         </div>
 

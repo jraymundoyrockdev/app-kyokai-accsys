@@ -3,6 +3,7 @@ $(document).ready(function () {
     $(".fund-item-switch").on('switchChange.bootstrapSwitch', function (event, state) {
 
         var itemId = $(this).attr('id');
+        var itemName = $(this).attr('name');
         var state = (state) ? 'active' : 'inactive';
 
         $.ajax({
@@ -10,7 +11,7 @@ $(document).ready(function () {
             beforeSend: function (request) {
                 request.setRequestHeader('Authorization', 'Bearer ' + userToken);
             },
-            data: {'status': state},
+            data: {'name': itemName, 'status': state},
             type: 'PUT',
             success: function (data) {
             },
@@ -18,5 +19,5 @@ $(document).ready(function () {
             }
         });
     });
-    
+
 });

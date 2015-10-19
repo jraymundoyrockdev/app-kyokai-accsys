@@ -16,29 +16,31 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        {!! csrf_field() !!}
-        @include('layouts.partials.nav')
+<div id="wrapper">
+    {!! csrf_field() !!}
+    @include('layouts.partials.nav')
 
-        <div id="page-wrapper" class="gray-bg">
-            @include('layouts.partials.header')
+    <div id="page-wrapper" class="gray-bg">
+        @include('layouts.partials.header')
 
-            @section('breadcrumbs')@show
+        @section('breadcrumbs')@show
 
-            @section('main-body')@show
+        @section('main-body')@show
 
-            @include('layouts.partials.footer')
-        </div>
-
-        <script type="text/javascript">
-           var userToken = "{!! Session::get('userToken') !!}";
-        </script>
-
-        {!! Html::script('js/libraries.js') !!}
-
-        @section('module-scripts')@show
-
-        {!! Html::script('js/main.js') !!}
+        @include('layouts.partials.footer')
     </div>
+
+    <script type="text/javascript">
+        var BASE = "http://api-gfccm-systems.com/api/";
+
+        localStorage.setItem('userToken', "{!! Session::get('userToken') !!}");
+    </script>
+
+    {!! Html::script('js/libraries.js') !!}
+
+    @section('module-scripts')@show
+
+    {!! Html::script('js/main.js') !!}
+</div>
 </body>
 </html>

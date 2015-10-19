@@ -30,7 +30,7 @@
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="{{url('service')}}">Service</a></li>
+                    <li><a href="{{url('income-services')}}">Services</a></li>
                 </ul>
             </li>
 

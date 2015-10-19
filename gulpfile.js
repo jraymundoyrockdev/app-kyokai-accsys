@@ -14,21 +14,21 @@ var elixir = require('laravel-elixir');
 elixir(function (mix) {
     mix.styles([
         'vendor/bootstrap.css',
-        'vendor/datepicker.css',
         'vendor/bootstrap-switch.css',
         'vendor/font-awesome.css',
         'vendor/dataTables.bootstrap.css',
         'vendor/dataTables.responsive.css',
         'vendor/dataTables.tableTools.min.css',
         'vendor/animate.css',
+        //'vendor/bootstrap-datetimepicker.min.css',
         'vendor/inspinia.css',
         'main.css'
     ], 'public/css/libraries.css');
 
     mix.scripts([
         'vendor/jquery-2.1.4.min.js',
+        'vendor/angular.js',
         'vendor/bootstrap.js',
-        'vendor/datepicker.js',
         'vendor/bootstrap-switch.js',
         'vendor/metisMenu.min.js',
         'vendor/jquery.slimscroll.min.js',
@@ -36,6 +36,8 @@ elixir(function (mix) {
         'vendor/dataTables.bootstrap.js',
         'vendor/dataTables.responsive.js',
         'vendor/dataTables.tableTools.min.js',
+        'vendor/moment.min.js',
+        'vendor/bootstrap-datetimepicker.min.js',
         'vendor/inspinia.js'
     ], 'public/js/libraries.js');
 });

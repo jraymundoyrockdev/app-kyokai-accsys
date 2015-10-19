@@ -11,14 +11,26 @@
                     </div>
                     <div class="ibox-content">
                         {!! Form::open(['route' => 'admin.services.store','class' => 'form-horizontal']) !!}
-                        <div class="form-group">
-                            {!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) !!}
-                            <div class="col-sm-5">{!! Form::text('name', '', ['class' => 'form-control']) !!}</div>
 
-                        </div>
                         <div class="form-group">
-                            {!! Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) !!}
-                            <div class="col-sm-5">{!! Form::textarea('description', '', ['class' => 'form-control']) !!}</div>
+                            {!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label'. session('nameErrorClass')]) !!}
+
+                            <div class="col-sm-5">
+                                {!! Form::text('name', session('name'),
+                                ['class' => 'form-control '. session('nameErrorClass') ]) !!}
+                                {!! Form::label('', session('nameError'), ['class' => 'error']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('description', 'Description', [
+                                'class' => 'col-sm-2 control-label'. session('descriptionErrorClass')]) !!}
+
+                            <div class="col-sm-5">
+                                {!! Form::textarea('description', session('description'), [
+                                    'class' => 'form-control'. session('descriptionErrorClass')]) !!}
+                                {!! Form::label('', session('descriptionError'), ['class' => 'error']) !!}
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">

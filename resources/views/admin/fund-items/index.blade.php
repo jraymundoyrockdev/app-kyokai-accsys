@@ -27,13 +27,14 @@
                             @forelse($fund->item as $item)
                                 <tr>
                                     <td>{!! $item->name !!}</td>
-                                    <td><input id="<?= $item->id ?>"
+                                    <td><input name="{!! $item->name !!}"
+                                               id="{!! $item->id !!}"
                                                class="fund-item-switch bootstrap-switch"
-                                               data-switch-get="<?= $item->status ?>"
+                                               data-switch-get="{!! $item->status !!}"
                                                data-switch-value="0"
                                                data-on-text="active"
                                                data-off-text="inactive"
-                                               type="checkbox" <?= ($item->status == 'active') ? 'checked' : '' ?>
+                                               type="checkbox" {!! ($item->status == 'active') ? 'checked' : '' !!}
                                                data-size="mini"></td>
                                     <td class="text-center">
                                         <a href="{!! route('admin-fund-item', [$item->fund_id, $item->id]) !!}"

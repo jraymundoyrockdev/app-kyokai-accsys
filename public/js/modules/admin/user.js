@@ -8,6 +8,7 @@ $(document).ready(function () {
             url: 'http://api-gfccm-systems.com/api/users/' + userId,
             beforeSend: function (request) {
                 request.setRequestHeader('Authorization', 'Bearer ' + userToken);
+                request.setRequestHeader('Accept', 'application/json');
             },
             data: {'status': state},
             type: 'PUT',

@@ -1,14 +1,19 @@
 <?php
 
-// Home
-Breadcrumbs::register('service.index', function ($breadcrumbs) {
-    $breadcrumbs->push('Home', route('service.index'));
+// Services
+Breadcrumbs::register('income-services.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Income Services', route('income-services.index'));
 });
 
-// Home > About
-Breadcrumbs::register('service.create', function ($breadcrumbs) {
-    $breadcrumbs->parent('service.index');
-    $breadcrumbs->push('Service', route('service.create'));
+// Income Services > Create
+Breadcrumbs::register('income-services.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('income-services.index');
+    $breadcrumbs->push('Create', route('income-services.create'));
+});
+// Income Services > Edit
+Breadcrumbs::register('income-services.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('income-services.index');
+    $breadcrumbs->push('Edit', route('income-services.edit'));
 });
 
 
@@ -50,10 +55,9 @@ Breadcrumbs::register('admin.ministry.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Update', route('admin.ministry.edit'));
 });
 
-
 // Admin Services
 Breadcrumbs::register('admin.services.index', function ($breadcrumbs) {
-    $breadcrumbs->push('Services', route('admin.ministry.index'));
+    $breadcrumbs->push('Services', route('admin.services.index'));
 });
 
 // Admin Services > Create New Service

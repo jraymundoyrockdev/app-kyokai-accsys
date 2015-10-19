@@ -28,7 +28,7 @@
                                     <td>{!! $user->username !!}</td>
                                     <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
                                     <td>
-                                        @forelse ($user->role as $r)
+                                        @forelse ($user->user_role as $r)
                                             {!! $r->name !!}
                                         @empty
                                         @endforelse
