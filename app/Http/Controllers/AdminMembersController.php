@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 use KyokaiAccSys\Http\Controllers\Controller;
 
-class AdminMembersController extends AbstractController
+class AdminMembersController extends BaseController
 {
     /**
      * Display a listing of the resource.

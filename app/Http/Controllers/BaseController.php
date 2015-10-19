@@ -6,7 +6,7 @@ use KyokaiAccSys\Http\Requests;
 use KyokaiAccSys\Services\KyokaiApiClient;
 use KyokaiAccSys\Services\KyokaiErrorResponseValueSetter;
 
-class AbstractController extends Controller
+class BaseController extends Controller
 {
     protected $apiClient;
     protected $errorResponseSetter;

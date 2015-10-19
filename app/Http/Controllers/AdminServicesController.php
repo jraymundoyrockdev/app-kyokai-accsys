@@ -5,7 +5,7 @@ namespace KyokaiAccSys\Http\Controllers;
 use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 
-class AdminServicesController extends AbstractController
+class AdminServicesController extends BaseController
 {
     /**
      * Display a listing of the resource.

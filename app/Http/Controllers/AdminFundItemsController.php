@@ -5,7 +5,7 @@ namespace KyokaiAccSys\Http\Controllers;
 use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 
-class AdminFundItemsController extends AbstractController
+class AdminFundItemsController extends BaseController
 {
 
     /**
