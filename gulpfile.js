@@ -20,6 +20,7 @@ elixir(function (mix) {
         'vendor/dataTables.responsive.css',
         'vendor/dataTables.tableTools.min.css',
         'vendor/animate.css',
+        'vendor/sweetalert2.css',
         //'vendor/bootstrap-datetimepicker.min.css',
         'vendor/inspinia.css',
         'main.css'
@@ -28,6 +29,7 @@ elixir(function (mix) {
     mix.scripts([
         'vendor/jquery-2.1.4.min.js',
         'vendor/angular.js',
+        'vendor/ui-bootstrap-tpls-0.9.0.js',
         'vendor/bootstrap.js',
         'vendor/bootstrap-switch.js',
         'vendor/metisMenu.min.js',
@@ -38,6 +40,8 @@ elixir(function (mix) {
         'vendor/dataTables.tableTools.min.js',
         'vendor/moment.min.js',
         'vendor/bootstrap-datetimepicker.min.js',
-        'vendor/inspinia.js'
+        'vendor/jquery.validate.min.js',
+        'vendor/sweetalert2.min.js',
+        'vendor/inspinia.js',
     ], 'public/js/libraries.js');
 });

@@ -5,21 +5,22 @@
         <th>Tithes</th>
         <th>Offering</th>
         <th>Special Fund</th>
-        <th>Action</th>
+        <th class="text-center">TOTAL</th>
+        <th class="text-center">Action</th>
     </tr>
     </thead>
     <tbody>
-    <?php for($i = 0;$i < 40;$i++) :?>
-    <tr>
-        <td><a data-toggle="tab" href="#contact-1" class="client-link">Anthony
-                Jackson</a>
-        </td>
-        <td> Tellus Institute</td>
-        <td class="contact-type"><i class="fa fa-envelope"> </i></td>
-        <td> gravida@rbisit.com</td>
-        <td class="client-status"><span class="label label-primary">Active</span>
+    <tr ng-repeat="member in incomeService.member_fund_total">
+        <td><a data-toggle="tab" href="#contact-1" class="client-link"><% member.member %></a></td>
+        <td><% member.tithes | number%></td>
+        <td><% member.offering | number%></td>
+        <td><% member.others | number%></td>
+        <td class="text-center"><strong><% member.total | number%></strong></td>
+        <td class="text-center">
+            <button class="btn btn-danger btn-xs demo3"
+                    ng-click="removeMember(member.id,member.income_service_id,member.member_id)">Remove
+            </button>
         </td>
     </tr>
-    <?php endfor; ?>
     </tbody>
 </table>
