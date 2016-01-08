@@ -18,7 +18,7 @@
         <td class="text-center"><strong><% member.total | number%></strong></td>
         <td class="text-center">
             <button class="btn btn-danger btn-xs demo3"
-                    ng-click="removeMember(member.id,member.income_service_id,member.member_id)">Remove
+                    ng-click="removeMember(member.income_service_id, member.member_id)">Remove
             </button>
         </td>
     </tr>

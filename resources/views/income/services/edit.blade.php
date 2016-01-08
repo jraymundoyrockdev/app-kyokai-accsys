@@ -189,11 +189,12 @@
                 $http({
                     method: 'POST',
                     data: fundStructureInput,
-                    url: BASE + 'income-services/' + $scope.incomeServiceId + '/update',
+                    url: BASE + 'income-services/' + $scope.incomeServiceId + '/member-fund/' + $scope.selectedMember.id + '/update',
                     dataType: 'json',
                     headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
                 }).success(function (data, status) {
 
+                    console.log(data);
                     //add selected member to push payload
                     data.memberFundTotal.member = $scope.selectedMember.fullname;
 
@@ -258,29 +259,45 @@
                 $scope.selectedMember = '';
             };
 
-            $scope.removeMember = function(id){
-                alert(id);
+            $scope.removeMember = function(incomeServiceId, memberId){
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                }, function () {
+
+                    $http({
+                        method: 'DELETE',
+                        url: BASE + 'income-services/' + incomeServiceId + '/member-fund/' + memberId,
+                        dataType: 'json',
+                        headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
+                    }).success(function (data, status) {
+
+                        console.log(data);
+
+                    }).error(function (data, status) {
+                        if (status == 422) {
+                            if (data.errors.hasOwnProperty('member_id')) {
+                                $scope.selectedMember = '';
+                                angular.element('[name=selectedMember]').addClass('error').focus();
+                                angular.element('#selectedMember-error').show().text('Member does not exists.');
+                            }
+                        }
+                    });
+
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                });
             };
 
             $scope.setIncomeService();
             $scope.getMembers();
 
         });
-
-
-/*        angular.element('.demo3').click(function () {
-            swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            }, function () {
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
-            });
-        });*/
+        
 
     </script>
 @endsection
