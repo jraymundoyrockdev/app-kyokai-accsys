@@ -1,10 +1,21 @@
 <div ng-repeat="fund in incomeService.funds_structure">
 
-    <a data-toggle="collapse" href="#<% fund.id %>" aria-expanded="true" aria-controls="collapseExample">
-        <h5 class="font-bold text-muted"><% fund.name %> <i class="fa fa-plus-square"></i></h5>
-    </a>
+    <div ng-if="fund.name!='Ministry Funds'">
+        <h5 class="font-bold text-muted"><% fund.name %></h5>
+    </div>
 
-    <div id="<% fund.id %>" ng-class="(fund.id!=4) ? 'collapse in' : 'collapse out'">
+    <div ng-if="fund.name=='Ministry Funds'">
+        <a data-toggle="collapse" href="#<% fund.id %>" aria-expanded="true">
+            <h5 class="font-bold text-muted"><% fund.name %>
+                <i class="fa fa-plus-square" ng-click="toggleMinistriesMemberFund(true)"
+                   ng-show="!showMinistriesMemberFund"></i>
+                <i class="fa fa-minus-square" ng-click="toggleMinistriesMemberFund(false)"
+                   ng-show="showMinistriesMemberFund"></i>
+            </h5>
+        </a>
+    </div>
+
+    <div id="<% fund.id %>" ng-class="(fund.id==4) ? 'collapse out' : ''">
         <div class="form-group" ng-repeat="item in fund.item">
             <label class="col-sm-3 control-label fundStructureLabel" for="<% item.name %>"><% item.name %></label>
 

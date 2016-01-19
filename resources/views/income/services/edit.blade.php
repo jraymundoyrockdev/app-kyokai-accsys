@@ -31,6 +31,7 @@
 
 
                                             <h5 class="font-bold text-muted">Search Member</h5>
+
                                             <div class="form-group ">
 
 
@@ -46,7 +47,8 @@
                                                            typeahead-template-url="membersTypeheadTemplate.html"
                                                            class="form-control">
 
-                                                    <label id="selectedMember-error" class="error" style="display: none;">Member does not exists.</label>
+                                                    <label id="selectedMember-error" class="error"
+                                                           style="display: none;">Member does not exists.</label>
                                                 </div>
 
                                             </div>
@@ -120,6 +122,11 @@
             $scope.incomeService = {};
             $scope.members = {};
             $scope.selectedMember = '';
+            $scope.showMinistriesMemberFund = false;
+            $scope.totalTithes = 0;
+            $scope.totalOffering = 0;
+            $scope.totalOtherFund = 0;
+            $scope.totalFunds = 0;
 
             $scope.setIncomeService = function () {
                 $http({
@@ -130,28 +137,18 @@
 
                     $scope.incomeService = data.IncomeService[0];
                     $scope.setUpValidation($scope.incomeService.funds_structure); //Set-Up validation on page load
+                    $scope.setTotals($scope.incomeService);
 
                 }).error(function (data, status) {
-                    if(status == 401){
+                    if (status == 401) {
                         alert('@todo create a 404 page')
                     }
                 })
             };
 
-            $scope.setUpValidation = function(fundStructure) {
-                angular.element('#fundStructureForm').validate({
+            $scope.getFieldsForValidation = function (fundStructure) {
 
-                    rules: $scope.getFieldsForValidation(fundStructure),
-
-                    submitHandler: function(form) {
-                        angular.element('#addMemberToListBtn').trigger('click');
-                    }
-                });
-            };
-
-            $scope.getFieldsForValidation = function(fundStructure){
-
-                var ruleSet = {selectedMember : {required:true}};
+                var ruleSet = {selectedMember: {required: true}};
                 var fund = [];
 
                 angular.forEach(fundStructure, function (fund, key) {
@@ -184,7 +181,7 @@
                 $scope.save(fundStructureInput);
             };
 
-            $scope.save = function(fundStructureInput){
+            $scope.save = function (fundStructureInput) {
 
                 $http({
                     method: 'POST',
@@ -194,12 +191,14 @@
                     headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
                 }).success(function (data, status) {
 
-                    console.log(data);
                     //add selected member to push payload
                     data.memberFundTotal.member = $scope.selectedMember.fullname;
 
                     //push payload to member list
                     $scope.incomeService.member_fund_total.push(data.memberFundTotal);
+
+                    //set Total
+                    $scope.setTotals(data.fundTotal);
 
                     //clear fields
                     $scope.clearFields();
@@ -216,16 +215,16 @@
 
             };
 
-            $scope.getFundStructureInput = function(fundStructure) {
+            $scope.getFundStructureInput = function (fundStructure) {
 
                 var memberFunds = [];
                 var fund = [];
 
-                angular.forEach(fundStructure, function(fund, key) {
+                angular.forEach(fundStructure, function (fund, key) {
 
                     var item = [];
 
-                    angular.forEach(fund.item, function(item, key) {
+                    angular.forEach(fund.item, function (item, key) {
                         memberFunds.push({
                             income_service_id: $scope.incomeServiceId,
                             member_id: $scope.selectedMember.id,
@@ -242,15 +241,15 @@
                 return memberFunds;
             };
 
-            $scope.clearFields = function(){
+            $scope.clearFields = function () {
 
                 var fund = [];
 
-                angular.forEach($scope.incomeService.funds_structure, function(fund, key) {
+                angular.forEach($scope.incomeService.funds_structure, function (fund, key) {
 
                     var item = [];
 
-                    angular.forEach(fund.item, function(item, key) {
+                    angular.forEach(fund.item, function (item, key) {
                         item.amount = 0;
                     }, item);
 
@@ -259,14 +258,18 @@
                 $scope.selectedMember = '';
             };
 
-            $scope.removeMember = function(incomeServiceId, memberId){
+            $scope.removeMember = function (member) {
+
+                var incomeServiceId = member.income_service_id;
+                var memberId = member.member_id;
+
                 swal({
                     title: "Are you sure?",
-                    text: "You will not be able to recover this imaginary file!",
+                    text: "You will have to input the data again if you wish to add this person.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes, delete it!",
+                    confirmButtonText: "Yes, remove it!",
                     closeOnConfirm: false
                 }, function () {
 
@@ -277,27 +280,46 @@
                         headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
                     }).success(function (data, status) {
 
-                        console.log(data);
+                        //remove member from the list
+                        $scope.incomeService.member_fund_total.splice(member, 1);
+
+                        //set Total
+                        $scope.setTotals(data.fundTotal);
+
+                        swal("Deleted!", "", "success");
 
                     }).error(function (data, status) {
-                        if (status == 422) {
-                            if (data.errors.hasOwnProperty('member_id')) {
-                                $scope.selectedMember = '';
-                                angular.element('[name=selectedMember]').addClass('error').focus();
-                                angular.element('#selectedMember-error').show().text('Member does not exists.');
-                            }
-                        }
                     });
-
-                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
                 });
+            };
+
+            $scope.setUpValidation = function (fundStructure) {
+                angular.element('#fundStructureForm').validate({
+
+                    rules: $scope.getFieldsForValidation(fundStructure),
+
+                    submitHandler: function (form) {
+                        angular.element('#addMemberToListBtn').trigger('click');
+                    }
+                });
+            };
+
+            $scope.setTotals = function (incomeService) {
+                $scope.totalTithes = incomeService.tithes;
+                $scope.totalOffering = incomeService.offering;
+                $scope.totalOtherFund = incomeService.other_fund;
+                $scope.totalFunds = incomeService.total;
+            };
+
+            $scope.toggleMinistriesMemberFund = function (toggleValue) {
+                $scope.showMinistriesMemberFund = (!toggleValue) ? false : true;
             };
 
             $scope.setIncomeService();
             $scope.getMembers();
 
         });
-        
+
 
     </script>
 @endsection
