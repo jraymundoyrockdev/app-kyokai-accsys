@@ -15,6 +15,22 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
     $scope.totalFunds = 0;
     $scope.denominationTotal = 0;
 
+    $scope.saveDenomination = function () {
+
+        $http({
+            method: 'POST',
+            data: $scope.incomeService.denominations_structure,
+            url: BASE + 'income-services/' + $scope.incomeServiceId + '/denomination',
+            dataType: 'json',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
+        }).success(function (data, status) {
+
+        }).error(function (data, status) {
+
+        });
+
+    };
+    
     $scope.sumDenomination = function () {
 
         var total = 0;

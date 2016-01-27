@@ -38,7 +38,7 @@
 
         <hr>
         <div class="col-lg-12">
-            <button class="btn btn-success btn-block" type="button" id="addMemberToListBtn">Accept Total</button>
+            <button class="btn btn-success btn-block" type="button" id="addMemberToListBtn" ng-click="saveDenomination()">Accept Total</button>
         </div>
 
     </div>
