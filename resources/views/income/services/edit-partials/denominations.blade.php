@@ -1,9 +1,7 @@
-{!! Form::open(['class' => 'form-horizontal']) !!}
+{!! Form::open(['class' => 'form-horizontal', 'id' => 'denominationStructureForm']) !!}
 
 <div class="wrapper wrapper-content animated fadeInRight">
-
     <div class="col-lg-4">
-
         <table class="table table-hover no-margins">
             <thead>
             <tr>
@@ -38,12 +36,13 @@
 
         <hr>
         <div class="col-lg-12">
-            <button class="btn btn-success btn-block" type="button" id="addMemberToListBtn" ng-click="saveDenomination()">Accept Total</button>
+            <button class="btn btn-success btn-block" type="submit">Accept Total</button>
+
+            <button class="btn btn-success btn-block" type="button" id="saveDenominationBtn" style="display: none;"
+                    ng-click="saveDenomination()">Accept Total
+            </button>
         </div>
-
     </div>
-
-
 </div>
 
 {!! Form::close() !!}

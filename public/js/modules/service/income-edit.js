@@ -15,44 +15,6 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
     $scope.totalFunds = 0;
     $scope.denominationTotal = 0;
 
-    $scope.saveDenomination = function () {
-
-        $http({
-            method: 'POST',
-            data: $scope.incomeService.denominations_structure,
-            url: BASE + 'income-services/' + $scope.incomeServiceId + '/denomination',
-            dataType: 'json',
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
-        }).success(function (data, status) {
-
-        }).error(function (data, status) {
-
-        });
-
-    };
-    
-    $scope.sumDenomination = function () {
-
-        var total = 0;
-
-        angular.forEach($scope.incomeService.denominations_structure, function (field, key) {
-            total += field.total;
-        });
-
-        $scope.denominationTotal = total;
-    };
-
-    $scope.updateDenominationObject = function (key, amount, field) {
-
-        amount = parseInt(amount);
-
-        if (field == 'piece') {
-            return $scope.incomeService.denominations_structure[key].piece = parseInt(amount);
-        }
-
-        return $scope.incomeService.denominations_structure[key].total = parseInt(amount);
-    };
-
     $scope.setIncomeService = function () {
         $http({
             method: 'GET',
@@ -61,7 +23,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         }).success(function (data, status) {
 
             $scope.incomeService = data.IncomeService[0];
-            $scope.setUpValidation($scope.incomeService.funds_structure); //Set-Up validation on page load
+            $scope.setUpMemberFundValidation($scope.incomeService.funds_structure);
+            $scope.setUpDenominationValidation($scope.incomeService.denominations_structure);
             $scope.setTotals($scope.incomeService);
 
         }).error(function (data, status) {
@@ -69,23 +32,6 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
                 alert('@todo create a 404 page')
             }
         })
-    };
-
-    $scope.getFieldsForValidation = function (fundStructure) {
-
-        var ruleSet = {selectedMember: {required: true}};
-        var fund = [];
-
-        angular.forEach(fundStructure, function (fund, key) {
-
-            var item = [];
-
-            angular.forEach(fund.item, function (item, key) {
-                ruleSet[item.name] = {number: true};
-            }, item);
-        }, fund);
-
-        return ruleSet;
     };
 
     $scope.getMembers = function () {
@@ -216,15 +162,55 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         });
     };
 
-    $scope.setUpValidation = function (fundStructure) {
+    $scope.setUpMemberFundValidation = function (fundStructure) {
         angular.element('#fundStructureForm').validate({
 
-            rules: $scope.getFieldsForValidation(fundStructure),
+            rules: $scope.getFieldsForMemberFundValidation(fundStructure),
 
             submitHandler: function (form) {
                 angular.element('#addMemberToListBtn').trigger('click');
             }
         });
+    };
+
+    $scope.getFieldsForMemberFundValidation = function (fundStructure) {
+
+        var ruleSet = {selectedMember: {required: true}};
+        var fund = [];
+
+        angular.forEach(fundStructure, function (fund, key) {
+
+            var item = [];
+
+            angular.forEach(fund.item, function (item, key) {
+                ruleSet[item.name] = {number: true};
+            }, item);
+        }, fund);
+
+        return ruleSet;
+    };
+
+    $scope.setUpDenominationValidation = function (denomination) {
+        angular.element('#denominationStructureForm').validate({
+
+            rules: $scope.getDenominationFieldsForValidation(denomination),
+
+            submitHandler: function (form) {
+                angular.element('#saveDenominationBtn').trigger('click');
+            }
+        });
+    };
+
+    $scope.getDenominationFieldsForValidation = function (denomination) {
+
+        var ruleSet = {selectedMember: {required: true}};
+        var item = [];
+
+        angular.forEach(denomination, function (item, key) {
+            ruleSet['denomination_' + item.id] = {number: true};
+        }, item);
+
+        return ruleSet;
     };
 
     $scope.setTotals = function (incomeService) {
@@ -236,6 +222,43 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
 
     $scope.toggleMinistriesMemberFund = function (toggleValue) {
         $scope.showMinistriesMemberFund = (!toggleValue) ? false : true;
+    };
+
+    $scope.saveDenomination = function () {
+
+        $http({
+            method: 'POST',
+            data: $scope.incomeService.denominations_structure,
+            url: BASE + 'income-services/' + $scope.incomeServiceId + '/denomination',
+            dataType: 'json',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
+        }).success(function (data, status) {
+
+        }).error(function (data, status) {
+
+        });
+    };
+
+    $scope.sumDenomination = function () {
+
+        var total = 0;
+
+        angular.forEach($scope.incomeService.denominations_structure, function (field, key) {
+            total += field.total;
+        });
+
+        $scope.denominationTotal = total;
+    };
+
+    $scope.updateDenominationObject = function (key, amount, field) {
+
+        amount = parseInt(amount);
+
+        if (field == 'piece') {
+            return $scope.incomeService.denominations_structure[key].piece = parseInt(amount);
+        }
+
+        return $scope.incomeService.denominations_structure[key].total = parseInt(amount);
     };
 
     $scope.setIncomeService();
