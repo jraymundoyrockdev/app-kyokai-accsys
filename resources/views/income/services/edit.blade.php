@@ -49,7 +49,7 @@
 
                                             <div class="form-group text-right">
                                                 <div class="col-sm-12">
-                                                    <button class="btn btn-default input-sm" type="button"><i
+                                                    <button class="btn btn-default input-sm" type="button" ng-click="clearFields()"><i
                                                                 class="fa fa-refresh"></i>&nbsp;Reset
                                                     </button>
                                                     <button class="btn btn-success input-sm" type="submit"><i
