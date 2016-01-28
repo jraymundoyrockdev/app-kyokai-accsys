@@ -5,7 +5,7 @@
     </div>
 
     <div ng-if="fund.name=='Ministry Funds'">
-        <a data-toggle="collapse" href="#<% fund.id %>" aria-expanded="true">
+        <a data-toggle="collapse" href="#<% fund.fund_id %>" aria-expanded="true">
             <h5 class="font-bold text-muted"><% fund.name %>
                 <i class="fa fa-plus-square" ng-click="toggleMinistriesMemberFund(true)"
                    ng-show="!showMinistriesMemberFund"></i>
@@ -15,7 +15,7 @@
         </a>
     </div>
 
-    <div id="<% fund.id %>" ng-class="(fund.id==4) ? 'collapse out' : ''">
+    <div id="<% fund.fund_id %>" ng-class="(fund.fund_id==4) ? 'collapse out' : 'collapse in'">
         <div class="form-group" ng-repeat="item in fund.item">
             <label class="col-sm-3 control-label fundStructureLabel" for="<% item.name %>"><% item.name %></label>
 

@@ -79,7 +79,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
                 if (data.errors.hasOwnProperty('member_id')) {
                     $scope.selectedMember = '';
                     angular.element('[name=selectedMember]').addClass('error').focus();
-                    angular.element('#selectedMember-error').show().text('Member does not exists.');
+                    angular.element('#selectedMember-error').show().text(data.errors.member_id[0]);
                 }
             }
         });
@@ -203,7 +203,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
 
     $scope.getDenominationFieldsForValidation = function (denomination) {
 
-        var ruleSet = {selectedMember: {required: true}};
+        var ruleSet = {};
         var item = [];
 
         angular.forEach(denomination, function (item, key) {
