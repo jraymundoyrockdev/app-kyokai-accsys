@@ -11,8 +11,6 @@
 
     @section('module-styles')@show
 
-    {!! Html::style('css/main.css') !!}
-
 </head>
 
 <body>

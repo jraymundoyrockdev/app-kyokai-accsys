@@ -100,7 +100,7 @@ li.active {
 /* Custom table Width */
 .table30 {
     width: 30px;
-}
+}main.css
 
 .table50 {
     width: 30px;
@@ -108,4 +108,8 @@ li.active {
 
 .table100 {
     width: 100px;
+}
+
+.hide-me {
+    display: none;
 }

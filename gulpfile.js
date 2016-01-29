@@ -21,7 +21,7 @@ elixir(function (mix) {
         'vendor/dataTables.tableTools.min.css',
         'vendor/animate.css',
         'vendor/sweetalert2.css',
-        //'vendor/bootstrap-datetimepicker.min.css',
+        'vendor/toastr.css',
         'vendor/inspinia.css',
         'main.css'
     ], 'public/css/libraries.css');
@@ -42,6 +42,7 @@ elixir(function (mix) {
         'vendor/bootstrap-datetimepicker.min.js',
         'vendor/jquery.validate.min.js',
         'vendor/sweetalert2.min.js',
+        'vendor/toastr.js',
         'vendor/inspinia.js',
     ], 'public/js/libraries.js');
 });

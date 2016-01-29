@@ -62,6 +62,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
 
+            toastr.success('Successfully Saved.', 'Aw yeah! :)');
+
             //add selected member to push payload
             data.memberFundTotal.member = $scope.selectedMember.fullname;
 
@@ -76,6 +78,9 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
 
         }).error(function (data, status) {
             if (status == 422) {
+
+                toastr.error('Validation Error', 'Aww something went wrong :(');
+
                 if (data.errors.hasOwnProperty('member_id')) {
                     $scope.selectedMember = '';
                     angular.element('[name=selectedMember]').addClass('error').focus();
@@ -233,9 +238,9 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             dataType: 'json',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
-
+            toastr.success('Successfully Saved.', 'Aw yeah! :)');
         }).error(function (data, status) {
-
+            toastr.error('Validation Error', 'Aww something went wrong :(');
         });
     };
 

@@ -1,26 +1,115 @@
 .timeline-item .content {
-	min-height: inherit;
-	padding: 1px;
+    min-height: inherit;
+    padding: 1px;
 }
 
 .timeline-item .date {
-	width: 50px;
+    width: 50px;
 }
 
 .no-left-border {
-  border-left: 0 !important;
+    border-left: 0 !important;
 }
 
 .timeline-item .content .service-content {
-  padding: 3px 10px;
+    padding: 3px 10px;
 }
+
 .timeline-item .content .service-content:hover {
-  background: #f6f6f6;
+    background: #f6f6f6;
 }
 
 .timeline-item .content:hover {
-  background: none;
+    background: none;
 }
-.editIncomeService > .fundStructureLabel{
-  text-align: center !important;
+
+.logo-name {
+    font-size: 35px;
+    letter-spacing: 40px;
+    color: #a7b1c2;
+}
+
+li.active {
+    font-weight: bold;
+    min-height: inherit;
+    padding: 1px;
+}
+
+.timeline-item .date {
+    width: 50px;
+}
+
+.no-left-border {
+    border-left: 0 !important;
+}
+
+.timeline-item .content .service-content {
+    padding: 3px 10px;
+}
+
+.timeline-item .content .service-content:hover {
+    background: #f6f6f6;
+}
+
+.timeline-item .content:hover {
+    background: none;
+}
+
+.logo-name {
+    font-size: 35px;
+    letter-spacing: 40px;
+    color: #a7b1c2;
+}
+
+li.active {
+    font-weight: bold;
+}
+
+.slimScrollBarModified {
+    width: 7px;
+    position: absolute;
+    top: 52px;
+    opacity: 0.4;
+    display: none;
+    border-radius: 7px;
+    z-index: 99;
+    right: 1px;
+    height: 129.032258064516px;
+    background: rgb(0, 0, 0);
+}
+
+.slimScrollRailModified {
+    width: 7px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    display: none;
+    border-radius: 7px;
+    opacity: 0.2;
+    z-index: 90;
+    right: 1px;
+    background: rgb(51, 51, 51);
+}
+
+/*income Service */
+.incomeServiceDateField {
+    width: 95% !important;
+    margin-left: 15px;
+}
+
+/* Custom table Width */
+.table30 {
+    width: 30px;
+}main.css
+
+.table50 {
+    width: 30px;
+}
+
+.table100 {
+    width: 100px;
+}
+
+.hide-me {
+    display: none !important;
 }

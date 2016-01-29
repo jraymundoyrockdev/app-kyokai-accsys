@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <button class="btn btn-success btn-block" type="submit">Accept Total</button>
 
-            <button class="btn btn-success btn-block" type="button" id="saveDenominationBtn" style="display: none;"
+            <button class="btn btn-success btn-block hide-me" type="button" id="saveDenominationBtn"
                     ng-click="saveDenomination()">Accept Total
             </button>
         </div>

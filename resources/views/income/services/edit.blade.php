@@ -37,10 +37,9 @@
                                                            typeahead-template-url="membersTypeheadTemplate.html"
                                                            class="form-control">
 
-                                                    <label id="selectedMember-error" class="error"
-                                                           style="display: none;">Member does not exists.</label>
+                                                    <label id="selectedMember-error" class="error hide-me">
+                                                        Member does not exists.</label>
                                                 </div>
-
                                             </div>
 
                                             <hr>
@@ -49,17 +48,17 @@
 
                                             <div class="form-group text-right">
                                                 <div class="col-sm-12">
-                                                    <button class="btn btn-default input-sm" type="button" ng-click="clearFields()"><i
+                                                    <button class="btn btn-default input-sm" type="button"
+                                                            ng-click="clearFields()"><i
                                                                 class="fa fa-refresh"></i>&nbsp;Reset
                                                     </button>
                                                     <button class="btn btn-success input-sm" type="submit"><i
                                                                 class="fa fa-plus"></i>&nbsp;Add to List
                                                     </button>
 
-                                                    <button class="btn btn-success input-sm" type="button"
-                                                            ng-click="addMemberToList()" id="addMemberToListBtn"
-                                                            style="display:none;"><i
-                                                                class="fa fa-plus"></i>&nbsp;Add to List2
+                                                    <button class="btn btn-success input-sm hide-me" type="button"
+                                                            ng-click="addMemberToList()" id="addMemberToListBtn">
+                                                        <i class="fa fa-plus"></i>&nbsp;Add to List2
                                                     </button>
                                                 </div>
                                             </div>
