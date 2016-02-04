@@ -30,8 +30,6 @@
 
     <script type="text/javascript">
         var BASE = "http://api-gfccm-systems.com/api/";
-
-        localStorage.setItem('userToken', "{!! Session::get('userToken') !!}");
     </script>
 
     {!! Html::script('js/libraries.js') !!}

@@ -41,8 +41,10 @@
                                                 </h2>
                                                 <span>Tithes</span>
 
-                                                <div class="stat-percent"><%getPercentage(months.tithes, months.total) | number%>
-                                                    % <i class="fa fa-bolt text-navy"></i></div>
+                                                <div class="stat-percent">
+                                                    <%getPercentage(months.tithes, months.total) | number%>%
+                                                    <i class="fa fa-bolt text-navy"></i>
+                                                </div>
                                                 <div class="progress progress-mini">
                                                     <div style="width: <%getPercentage(months.tithes, months.total)%>%;"
                                                          class="progress-bar"></div>
@@ -53,8 +55,10 @@
                                                 </h2>
                                                 <span>Offering</span>
 
-                                                <div class="stat-percent"><%getPercentage(months.offering, months.total) | number%>
-                                                    % <i class="fa fa-bolt text-navy"></i></div>
+                                                <div class="stat-percent">
+                                                    <%getPercentage(months.offering, months.total) | number%>%
+                                                    <i class="fa fa-bolt text-navy"></i>
+                                                </div>
                                                 <div class="progress progress-mini">
                                                     <div style="width: <%getPercentage(months.offering, months.total)%>%;"
                                                          class="progress-bar"></div>
