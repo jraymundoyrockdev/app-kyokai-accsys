@@ -3,7 +3,7 @@
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight editIncomeService" ng-app="incomeService">
-        <div ng-controller="IncomeServiceCtrl" ng-init="init('{!! Session::get("userToken")!!}')">
+        <div ng-controller="IncomeServiceCtrl">
 
             @include('income.services.edit-partials.members-typehead-template')
 

@@ -14,20 +14,12 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
     $scope.totalOtherFund = 0;
     $scope.totalFunds = 0;
     $scope.denominationTotal = 0;
-    $scope.token = '';
 
-    $scope.init = function (token) {
-
-        $scope.token = token;
-
-        $scope.setIncomeService();
-        $scope.getMembers();
-    };
     $scope.setIncomeService = function () {
         $http({
             method: 'GET',
             url: BASE + 'income-services/' + $scope.incomeServiceId,
-            headers: {'Authorization': 'Bearer ' + $scope.token}
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
 
             $scope.incomeService = data.IncomeService[0];
@@ -46,7 +38,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         $http({
             method: 'GET',
             url: BASE + 'members',
-            headers: {'Authorization': 'Bearer ' + $scope.token}
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
             $scope.members = data;
         }).error(function (data, status) {
@@ -67,7 +59,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             data: fundStructureInput,
             url: BASE + 'income-services/' + $scope.incomeServiceId + '/member-fund/' + $scope.selectedMember.id + '/update',
             dataType: 'json',
-            headers: {'Authorization': 'Bearer ' + $scope.token}
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
 
             toastr.success('Successfully Saved.', 'Aw yeah! :)');
@@ -85,7 +77,6 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             $scope.clearFields();
 
         }).error(function (data, status) {
-            
             if (status == 422) {
 
                 toastr.error('Validation Error', 'Aww something went wrong :(');
@@ -93,7 +84,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
                 if (data.errors.hasOwnProperty('member_id')) {
                     $scope.selectedMember = '';
                     angular.element('[name=selectedMember]').addClass('error').focus();
-                    angular.element('#selectedMember-error').removeClass('hide-me').show().text(data.errors.member_id[0]);
+                    angular.element('#selectedMember-error').show().text(data.errors.member_id[0]);
                 }
             }
         });
@@ -160,7 +151,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
                 method: 'DELETE',
                 url: BASE + 'income-services/' + incomeServiceId + '/member-fund/' + memberId,
                 dataType: 'json',
-                headers: {'Authorization': 'Bearer ' + $scope.token}
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
             }).success(function (data, status) {
 
                 //remove member from the list
@@ -245,7 +236,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             data: $scope.incomeService.denominations_structure,
             url: BASE + 'income-services/' + $scope.incomeServiceId + '/denomination',
             dataType: 'json',
-            headers: {'Authorization': 'Bearer ' + $scope.token}
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('userToken')}
         }).success(function (data, status) {
             toastr.success('Successfully Saved.', 'Aw yeah! :)');
         }).error(function (data, status) {
@@ -274,5 +265,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
 
         return $scope.incomeService.denominations_structure[key].total = parseInt(amount);
     };
+
+    $scope.setIncomeService();
+    $scope.getMembers();
 
 });
