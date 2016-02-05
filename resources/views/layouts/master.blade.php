@@ -33,6 +33,7 @@
     </script>
 
     {!! Html::script('js/libraries.js') !!}
+    {!! Html::script('js/services/commons.js') !!}
 
     @section('module-scripts')@show
 
