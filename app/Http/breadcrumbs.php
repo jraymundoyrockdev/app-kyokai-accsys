@@ -16,6 +16,11 @@ Breadcrumbs::register('income-services.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Edit', route('income-services.edit'));
 });
 
+Breadcrumbs::register('income-services.month-list', function ($breadcrumbs) {
+    $breadcrumbs->parent('income-services.index');
+    $breadcrumbs->push('List', route('income-services.month-list'));
+});
+
 
 /**
  * ADMIN

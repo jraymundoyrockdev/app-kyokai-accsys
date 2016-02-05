@@ -8,7 +8,7 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <div class="m-b-md text-center">
-                    <h5 class="font-bold logo-name no-margins"><?php echo date('Y');?></h5>
+                    <h5 class="font-bold logo-name no-margins">{!! date('Y') !!}</h5>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -32,7 +32,7 @@
                                 <div class="vertical-timeline-content">
 
                                     <div class="col-lg-12">
-                                        <h2 class="text-center"><%months.month%></h2>
+                                        <h2 class="text-center"><%getMonthName(months.month)%></h2>
                                         <hr>
                                         <ul class="stat-list">
                                             <li>
@@ -79,7 +79,9 @@
                                             <li>
                                                 <h2 class="no-margins">TOTAL:
                                                     <strong><%months.total | number:2%></strong>
-                                                    <a href="#" class="btn btn-sm btn-primary pull-right">More info</a>
+                                                    <a class="btn btn-sm btn-primary pull-right"
+                                                       ng-href="/income-services/month-list/<%months.year%>/<%months.month%>">More
+                                                        Info</a>
                                                 </h2>
                                             </li>
                                         </ul>
