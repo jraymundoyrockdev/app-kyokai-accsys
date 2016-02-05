@@ -29,7 +29,7 @@
     </div>
 
     <script type="text/javascript">
-        var BASE = "http://api-gfccm-systems.com/api/";
+        var BASE = "{!! Config::get('api-server.gfccm.home') !!}";
     </script>
 
     {!! Html::script('js/libraries.js') !!}

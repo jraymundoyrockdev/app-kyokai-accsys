@@ -34,4 +34,9 @@ class IncomeServicesController extends BaseController
     {
         return view('income.services.edit', ['id' => $id]);
     }
+
+    public function monthServiceList($year, $month)
+    {
+        return view('income.services.month-list', ['year' => $year, 'month' => $month]);
+    }
 }

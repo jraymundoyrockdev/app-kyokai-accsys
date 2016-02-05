@@ -1,9 +1,9 @@
-var incomeService = angular.module('incomeServiceTotals', [], function ($interpolateProvider) {
+var incomeService = angular.module('incomeServiceTotals', ['commons'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http) {
+incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, KyokaiHelpers) {
 
     $scope.monthsTotal = {};
     $scope.token = '';
@@ -30,4 +30,9 @@ incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http) {
     $scope.getPercentage = function (transactionAmount, total) {
         return parseFloat((transactionAmount / total) * 100).toFixed(2);
     };
+
+    $scope.getMonthName = function (month) {
+        return KyokaiHelpers.mapMonths(month);
+    }
+
 });

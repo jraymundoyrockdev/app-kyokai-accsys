@@ -26,6 +26,8 @@ Route::group(['middleware' => 'validate_token'], function () {
     });
 
     Route::resource('/', 'DashboardController');
+    Route::get('/income-services/month-list/{year}/{month}', ['as' => 'income-services.month-list', 'uses' => 'IncomeServicesController@monthServiceList']);
     Route::resource('income-services', 'IncomeServicesController');
+
 });
 
