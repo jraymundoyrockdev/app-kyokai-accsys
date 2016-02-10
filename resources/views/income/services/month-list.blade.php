@@ -13,7 +13,7 @@
 
                     <div class="ibox-content inspinia-timeline">
 
-                        <?php for($i=0;$i<=6;$i++):?>
+                        <?php for($i = 0;$i <= 6;$i++):?>
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
@@ -23,56 +23,48 @@
                                     <br>
                                     <small class="text-navy">7:00 AM</small>
                                 </div>
-                                <div class="col-xs-7 content">
-                                    <p class="m-b-xs"><strong>YROCK Service</strong></p>
-                                    <ul class="list-group clear-list m-t">
-                                        <li class="list-group-item fist-item">
-                                <span class="pull-right">
-                                    15,000
-                                </span>
-                                            <span class="label label-success">1</span>Tithes
-                                        </li>
-                                        <li class="list-group-item">
-                                <span class="pull-right">
-                                    10:16 am
-                                </span>
-                                            <span class="label label-info">2</span> Offering
-                                        </li>
-                                        <li class="list-group-item">
-                                <span class="pull-right">
-                                    08:22 pm
-                                </span>
-                                            <span class="label label-primary">3</span> Other Funds
-                                        </li>
-                                        <li class="list-group-item">
-                                <span class="pull-right">
-                                    11:06 pm
-                                </span>
-                                            <span class="label label-default">4</span> Total
-                                        </li>
+                                <div class="col-xs-9 content">
+                                    <div>
+                                        <p class="m-b-xs"><strong>YROCK Service</strong>
+                                            <a class="btn btn-primary btn-xs pull-right" href="#"><i
+                                                        class="fa fa-pencil"></i> Edit </a>
+                                        </p>
+                                    </div>
 
-                                        <li class="list-group-item">
-                                            <span class="pull-right">
-                                                 <input type="button" class="btn btn-sm btn-primary pull-right" value="Edit">
-                                            </span>
-                                        </li>
 
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <small class="stats-label">Pages / Visit</small>
+                                            <h4>236 321.80</h4>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <small class="stats-label">% New Visits</small>
+                                            <h4>46.11%</h4>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <small class="stats-label">Last week</small>
+                                            <h4>432.021</h4>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <small class="stats-label">Last week</small>
+                                            <h4>432.021</h4>
+                                        </div>
+
+                                    </div>
+                                    
 
                                 </div>
-
                             </div>
+                            <?php endfor;?>
+
+
                         </div>
-                        <?php endfor;?>
-
-
 
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
 @endsection
 
