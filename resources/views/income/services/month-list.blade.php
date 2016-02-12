@@ -2,72 +2,74 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Income Services'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content">
-        <div class="row animated fadeInRight">
-            <div class="col-lg-12">
+    <div ng-app="incomeServiceMonthList">
+        <div class="wrapper wrapper-content" ng-controller="incomeServiceMonthListCtrl"
+             ng-init="init('{!! Session::get("userToken")!!}',{!! $year !!}, {!! $month !!})">
+            <div class="row">
+                <div class="col-lg-12">
 
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Services List</h5>
-                    </div>
+                    <div class="wrapper wrapper-content animated fadeInRight">
 
-                    <div class="ibox-content inspinia-timeline">
-
-                        <?php for($i = 0;$i <= 6;$i++):?>
-                        <div class="timeline-item">
+                        <div class="faq-item" ng-repeat="service in services">
                             <div class="row">
-                                <div class="col-xs-3 date">
-                                    <p class="m-b-xs"><strong> Feb 17</strong></p>
-                                    <i class="fa fa-file-text"></i>
-                                    <small class="text-navy">Sunday</small>
-                                    <br>
-                                    <small class="text-navy">7:00 AM</small>
+                                <div class="col-md-4">
+                                    <span class="faq-question">
+                                        <% service.service_date | date : 'dd EEEE' %>
+                                        <% service.service_name %>
+                                    </span>
+                                    <h4><% service.service_start_time %> - <% service.service_end_time %></h4>
+
+                                    <p>
+                                        <small>Reported by <strong><% service.created_by %></strong>
+                                            <i class="fa fa-clock-o"></i> <% service.updated_at.date %>
+                                        </small>
+                                    </p>
                                 </div>
-                                <div class="col-xs-9 content">
-                                    <div>
-                                        <p class="m-b-xs"><strong>YROCK Service</strong>
-                                            <a class="btn btn-primary btn-xs pull-right" href="#"><i
-                                                        class="fa fa-pencil"></i> Edit </a>
-                                        </p>
-                                    </div>
 
+                                <div class="col-md-2">
+                                    <span class="font-bold">TITHES</span>
 
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <small class="stats-label">Pages / Visit</small>
-                                            <h4>236 321.80</h4>
-                                        </div>
+                                    <p><% service.tithes | number:2 %></p>
+                                </div>
 
-                                        <div class="col-xs-3">
-                                            <small class="stats-label">% New Visits</small>
-                                            <h4>46.11%</h4>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <small class="stats-label">Last week</small>
-                                            <h4>432.021</h4>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <small class="stats-label">Last week</small>
-                                            <h4>432.021</h4>
-                                        </div>
+                                <div class="col-md-2">
+                                    <span class="font-bold">OFFERING</span>
 
-                                    </div>
-                                    
+                                    <p><% service.offering | number:2 %></p>
+                                </div>
 
+                                <div class="col-md-2">
+                                    <span class="font-bold">OTHER FUND</span>
+
+                                    <p><% service.other_fund | number:2 %></p>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <span class="font-bold">TOTAL</span>
+
+                                    <p><% service.total | number:2 %></p>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <a class="btn btn-xs btn-success"
+                                       href="#"><i class="fa fa-info"></i> Service Info</a>
+
+                                    <a class="btn btn-xs btn-primary"
+                                       href="/income-services/<%service.id%>/edit"><i class="fa fa-pencil"></i> Edit</a>
+
+                                    <a class="btn btn-xs btn-danger pull-right"
+                                       href="#"><i class="fa fa-trash-o"></i> Delete</a>
                                 </div>
                             </div>
-                            <?php endfor;?>
-
-
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection
 
 @section('module-scripts')
-
+    {!! Html::script('js/modules/service/income-month-list.js') !!}
 @endsection
