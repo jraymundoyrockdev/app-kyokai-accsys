@@ -49,17 +49,6 @@ class AdminServicesController extends BaseController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -67,9 +56,7 @@ class AdminServicesController extends BaseController
      */
     public function edit($id)
     {
-        $result = $this->apiClient->call('GET', 'services/' . $id);
-
-        return view('admin.services.edit', ['service' => reset($result->Service)]);
+        return view('admin.services.edit', ['id' => $id]);
     }
 
     /**

@@ -22,6 +22,7 @@ elixir(function (mix) {
         'vendor/animate.css',
         'vendor/sweetalert2.css',
         'vendor/toastr.css',
+        'vendor/clockpicker.css',
         'vendor/inspinia.css',
         'main.css'
     ], 'public/css/libraries.css');
@@ -43,6 +44,7 @@ elixir(function (mix) {
         'vendor/jquery.validate.min.js',
         'vendor/sweetalert2.min.js',
         'vendor/toastr.js',
+        'vendor/clockpicker.js',
         'vendor/inspinia.js',
     ], 'public/js/libraries.js');
 });

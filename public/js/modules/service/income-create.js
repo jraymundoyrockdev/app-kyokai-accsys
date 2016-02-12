@@ -53,13 +53,13 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
 
         angular.element('.form_datetime').datetimepicker({
             showMeridian: 1,
-            format: "yyyy-mm-dd hh:ii",
-            weekStart: 1,
-            todayBtn: 1,
+            format: "hh:ii:ss",
+            weekStart: 0,
+            todayBtn: 0,
             autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0
+            todayHighlight: 0,
+            startView: 1,
+            forceParse: 1
         });
     };
 

@@ -17,6 +17,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -26,6 +28,8 @@
                                 <tr>
                                     <td>{!! $s->name !!}</td>
                                     <td>{!! $s->description !!}</td>
+                                    <td>{!! $s->start_time !!}</td>
+                                    <td>{!! $s->end_time !!}</td>
                                     <td>
                                         <a href="{!! route('admin.services.edit', [$s->id]) !!}"
                                            class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
