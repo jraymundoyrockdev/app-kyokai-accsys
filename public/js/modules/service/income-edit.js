@@ -164,7 +164,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
             }).success(function (data, status) {
 
                 //remove member from the list
-                $scope.incomeService.member_fund_total.splice(member, 1);
+                $scope.incomeService.member_fund_total.splice($scope.incomeService.member_fund_total.indexOf(member), 1);
 
                 //set Total
                 $scope.setTotals(data.fundTotal);
