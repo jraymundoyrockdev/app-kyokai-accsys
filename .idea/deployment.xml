@@ -2,10 +2,10 @@
 <project version="4">
   <component name="PublishConfigData" serverName="KYOKAI-ACCSYS-APP">
     <serverData>
-      <paths name="KYOKAI-ACCSYS-APP">
+      <paths name="API-GFCCM-SYSTEMS">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="gfccm/app-kyokai-accsys" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

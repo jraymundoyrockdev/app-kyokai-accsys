@@ -19,7 +19,7 @@
         <div class="row">
 
             <div ng-controller="IncomeServiceTotalsCtrl"
-                 ng-init="init('{!! Session::get("userToken")!!}',{!! date('Y') !!})">
+                 ng-init="init({!! date('Y') !!})">
 
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">

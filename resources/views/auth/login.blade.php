@@ -1,13 +1,16 @@
 @extends('layouts.login')
 @section('main-body')
-    {!! Form::open(['route' => 'login']) !!}
+    <form ng-submit="login()" role="form">
         <div class="form-group">
-            {!! Session::get('errorMessage') !!}
-        {!! Form::text('username', '', ['class' => 'form-control','placeholder' => 'Username', 'id' => 'login-username']) !!}
+            <input type="text" name="username" class="form-control" placeholder="Username" ng-model="loginModel.username">
         </div>
         <div class="form-group">
-            {!! Form::password('password', ['class' => 'form-control','placeholder' => 'Password', 'id' => 'login-password']) !!}
+            <input type="password" name="password" class="form-control" placeholder="Password" ng-model="loginModel.password">
         </div>
-        {!! Form::submit('Login', ['class' => 'btn btn-primary block full-width m-b','id' => 'login']) !!}
-    {!! Form::close() !!}
+        <input type="submit" name="login" class="btn btn-primary block full-width m-b" value="Login">
+    </form>
+@endsection
+
+@section('module-scripts')
+    {!! Html::script('js/modules/login/login.js') !!}
 @endsection

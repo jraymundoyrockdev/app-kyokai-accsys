@@ -8,12 +8,12 @@
 
     <title>Kyokai AccSys</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/libraries.css"/>
+    {!! Html::style('css/libraries.css') !!}
 </head>
 
-<body class="gray-bg">
+<body class="gray-bg" ng-app="kyokaiLogin">
 
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="middle-box text-center loginscreen animated fadeInDown" ng-controller="kyokaiLoginCtrl">
         <div>
             <div>
                 <h1 class="logo-name">KA</h1>
@@ -33,9 +33,14 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        var BASE = "{!! Config::get('api-server.gfccm.local') !!}";
+    </script>
 
-    <script src="/js/vendor/jquery/jquery-2.1.4.min.js"></script>
-    <script src="/js/vendor/bootstrap/bootstrap.js"></script>
+    {!! Html::script('js/libraries.js') !!}
+    {!! Html::script('js/services/commons.js') !!}
+
+    @section('module-scripts')@show
 
 </body>
 

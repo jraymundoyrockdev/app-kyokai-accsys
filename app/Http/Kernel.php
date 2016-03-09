@@ -28,7 +28,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \KyokaiAccSys\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \KyokaiAccSys\Http\Middleware\RedirectIfAuthenticated::class,
-        'validate_token' => \KyokaiAccSys\Http\Middleware\ValidateToken::class
+        'guest' => \KyokaiAccSys\Http\Middleware\RedirectIfAuthenticated::class
     ];
 }

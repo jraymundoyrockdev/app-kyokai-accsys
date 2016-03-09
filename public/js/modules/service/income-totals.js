@@ -6,12 +6,9 @@ var incomeService = angular.module('incomeServiceTotals', ['commons'], function 
 incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, KyokaiHelpers) {
 
     $scope.monthsTotal = {};
-    $scope.token = '';
+    $scope.token = localStorage.getItem('userJWT');
 
-    $scope.init = function (token, yearToday) {
-
-        $scope.token = token;
-
+    $scope.init = function (yearToday) {
         $scope.getIncomeServicesTotals(yearToday);
     };
 
