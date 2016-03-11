@@ -10,6 +10,13 @@
 
                     <div class="wrapper wrapper-content animated fadeInRight">
 
+                        <div class="forum-post-info">
+                            <h2 class="text-center" style="margin-top:10px">
+                                <span>{!! date('F Y', strtotime($year.'-'.$month)) !!}</span>
+                            </h2>
+                        </div>
+                        <div>&nbsp;</div>
+
                         <div class="faq-item" ng-repeat="service in services">
                             <div class="row">
                                 <div class="col-md-4">
@@ -20,9 +27,7 @@
                                     <h4><% service.service_start_time %> - <% service.service_end_time %></h4>
 
                                     <p>
-                                        <small>Reported by <strong><% service.created_by %></strong>
-                                            <i class="fa fa-clock-o"></i> <% service.updated_at.date %>
-                                        </small>
+                                        <small>Reported by <strong><% service.created_by %></strong></small>
                                     </p>
                                 </div>
 

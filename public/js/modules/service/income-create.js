@@ -48,15 +48,12 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
 
     $scope.setDate = function () {
 
-        angular.element('.form_datetime').datetimepicker({
-            showMeridian: 1,
-            format: "hh:ii:ss",
-            weekStart: 0,
-            todayBtn: 0,
-            autoclose: 1,
-            todayHighlight: 0,
-            startView: 1,
-            forceParse: 1
+        angular.element('.form_datetime').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'yyyy-mm-dd',
         });
     };
 
