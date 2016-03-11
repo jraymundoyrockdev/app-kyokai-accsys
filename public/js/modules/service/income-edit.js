@@ -1,9 +1,9 @@
-var incomeService = angular.module('incomeService', ['ui.bootstrap'], function ($interpolateProvider) {
+var incomeService = angular.module('incomeService', ['ui.bootstrap', 'commons'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
+incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxMsg) {
     $scope.incomeServiceId = incomeServiceId;
     $scope.incomeService = {};
     $scope.members = {};
@@ -14,12 +14,9 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
     $scope.totalOtherFund = 0;
     $scope.totalFunds = 0;
     $scope.denominationTotal = 0;
-    $scope.token = '';
+    $scope.token = localStorage.getItem('userJWT');
 
-    $scope.init = function (token) {
-
-        $scope.token = token;
-
+    $scope.init = function () {
         $scope.setIncomeService();
         $scope.getMembers();
     };
@@ -50,7 +47,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         }).success(function (data, status) {
             $scope.members = data;
         }).error(function (data, status) {
-            alert('Failed to load! Refresh page!')
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 
@@ -87,15 +84,14 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         }).error(function (data, status) {
 
             if (status == 422) {
-
-                toastr.error('Validation Error', 'Aww something went wrong :(');
-
                 if (data.errors.hasOwnProperty('member_id')) {
                     $scope.selectedMember = '';
                     angular.element('[name=selectedMember]').addClass('error').focus();
                     angular.element('#selectedMember-error').removeClass('hide-me').show().text(data.errors.member_id[0]);
                 }
             }
+
+            toastBoxMsg.popUp(status, 'error');
         });
 
     };
@@ -172,6 +168,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
                 swal("Deleted!", "", "success");
 
             }).error(function (data, status) {
+                toastBoxMsg.popUp(status, 'error');
             });
         });
     };
@@ -249,7 +246,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http) {
         }).success(function (data, status) {
             toastr.success('Successfully Saved.', 'Aw yeah! :)');
         }).error(function (data, status) {
-            toastr.error('Validation Error', 'Aww something went wrong :(');
+            toastBoxMsg.popUp(status, 'error');
         });
     };
 

@@ -4,7 +4,7 @@
 
     <div ng-app="incomeServiceMonthList">
         <div class="wrapper wrapper-content" ng-controller="incomeServiceMonthListCtrl"
-             ng-init="init('{!! Session::get("userToken")!!}',{!! $year !!}, {!! $month !!})">
+             ng-init="init({!! $year !!}, {!! $month !!})">
             <div class="row">
                 <div class="col-lg-12">
 

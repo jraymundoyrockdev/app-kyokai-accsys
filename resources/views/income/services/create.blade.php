@@ -7,7 +7,7 @@
 @endsection
 
 <div class="wrapper wrapper-content animated fadeInRight" ng-app="incomeServiceCreate">
-    <div ng-controller="incomeServiceCreateCtrl" ng-init="init('{!! Session::get("userToken")!!}')">
+    <div ng-controller="incomeServiceCreateCtrl" ng-init="init()">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
@@ -26,7 +26,8 @@
                                 <select name="service_id" ng-model="incomeServiceModel.service_id"
                                         class="form-control <%validationError['service_id'] ? 'error' : ''%>">
                                     <option ng-repeat="service in services"
-                                            value="<%service.id%>"><%service.name%></option>
+                                            value="<%service.id%>"><%service.name%>
+                                    </option>
                                 </select>
                                 <label class="error" for="service_id"
                                        ng-show="validationError['service_id']"><%validationError['service_id']%></label>

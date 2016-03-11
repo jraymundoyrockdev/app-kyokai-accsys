@@ -10,7 +10,8 @@ angular.module('commons', [])
 
             return errorList;
         };
-    }]).service('KyokaiHelpers', [function () {
+    }])
+    .service('KyokaiHelpers', [function () {
 
         this.mapMonths = function (month) {
 
@@ -31,4 +32,27 @@ angular.module('commons', [])
 
             return months[month];
         };
+    }])
+    .service('toastBoxMsg', [function () {
+
+        var statusCodes = {
+            '401': 'Unauthorized',
+            '422': 'Validation Error'
+        };
+
+        var defaultErrorMessage = 'Aww something went wrong :(';
+        var defaultSuccessMessage = 'Aww yeah! :)';
+
+        this.popUp = function (code, type, message) {
+
+            if (type == 'error') {
+                message = (!message) ? defaultErrorMessage : message;
+                toastr.error(statusCodes[code], message);
+            }
+
+            if (type == 'success') {
+                message = (!message) ? defaultSuccessMessage : message;
+                toastr.success(statusCodes[code], message);
+            }
+        }
     }]);

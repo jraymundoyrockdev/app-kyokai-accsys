@@ -3,17 +3,14 @@ var incomeService = angular.module('incomeServiceCreate', ['commons'], function 
     $interpolateProvider.endSymbol('%>');
 });
 
-incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, ValidatorErrorService) {
+incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, ValidatorErrorService, toastBoxMsg) {
 
-    $scope.token = '';
+    $scope.token = localStorage.getItem('userJWT');
     $scope.services = {};
     $scope.incomeServiceModel = {};
     $scope.validationError = [];
 
-    $scope.init = function (token) {
-
-        $scope.token = token;
-
+    $scope.init = function () {
         $scope.setDate();
         $scope.getServices();
     };
@@ -26,7 +23,7 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
         }).success(function (data, status) {
             $scope.services = data.Services;
         }).error(function (data, status) {
-
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 
@@ -43,9 +40,9 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
 
             if (status == 422) {
                 $scope.validationError = ValidatorErrorService.mapErrors(data.errors);
-
-                toastr.error('Validation Error', 'Aww something went wrong :(');
             }
+
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 

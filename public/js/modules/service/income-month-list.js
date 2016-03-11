@@ -3,15 +3,12 @@ var incomeService = angular.module('incomeServiceMonthList', ['commons'], functi
     $interpolateProvider.endSymbol('%>');
 });
 
-incomeService.controller('incomeServiceMonthListCtrl', function ($scope, $http, $filter, KyokaiHelpers) {
+incomeService.controller('incomeServiceMonthListCtrl', function ($scope, $http, toastBoxMsg) {
 
     $scope.services = {};
-    $scope.token = '';
+    $scope.token = localStorage.getItem('userJWT');
 
-    $scope.init = function (token, year, month) {
-
-        $scope.token = token;
-
+    $scope.init = function (year, month) {
         $scope.getAllIncomeServices(year, month);
     };
 
@@ -24,6 +21,7 @@ incomeService.controller('incomeServiceMonthListCtrl', function ($scope, $http, 
         }).success(function (data, status) {
             $scope.services = data.IncomeServiceLists;
         }).error(function (data, status) {
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 

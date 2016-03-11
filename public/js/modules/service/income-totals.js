@@ -3,7 +3,7 @@ var incomeService = angular.module('incomeServiceTotals', ['commons'], function 
     $interpolateProvider.endSymbol('%>');
 });
 
-incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, KyokaiHelpers) {
+incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, KyokaiHelpers, toastBoxMsg) {
 
     $scope.monthsTotal = {};
     $scope.token = localStorage.getItem('userJWT');
@@ -21,6 +21,7 @@ incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, Kyo
         }).success(function (data, status) {
             $scope.monthsTotal = data;
         }).error(function (data, status) {
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 

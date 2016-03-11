@@ -3,7 +3,7 @@ var kyokaiLogin = angular.module('kyokaiLogin', ['commons'], function ($interpol
     $interpolateProvider.endSymbol('%>');
 });
 
-kyokaiLogin.controller('kyokaiLoginCtrl', function ($scope, $http) {
+kyokaiLogin.controller('kyokaiLoginCtrl', function ($scope, $http, toastBoxMsg) {
 
     $scope.loginModel = {};
 
@@ -17,9 +17,7 @@ kyokaiLogin.controller('kyokaiLoginCtrl', function ($scope, $http) {
             localStorage.setItem('userJWT', data.token);
             window.location.href = '/income-services';
         }).error(function (data, status) {
-            if (status == 401) {
-                toastr.error('Unauthorized', 'Aww something went wrong :(');
-            }
+            toastBoxMsg.popUp(status, 'error');
         })
     };
 });
