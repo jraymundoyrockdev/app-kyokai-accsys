@@ -16,8 +16,8 @@ kyokaiLogin.controller('kyokaiLoginCtrl', function ($scope, $http, toastBoxMsg) 
         }).success(function (data, status) {
             localStorage.setItem('userJWT', data.token);
             window.location.href = '/income-services';
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode, 'Invalid Credentials');
         })
     };
 });

@@ -22,8 +22,8 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
             headers: {'Authorization': 'Bearer ' + $scope.token}
         }).success(function (data, status) {
             $scope.services = data.Services;
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode);
         })
     };
 
@@ -36,13 +36,13 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
             headers: {'Authorization': 'Bearer ' + $scope.token}
         }).success(function (data, status) {
             window.location.href = '/income-services/' + data.IncomeService.shift().id + '/edit';
-        }).error(function (data, status) {
+        }).error(function (data, statusCode) {
 
             if (status == 422) {
                 $scope.validationError = ValidatorErrorService.mapErrors(data.errors);
             }
 
-            toastBoxMsg.popUp(status, 'error');
+            toastBoxMsg.popUp('error', data, statusCode);
         })
     };
 

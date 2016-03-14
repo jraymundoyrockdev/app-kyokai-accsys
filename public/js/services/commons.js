@@ -37,22 +37,36 @@ angular.module('commons', [])
 
         var statusCodes = {
             '401': 'Unauthorized',
-            '422': 'Validation Error'
+            '422': 'Validation Error',
+            '500': 'Server Error'
         };
 
         var defaultErrorMessage = 'Aww something went wrong :(';
         var defaultSuccessMessage = 'Aww yeah! :)';
 
-        this.popUp = function (code, type, message) {
+        this.popUp = function (type, data, code, message) {
+
+            if (code == 401 && message == '') {
+                message = this._isTokenExpired(data);
+            }
 
             if (type == 'error') {
                 message = (!message) ? defaultErrorMessage : message;
-                toastr.error(statusCodes[code], message);
+                toastr.error(message, statusCodes[code]);
             }
 
             if (type == 'success') {
                 message = (!message) ? defaultSuccessMessage : message;
-                toastr.success(statusCodes[code], message);
+                toastr.success(message, statusCodes[code]);
             }
-        }
+        };
+
+        this._isTokenExpired = function (data) {
+
+            if (data.error == 'token_expired' || data.error == 'token_invalid') {
+                return 'Token expired/invalid please Login again';
+            }
+
+            return '';
+        };
     }]);
