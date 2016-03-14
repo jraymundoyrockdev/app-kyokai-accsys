@@ -100,6 +100,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/service/income-totals.js') !!}
+    {!! Html::script('js/modules/service/income-index.js') !!}
 @endsection
 

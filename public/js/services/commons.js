@@ -37,22 +37,59 @@ angular.module('commons', [])
 
         var statusCodes = {
             '401': 'Unauthorized',
-            '422': 'Validation Error'
+            '422': 'Validation Error',
+            '500': 'Server Error'
         };
 
         var defaultErrorMessage = 'Aww something went wrong :(';
         var defaultSuccessMessage = 'Aww yeah! :)';
 
-        this.popUp = function (code, type, message) {
+        this.popUp = function (type, data, code, message) {
+
+            if (code == 401 && angular.isUndefined(message)) {
+                message = this._isTokenExpired(data);
+            }
 
             if (type == 'error') {
                 message = (!message) ? defaultErrorMessage : message;
-                toastr.error(statusCodes[code], message);
+                toastr.error(message, statusCodes[code]);
             }
 
             if (type == 'success') {
                 message = (!message) ? defaultSuccessMessage : message;
-                toastr.success(statusCodes[code], message);
+                toastr.success(message, statusCodes[code]);
             }
-        }
-    }]);
+        };
+
+        this._isTokenExpired = function (data) {
+
+            if (data.error == 'token_expired' || data.error == 'token_invalid') {
+                return 'Token expired/invalid please Login again';
+            }
+
+            return false;
+        };
+    }])/*
+ .service('IncomeServiceDashboardApp', ['$http', function ($http) {
+
+ this.getTotalPerMonth = function (yearToday) {
+
+ $http.defaults.headers.common['Authorization'] = 'Bearer         ' + localStorage.getItem('userJWT'); // jshint ignore:line
+
+ return $http.get(BASE + 'income-services/total/' + yearToday).then(handleSuccess, handleError('Error getting all users'));
+
+ };
+
+ // private functions
+
+ function handleSuccess(res) {
+ return res.data;
+ }
+
+ function handleError(error) {
+ return function () {
+ return {success: false, message: error};
+ };
+ }
+
+ }])*/;

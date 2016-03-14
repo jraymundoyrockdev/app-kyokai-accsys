@@ -20,8 +20,8 @@ incomeService.controller('incomeServiceMonthListCtrl', function ($scope, $http, 
             headers: {'Authorization': 'Bearer ' + $scope.token}
         }).success(function (data, status) {
             $scope.services = data.IncomeServiceLists;
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode);
         })
     };
 

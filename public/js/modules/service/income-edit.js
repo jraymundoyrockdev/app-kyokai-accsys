@@ -46,8 +46,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
             headers: {'Authorization': 'Bearer ' + $scope.token}
         }).success(function (data, status) {
             $scope.members = data;
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode);
         })
     };
 
@@ -81,7 +81,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
             //clear fields
             $scope.clearFields();
 
-        }).error(function (data, status) {
+        }).error(function (data, statusCode) {
 
             if (status == 422) {
                 if (data.errors.hasOwnProperty('member_id')) {
@@ -91,7 +91,7 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
                 }
             }
 
-            toastBoxMsg.popUp(status, 'error');
+            toastBoxMsg.popUp('error', data, statusCode);
         });
 
     };
@@ -167,8 +167,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
 
                 swal("Deleted!", "", "success");
 
-            }).error(function (data, status) {
-                toastBoxMsg.popUp(status, 'error');
+            }).error(function (data, statusCode) {
+                toastBoxMsg.popUp('error', data, statusCode);
             });
         });
     };
@@ -245,8 +245,8 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
             headers: {'Authorization': 'Bearer ' + $scope.token}
         }).success(function (data, status) {
             toastr.success('Successfully Saved.', 'Aw yeah! :)');
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode);
         });
     };
 

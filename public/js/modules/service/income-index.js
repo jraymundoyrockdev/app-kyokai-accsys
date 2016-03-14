@@ -6,7 +6,8 @@ var incomeService = angular.module('incomeServiceTotals', ['commons'], function 
 incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, KyokaiHelpers, toastBoxMsg) {
 
     $scope.monthsTotal = {};
-    $scope.token = localStorage.getItem('userJWT');
+
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 
     $scope.init = function (yearToday) {
         $scope.getIncomeServicesTotals(yearToday);
@@ -15,13 +16,11 @@ incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, Kyo
     $scope.getIncomeServicesTotals = function (yearToday) {
 
         $http({
-            method: 'GET',
-            url: BASE + 'income-services/total/' + yearToday,
-            headers: {'Authorization': 'Bearer ' + $scope.token}
-        }).success(function (data, status) {
+            method: 'GET', url: BASE + 'income-services/total/' + yearToday,
+        }).success(function (data, statusCode) {
             $scope.monthsTotal = data;
-        }).error(function (data, status) {
-            toastBoxMsg.popUp(status, 'error');
+        }).error(function (data, statusCode) {
+            toastBoxMsg.popUp('error', data, statusCode);
         })
     };
 
