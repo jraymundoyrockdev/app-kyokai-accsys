@@ -5,12 +5,12 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Kyokai Accounting System</span>
+                <span class="m-r-sm text-muted welcome-message">Kyokai Accouting System</span>
             </li>
 
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-wrench"></i> Acounting Settings
+                    <i class="fa fa-wrench"></i> Income Settings
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
@@ -24,13 +24,12 @@
                             </a>
                         </div>
                     </li>
-                    <li class="divider"></li>
                 </ul>
             </li>
 
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-wrench"></i> Settings
+                    <i class="fa fa-wrench"></i> Admin Settings
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
@@ -46,7 +45,7 @@
                             <a href="/admin/roles" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
-                                    <strong>Users Roles</strong> <br>
+                                    <strong>User Roles</strong> <br>
                                     <small class="text-muted">Shows All types of Roles in the system</small>
                                 </div>
                             </a>
@@ -85,7 +84,6 @@
 
                         </div>
                     </li>
-                    <li class="divider"></li>
                 </ul>
             </li>
             <li>

@@ -17,8 +17,8 @@ incomeService.controller('IncomeServiceTotalsCtrl', function ($scope, $http, Kyo
 
         $http({
             method: 'GET', url: BASE + 'income-services/total/' + yearToday,
-        }).success(function (data, statusCode) {
-            $scope.monthsTotal = data;
+        }).success(function (result, statusCode) {
+            $scope.monthsTotal = result;
         }).error(function (data, statusCode) {
             toastBoxMsg.popUp('error', data, statusCode);
         })

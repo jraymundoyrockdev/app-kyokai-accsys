@@ -12,5 +12,5 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/login/login.js') !!}
+    {!! Html::script('js/controllers/login.js') !!}
 @endsection

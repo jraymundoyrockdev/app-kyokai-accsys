@@ -66,5 +66,5 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/service/income-create.js') !!}
+    {!! Html::script('js/controllers/service/income-create.js') !!}
 @endsection
