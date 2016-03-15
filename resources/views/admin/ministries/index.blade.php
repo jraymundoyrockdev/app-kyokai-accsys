@@ -2,13 +2,14 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Ministries'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMinistries">
+        <div class="row" ng-controller="AdminMinistriesCtrl" ng-init="getMinistries()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Ministry List</h5>
-                        {!! link_to_route('admin.ministry.create', 'Create New Ministry', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <h5>Ministries</h5>
+                        <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/ministry/create">Create New
+                            Ministry</a>
                     </div>
                     <div class="ibox-content">
 
@@ -17,27 +18,29 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Action</th>
+                                <th class="table100 text-center">Action</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @forelse ($ministries as $m)
-                                <tr>
-                                    <td>{!! $m->name !!}</td>
-                                    <td>{!! $m->description !!}</td>
-                                    <td>
-                                        <a href="{!! route('admin.ministry.edit', [$m->id]) !!}"
-                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>No Data Found</tr>
-                            @endforelse
+                            <tr ng-repeat="ministry in ministries">
+                                <td><%ministry.name%></td>
+                                <td><%ministry.description%></td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary btn-xs" ng-href="/admin/ministry/<%ministry.id%>/edit">Edit</a>
+                                </td>
+                            </tr>
+                            <tr ng-hide="ministries.length">
+                                <td colspan="2">No Data Found</td>
+                            </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('module-scripts')
+    {!! Html::script('js/modules/admin/ministries/index.js') !!}
 @endsection

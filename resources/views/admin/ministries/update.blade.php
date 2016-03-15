@@ -1,37 +1,57 @@
 @extends('layouts.master')
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Ministries'])@endsection
 @section('main-body')
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMinistries">
+        <div class="row" ng-controller="AdminMinistriesCtrl" ng-init="getMinistry({!! $id !!})">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Update Ministry</h5>
                     </div>
                     <div class="ibox-content">
-                        {!! Form::open([
-                            'route' => ['admin.ministry.update', $ministry->id],
-                            'class' => 'form-horizontal',
-                            'method' => 'PUT']) !!}
-                        <div class="form-group">
-                            {!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) !!}
-                            <div class="col-sm-5">{!! Form::text('name', $ministry->name, ['class' => 'form-control']) !!}</div>
+                        <form class="form-horizontal" ng-submit="update({!! $id !!})">
 
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) !!}
-                            <div class="col-sm-5">{!! Form::textarea('description', $ministry->description, ['class' => 'form-control']) !!}</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                {!! link_to_route('admin.ministry.index', 'Cancel', [], ['class' => 'btn btn-white'])!!}
-                                {!! Form::submit('Save',['class' => 'btn btn-primary']) !!}
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="name">Name</label>
+                                <div class="col-sm-5">
+                                    <input type="text" id="name" name="name"
+                                           class="form-control <%validationError['name'] ? 'error' : ''%>"
+                                           ng-model="ministryModel.name">
+                                    <label class="error" for="service_id"
+                                           ng-show="validationError['name']"><%validationError['name']%></label>
+                                </div>
                             </div>
-                        </div>
-                        {!! Form::close() !!}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="description">Description</label>
+                                <div class="col-sm-5">
+                                        <textarea id="description" name="description"
+                                                  class="form-control <%validationError['description'] ? 'error' : ''%>"
+                                                  ng-model="ministryModel.description">
+                                        </textarea>
+                                    <label class="error" for="description"
+                                           ng-show="validationError['description']"><%validationError['description']%>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <a class="btn btn-white" ng-href="/admin/ministry">Cancel</a>
+                                    <input type="submit"
+                                           class="btn btn-primary"
+                                           value="Save">
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('module-scripts')
+    {!! Html::script('js/modules/admin/ministries/index.js') !!}
 @endsection

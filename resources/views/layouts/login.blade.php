@@ -16,9 +16,9 @@
     <div class="middle-box text-center loginscreen animated fadeInDown" ng-controller="kyokaiLoginCtrl">
         <div>
             <div>
-                <h1 class="logo-name">KA</h1>
+                <h1 class="logo-name">Kyokai Accsys</h1>
             </div>
-            <h3>Welcome to Kyokai AccSys</h3>
+            <h3>GFCCM</small></h3>
 
             <p>Accounting System</p>
 
@@ -28,7 +28,7 @@
                 </div>
             @show
             <p class="m-t">
-                <small> 2015</small>
+                <small>Golden Faith Center Christian Ministries</small>
             </p>
         </div>
     </div>

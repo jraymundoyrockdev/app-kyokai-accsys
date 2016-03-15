@@ -4,7 +4,6 @@
 
 .logo-name {
     font-size: 35px;
-    letter-spacing: 40px;
     color: #a7b1c2;
 }
 
@@ -16,12 +15,6 @@ li.active {
 
 .no-left-border {
     border-left: 0 !important;
-}
-
-.logo-name {
-    font-size: 35px;
-    letter-spacing: 40px;
-    color: #a7b1c2;
 }
 
 li.active {

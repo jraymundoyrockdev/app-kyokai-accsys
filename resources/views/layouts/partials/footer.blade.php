@@ -1,8 +1,8 @@
 <div class="footer">
     <div class="pull-right">
-        10GB of <strong>250GB</strong> Free.
+        <strong>@yroCkDev</strong>
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2015
+        <strong>Golden Faith Center Christian Ministries</strong>
     </div>
 </div>
