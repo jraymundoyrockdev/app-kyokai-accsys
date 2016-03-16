@@ -76,5 +76,5 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/service/income-month-list.js') !!}
+    {!! Html::script('js/controllers/service/income-month-list.js') !!}
 @endsection

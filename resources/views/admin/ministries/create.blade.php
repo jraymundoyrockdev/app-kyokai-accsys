@@ -10,7 +10,8 @@
                         <h5>Create New Ministry</h5>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal" ng-submit="save()">
+
+                        <form class="form-horizontal" ng-submit="store()">
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="name">Name</label>
@@ -53,5 +54,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/ministries/index.js') !!}
+    {!! Html::script('js/services/admin/MinistryService.js') !!}
+    {!! Html::script('js/controllers/admin/ministries.js') !!}
 @endsection

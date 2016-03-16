@@ -97,5 +97,5 @@
     <script type="text/javascript">
         var incomeServiceId = parseInt({!!$id!!});
     </script>
-    {!! Html::script('js/modules/service/income-edit.js') !!}
+    {!! Html::script('js/controllers/service/income-edit.js') !!}
 @endsection

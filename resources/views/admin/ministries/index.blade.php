@@ -3,7 +3,7 @@
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMinistries">
-        <div class="row" ng-controller="AdminMinistriesCtrl" ng-init="getMinistries()">
+        <div class="row" ng-controller="AdminMinistriesCtrl" ng-init="getAll()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -42,5 +42,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/ministries/index.js') !!}
+    {!! Html::script('js/services/admin/MinistryService.js') !!}
+    {!! Html::script('js/controllers/admin/ministries.js') !!}
 @endsection

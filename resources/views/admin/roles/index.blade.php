@@ -36,5 +36,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/roles/index.js') !!}
+    {!! Html::script('js/services/admin/RoleService.js') !!}
+    {!! Html::script('js/controllers/admin/roles.js') !!}
 @endsection
