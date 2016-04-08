@@ -1,50 +1,50 @@
-var adminSettingMinistries = angular.module('AdminMinistries', ['commons', 'ministryRepository'], function ($interpolateProvider) {
+var adminSettingDenominations = angular.module('AdminDenominations', ['commons', 'denominationRepository'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-adminSettingMinistries.controller('AdminMinistriesCtrl', function ($scope,
+adminSettingDenominations.controller('AdminDenominationsCtrl', function ($scope,
                                                                    $http,
                                                                    toastBoxMsg,
                                                                    ValidatorErrorService,
-                                                                   MinistryService) {
+                                                                   DenominationService) {
 
-    $scope.ministries = {};
-    $scope.ministryModel = {};
+    $scope.denominations = {};
+    $scope.denominationModel = {};
     $scope.validationError = [];
 
     $scope.getAll = function () {
-        MinistryService.getAll().then(
+        DenominationService.getAll().then(
             (res) => {
-                $scope.ministries = res.data.Ministries;
+                $scope.denominations = res.data.Denominations;
             },
             handleErrors)
     };
 
     $scope.getOne = function (id) {
-        MinistryService.getById(id).then(
+        DenominationService.getById(id).then(
             (res) => {
-                $scope.ministryModel = res.data.Ministry.shift();
+                $scope.denominationModel = res.data.Denomination.shift();
             },
             handleErrors)
     };
 
     $scope.store = function () {
-        MinistryService.insert($scope.ministryModel).then(
+        DenominationService.insert($scope.denominationModel).then(
             returnToIndex,
             handleErrors
         );
     };
 
     $scope.update = function (id) {
-        MinistryService.update(id, $scope.ministryModel).then(
+        DenominationService.update(id, $scope.denominationModel).then(
             returnToIndex,
             handleErrors
         );
     };
 
     function returnToIndex() {
-        window.location.href = '/admin/ministry';
+        window.location.href = '/admin/denominations';
     }
 
     function handleErrors(res) {

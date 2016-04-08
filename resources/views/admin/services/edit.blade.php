@@ -2,18 +2,16 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
 @section('main-body')
 
-    <div ng-app="adminServicesUpdate">
-        <div class="wrapper wrapper-content animated fadeInRight" ng-controller="adminServicesUpdateCtrl"
-             ng-init="init('{!! Session::get("userToken")!!}',{!! $id !!})">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Update Service</h5>
-                        </div>
-                        <div class="ibox-content">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminServices">
+        <div class="row" ng-controller="AdminServicesCtrl" ng-init="getOne({!! $id !!})">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Update Service</h5>
+                    </div>
+                    <div class="ibox-content">
 
-                            {!! Form::open(['class' => 'form-horizontal']) !!}
+                        <form class="form-horizontal" ng-submit="update({!! $id !!})">
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="name">Name</label>
@@ -72,26 +70,27 @@
                                            ng-show="validationError['description']"><%validationError['description']%></label>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    {!! link_to_route('admin.services.index', 'Cancel', [], ['class' => 'btn btn-white'])!!}
-                                    <input type="button"
-                                           ng-click="save()"
+                                    <a class="btn btn-white" ng-href="/admin/services">Cancel</a>
+                                    <input type="submit"
                                            class="btn btn-primary"
                                            value="Save">
                                 </div>
-
-                                {!! Form::close() !!}
                             </div>
 
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/services/update.js') !!}
+    {!! Html::script('js/services/admin/ServiceService.js') !!}
+    {!! Html::script('js/controllers/admin/services.js') !!}
 @endsection

@@ -27,6 +27,7 @@
                             <tr ng-hide="roles.length">
                                 <td colspan="2">No Data Found</td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

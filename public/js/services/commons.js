@@ -36,6 +36,7 @@ angular.module('commons', [])
     .service('toastBoxMsg', [function () {
 
         var statusCodes = {
+            '200': 'Success',
             '401': 'Unauthorized',
             '422': 'Validation Error',
             '500': 'Server Error'

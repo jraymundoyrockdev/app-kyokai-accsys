@@ -5,14 +5,17 @@
     <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMinistries">
         <div class="row" ng-controller="AdminMinistriesCtrl" ng-init="getAll()">
             <div class="col-lg-12">
+
                 <div class="ibox float-e-margins">
+
                     <div class="ibox-title">
                         <h5>Ministries</h5>
-                        <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/ministry/create">Create New
-                            Ministry</a>
+                        <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/ministry/create">
+                            Create New Ministry
+                        </a>
                     </div>
-                    <div class="ibox-content">
 
+                    <div class="ibox-content">
                         <table class="table table-striped table-bordered table-hover dataTablisizer">
                             <thead>
                             <tr>
@@ -33,9 +36,12 @@
                             <tr ng-hide="ministries.length">
                                 <td colspan="2">No Data Found</td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>

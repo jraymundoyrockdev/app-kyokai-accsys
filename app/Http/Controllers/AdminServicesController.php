@@ -2,7 +2,6 @@
 
 namespace KyokaiAccSys\Http\Controllers;
 
-use Illuminate\Http\Request;
 use KyokaiAccSys\Http\Requests;
 
 class AdminServicesController extends BaseController
@@ -14,9 +13,7 @@ class AdminServicesController extends BaseController
      */
     public function index()
     {
-        $result = $this->apiClient->call('GET', 'services');
-
-        return view('admin.services.index', ['services' => $result->Services]);
+        return view('admin.services.index');
     }
 
     /**
@@ -30,25 +27,6 @@ class AdminServicesController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        $service = $this->apiClient->call('POST', 'services', $request->all());
-
-        if (!empty($service->errors)) {
-            $errorResponse = $this->errorResponseSetter->set($service->errors, $request->all());
-
-            return redirect()->route('admin.services.create')->with($errorResponse);
-        }
-
-        return redirect()->route('admin.services.index');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -57,25 +35,5 @@ class AdminServicesController extends BaseController
     public function edit($id)
     {
         return view('admin.services.edit', ['id' => $id]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $service = $this->apiClient->call('PUT', 'services/' . $id, $request->all());
-
-        if (!empty($service->errors)) {
-            $errorResponse = $this->errorResponseSetter->set($service->errors, $request->all());
-
-            return redirect()->route('admin.services.update', [$id . '/edit'])->with($errorResponse);
-        }
-
-        return redirect()->route('admin.services.index');
     }
 }

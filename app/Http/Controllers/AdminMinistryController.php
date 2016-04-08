@@ -34,7 +34,7 @@ class AdminMinistryController extends BaseController
      */
     public function edit($id)
     {
-        return view('admin.ministries.update', ['id' => $id]);
+        return view('admin.ministries.edit', ['id' => $id]);
     }
 
 }

@@ -14,9 +14,7 @@ class AdminFundsController extends BaseController
      */
     public function index()
     {
-        $fund = $this->apiClient->call('GET', 'funds');
-
-        return view('admin.funds.index', ['funds' => $fund->Funds]);
+        return view('admin.funds.index');
     }
 
     /**
@@ -30,25 +28,6 @@ class AdminFundsController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        $fund = $this->apiClient->call('POST', 'funds', $request->all());
-
-        if (!empty($fund->errors)) {
-            $errorResponse = $this->errorResponseSetter->set($fund->errors, $request->all());
-
-            return redirect()->route('admin.funds.create')->with($errorResponse);
-        }
-
-        return redirect()->route('admin.funds.index');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -56,29 +35,7 @@ class AdminFundsController extends BaseController
      */
     public function edit($id)
     {
-        $fund = $this->apiClient->call('GET', 'funds/' . $id);
-
-        return view('admin.funds.edit', ['fund' => reset($fund->Fund)]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $fund = $this->apiClient->call('PUT', 'funds/' . $id, $request->all());
-
-        if (!empty($fund->errors)) {
-            $errorResponse = $this->errorResponseSetter->set($fund->errors, $request->all());
-
-            return redirect()->route('admin.funds.update', [$id . '/edit'])->with($errorResponse);
-        }
-
-        return redirect()->route('admin.funds.index');
+        return view('admin.funds.edit', ['id' => $id]);
     }
 
     /**
@@ -89,23 +46,19 @@ class AdminFundsController extends BaseController
      */
     public function showItems($id)
     {
-        $fund = $this->apiClient->call('GET', 'funds/' . $id);
-
-        return view('admin.fund-items.index', ['fund' => reset($fund->Fund)]);
+        return view('admin.fund-items.index', ['id' => $id]);
     }
 
     /**
      * Show item of a Fund
      *
-     * @param int $id
      * @param int $fundId
-     * @return \Illuminate\View\View
+     * @param int %id
+     * @return mixed
      */
-    public function showItem($id, $fundId)
+    public function showItem($fundId, $id)
     {
-        $item = $this->apiClient->call('GET', 'fund-items/' . $fundId);
-
-        return view('admin.fund-items.edit', ['id' => $id, 'item' => reset($item->FundItem)]);
+        return view('admin.fund-items.edit', ['id' => $id]);
     }
 
     /**

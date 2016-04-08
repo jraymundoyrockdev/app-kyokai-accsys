@@ -2,8 +2,8 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Users Account'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminUsers">
+        <div class="row" ng-controller="AdminUsersCtrl" ng-init="getAll()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -18,41 +18,47 @@
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Ministry</th>
-                                <th>Action</th>
+                                <th>Account Status</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @forelse ($users as $user)
-                                <tr>
-                                    <td>{!! $user->username !!}</td>
-                                    <td>{!! $user->member->firstname . '&nbsp;' . $user->member->lastname !!}</td>
-                                    <td>
-                                        @forelse ($user->user_role as $r)
-                                            {!! $r->name !!}
-                                        @empty
-                                        @endforelse
-                                    </td>
-                                    <td>@forelse ($user->member->ministry as $member)
-                                            {!! $member->name !!}
-                                        @empty
-                                        @endforelse</td>
-                                    <td>
-                                        <input id="<?= $user->id ?>"
-                                               class="user-switch bootstrap-switch"
-                                               data-switch-get="<?= $user->status ?>"
-                                               data-switch-value="0"
-                                               data-on-text="active"
-                                               data-off-text="inactive"
-                                               type="checkbox" <?= ($user->status == 'active') ? 'checked' : '' ?>
-                                               data-size="mini">
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5">No Data Found</td>
-                                </tr>
-                            @endforelse
+
+                            <tr ng-repeat="user in users">
+                                <td><%user.username%></td>
+                                <td><%user.member.fullname%></td>
+                                <td>
+                                    <span ng-repeat="role in user.user_role">
+                                        <%role.name%>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span ng-repeat="ministry in user.member.ministry">
+                                        <%ministry.name%>
+                                    </span>
+                                </td>
+                                <td>
+
+                                    <div class="switch">
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" ng-checked="isActive(user.status)"
+                                                   ng-model="userChecked[user.status]"
+                                                   ng-click="changeUserState(user.id, userChecked)"
+                                                   class="onoffswitch-checkbox"
+                                                   id="status">
+                                            <label class="onoffswitch-label" for="status">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr ng-hide="users.length">
+                                <td colspan="5">No Data Found</td>
+                            </tr>
+
                         </table>
                     </div>
                 </div>
@@ -63,5 +69,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/user.js') !!}
+    {!! Html::script('js/services/admin/UserService.js') !!}
+    {!! Html::script('js/controllers/admin/users.js') !!}
 @endsection

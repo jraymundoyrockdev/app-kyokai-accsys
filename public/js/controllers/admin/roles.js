@@ -1,4 +1,4 @@
-var adminSettingsRoles = angular.module('AdminRoles', ['commons', 'repositoryService'], function ($interpolateProvider) {
+var adminSettingsRoles = angular.module('AdminRoles', ['commons', 'roleRepository'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });

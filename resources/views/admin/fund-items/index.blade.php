@@ -2,17 +2,15 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Fund Items'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminFundItems">
+        <div class="row" ng-controller="AdminItemFundsCtrl" ng-init="getFund({!! $id !!})">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Fund Items List - {!! $fund->name !!}</h5>
-                        {!! link_to_route(
-                            'admin-fund-item-create',
-                            'Create New Item',
-                            ['id'=>$fund->id],
-                            ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <h5>Fund Items List - <% fundModel.name %></h5>
+                        <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/funds/{!! $id !!}/items/create">
+                            Create New Item
+                        </a>
                     </div>
                     <div class="ibox-content">
 
@@ -24,40 +22,32 @@
                                 <th class="table100 text-center">Action</th>
                             </tr>
                             </thead>
-                            @forelse($fund->item as $item)
-                                <tr>
-                                    <td>{!! $item->name !!}</td>
-                                    <td><input name="{!! $item->name !!}"
-                                               id="{!! $item->id !!}"
-                                               class="fund-item-switch bootstrap-switch"
-                                               data-switch-get="{!! $item->status !!}"
-                                               data-switch-value="0"
-                                               data-on-text="active"
-                                               data-off-text="inactive"
-                                               type="checkbox" {!! ($item->status == 'active') ? 'checked' : '' !!}
-                                               data-size="mini"></td>
-                                    <td class="text-center">
-                                        <a href="{!! route('admin-fund-item', [$item->fund_id, $item->id]) !!}"
-                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    </td>
-                                </tr>
-
-                            @empty
-                                <tr>
-                                    <td colspan="3">No Data Found</td>
-                                </tr>
-                            @endforelse
 
                             <tbody>
+                            <tr ng-repeat="item in fundModel.item">
+                                <td><%item.name%></td>
+                                <td class="text-center"><%item.status%></td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary btn-xs"
+                                       ng-href="/admin/funds/<%item.fund_id%>/items/<%item.id%>/edit">Edit</a>
+                                </td>
+                            </tr>
 
+                            <tr ng-hide="fundModel.item.length">
+                                <td colspan="2">No Data Found</td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/modules/admin/fund-items.js') !!}
+    {!! Html::script('js/services/admin/FundService.js') !!}
+    {!! Html::script('js/services/admin/FundItemService.js') !!}
+    {!! Html::script('js/controllers/admin/fund-items.js') !!}
 @endsection

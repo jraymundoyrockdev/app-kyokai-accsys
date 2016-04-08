@@ -2,14 +2,19 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminServices">
+        <div class="row" ng-controller="AdminServicesCtrl" ng-init="getAll()">
             <div class="col-lg-12">
+
                 <div class="ibox float-e-margins">
+
                     <div class="ibox-title">
-                        <h5>Services List</h5>
-                        {!! link_to_route('admin.services.create', 'Create New Service', [], ['class' => 'btn btn-primary btn-xs pull-right'])!!}
+                        <h5>Services</h5>
+                        <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/services/create">
+                            Create New Service
+                        </a>
                     </div>
+
                     <div class="ibox-content">
 
                         <table class="table table-striped table-bordered table-hover dataTablisizer">
@@ -19,29 +24,36 @@
                                 <th>Description</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
-                                <th>Action</th>
+                                <th class="table100 text-center">Action</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @forelse ($services as $s)
-                                <tr>
-                                    <td>{!! $s->name !!}</td>
-                                    <td>{!! $s->description !!}</td>
-                                    <td>{!! $s->start_time !!}</td>
-                                    <td>{!! $s->end_time !!}</td>
-                                    <td>
-                                        <a href="{!! route('admin.services.edit', [$s->id]) !!}"
-                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    </td>
-                                </tr>
-                            @empty
+                            <tr ng-repeat="service in services">
+                                <td><%service.name%></td>
+                                <td><%service.description%></td>
+                                <td><%service.start_time%></td>
+                                <td><%service.end_time%></td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary btn-xs"
+                                       ng-href="/admin/services/<%service.id%>/edit">Edit</a>
+                                </td>
+                            </tr>
 
-                            @endforelse
+                            <tr ng-hide="services.length">
+                                <td colspan="2">No Data Found</td>
+                            </tr>
+                            </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('module-scripts')
+    {!! Html::script('js/services/admin/ServiceService.js') !!}
+    {!! Html::script('js/controllers/admin/services.js') !!}
 @endsection
