@@ -43,8 +43,7 @@
                                 <input type="text" id="service_date" name="service_date" readonly=""
                                        class="incomeServiceDateField form-control <%validationError['service_date'] ? 'error' : ''%>"
                                        ng-model="incomeServiceModel.service_date">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
 

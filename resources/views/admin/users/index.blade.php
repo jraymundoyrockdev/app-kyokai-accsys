@@ -38,15 +38,14 @@
                                     </span>
                                 </td>
                                 <td>
-
                                     <div class="switch">
                                         <div class="onoffswitch">
                                             <input type="checkbox" ng-checked="isActive(user.status)"
-                                                   ng-model="userChecked[user.status]"
-                                                   ng-click="changeUserState(user.id, userChecked)"
+                                                   ng-model="userChecked[user.id]"
+                                                   ng-click="changeUserState(user.id, userChecked[user.id])"
                                                    class="onoffswitch-checkbox"
-                                                   id="status">
-                                            <label class="onoffswitch-label" for="status">
+                                                   id="<%user.id%>_status">
+                                            <label class="onoffswitch-label" for="<%user.id%>_status">
                                                 <span class="onoffswitch-inner"></span>
                                                 <span class="onoffswitch-switch"></span>
                                             </label>
@@ -58,6 +57,7 @@
                             <tr ng-hide="users.length">
                                 <td colspan="5">No Data Found</td>
                             </tr>
+                            </tbody>
 
                         </table>
                     </div>

@@ -7,17 +7,20 @@ adminSettingUsers.controller('AdminUsersCtrl', function ($scope,
                                                          toastBoxMsg,
                                                          ValidatorErrorService,
                                                          UserService) {
-
-    $scope.userChecked = {};
+    $scope.userChecked = [];
     $scope.users = {};
     $scope.userModel = {};
     $scope.validationError = [];
 
     $scope.getAll = function () {
+        
         UserService.getAll().then(
             (res) => {
                 $scope.users = res.data.Users;
 
+                angular.forEach($scope.users, function (value, key) {
+                    $scope.userChecked.push(value.id + ':' + value.status);
+                });
             },
             handleErrors)
     };
@@ -28,7 +31,7 @@ adminSettingUsers.controller('AdminUsersCtrl', function ($scope,
 
     $scope.changeUserState = function (userId, state) {
 
-        UserService.changeState(userId, state.inactive).then(
+        UserService.changeState(userId, state).then(
             (res) => {
                 toastBoxMsg.popUp('success', res.data, res.status, 'User state changed');
             },
@@ -39,6 +42,4 @@ adminSettingUsers.controller('AdminUsersCtrl', function ($scope,
     function handleErrors(res) {
         toastBoxMsg.popUp('error', res.data, res.status);
     }
-
-})
-;
+});

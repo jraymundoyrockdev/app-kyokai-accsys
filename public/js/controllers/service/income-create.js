@@ -50,10 +50,10 @@ incomeService.controller('incomeServiceCreateCtrl', function ($scope, $http, Val
 
         angular.element('.form_datetime').datepicker({
             keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
             autoclose: true,
             format: 'yyyy-mm-dd',
+            clearBtn: true,
+            endDate: "0d"
         });
     };
 

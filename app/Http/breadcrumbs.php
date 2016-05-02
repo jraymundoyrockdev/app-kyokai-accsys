@@ -23,6 +23,25 @@ Breadcrumbs::register('income-services.month-list', function ($breadcrumbs) {
 
 
 /**
+ * Ministry Transactions
+ */
+
+Breadcrumbs::register('ministry-transactions.index', function ($breadcrumbs) {
+    $breadcrumbs->push('Ministry Transactions', route('ministry-transactions.index'));
+});
+
+Breadcrumbs::register('ministry-transactions.show', function ($breadcrumbs) {
+    $breadcrumbs->parent('ministry-transactions.index');
+    $breadcrumbs->push('Ministry', route('ministry-transactions.edit'));
+});
+
+Breadcrumbs::register('ministry-transactions.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('ministry-transactions.show');
+    $breadcrumbs->push('Create', route('ministry-transactions.create'));
+});
+
+
+/**
  * ADMIN
  */
 // Admin Denominations

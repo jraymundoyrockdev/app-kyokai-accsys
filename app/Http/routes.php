@@ -27,5 +27,10 @@ Route::get('/income-services/month-list/{year}/{month}', [
     'uses' => 'IncomeServicesController@monthServiceList'
 ]);
 Route::resource('income-services', 'IncomeServicesController');
+Route::get('ministry-transactions/{ministryId}/create', [
+    'as' => 'ministry-transactions.create',
+    'uses' => 'MinistryTransactionsController@createTransaction'
+]);
+Route::resource('ministry-transactions', 'MinistryTransactionsController');
 
 

@@ -43,6 +43,10 @@
             </li>
 
             <li>
+                <a href="{{url('ministry-transactions')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Ministry Transactions</span>  </a>
+            </li>
+
+            <li>
                 <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span
                             class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
