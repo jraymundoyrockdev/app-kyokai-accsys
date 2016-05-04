@@ -13,7 +13,7 @@ adminSettingUsers.controller('AdminUsersCtrl', function ($scope,
     $scope.validationError = [];
 
     $scope.getAll = function () {
-        
+
         UserService.getAll().then(
             (res) => {
                 $scope.users = res.data.Users;
