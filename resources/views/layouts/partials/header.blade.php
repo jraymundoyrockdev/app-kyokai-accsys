@@ -10,30 +10,20 @@
 
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-wrench"></i> Income Settings
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <div class="dropdown-messages-box">
-                            <a href="/admin/funds" class="pull-left">
-                                <div class="media-body">
-                                    <i class="fa fa-users fa-lg"></i>
-                                    <strong>Service Funds</strong> <br>
-                                    <small class="text-muted">Manage funds on a service</small>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-wrench"></i> Admin Settings
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
                         <div class="dropdown-messages-box">
+
+                            <a href="/admin/members" class="pull-left">
+                                <div class="media-body">
+                                    <i class="fa fa-users fa-lg"></i>
+                                    <strong>Members</strong> <br>
+                                    <small class="text-muted">Manage church members</small>
+                                </div>
+                            </a>
+
                             <a href="/admin/users" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
@@ -74,11 +64,11 @@
                                 </div>
                             </a>
 
-                            <a href="/admin/members" class="pull-left">
+                            <a href="/admin/funds" class="pull-left">
                                 <div class="media-body">
                                     <i class="fa fa-users fa-lg"></i>
-                                    <strong>Members</strong> <br>
-                                    <small class="text-muted">Manage church members</small>
+                                    <strong>Service Funds</strong> <br>
+                                    <small class="text-muted">Manage funds on a service</small>
                                 </div>
                             </a>
 
