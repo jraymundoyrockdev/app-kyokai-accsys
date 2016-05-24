@@ -1,44 +1,44 @@
-$(document).ready(function () {
-
-    $('.bootstrap-switch').bootstrapSwitch();
-
-    $('#login').click(function () {
-
-        $.post("http://api-gfccm-systems.com:8080/api/api-token-auth",
-            {
-                username: $('#login-username').val(),
-                password: $('#login-password').val()
-            }, function (data) {
-                localStorage.setItem('userToken', data.token);
-            }).fail(function (data) {
-                console.log(data);
-            });
-    });
-
-
-    $('#test').click(function () {
-
-        $.ajax({
-            url: 'http://kyokai.accsys.dev/api/users',
-            beforeSend: function (request) {
-                request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('userToken'));
-            },
-            type: 'GET',
-            success: function (data) {
-                console.log(data);
-            },
-            error: function () {
-
-            }
-        });
-    });
-
-    // Add slimscroll to element
-    $('.scroll_content').slimscroll({
-        height: '520px'
-    });
-
-    $('.month-box').each(function () {
-        animationHover(this, 'pulse');
-    });
+var kyokaiNavigation = angular.module('kyokaiNavigation', [], function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
 });
+
+kyokaiNavigation.controller('kyokaiNavigationCtrl', function ($scope, $http) {
+
+    $scope.moduleList = {};
+
+    $scope.setNavigation = function () {
+
+        var modules = JSON.parse(localStorage.getItem('modules'));
+
+        var moduleList = [];
+
+        for (var prop in modules) {
+            moduleList.push(modules[prop]);
+        }
+
+        $scope.moduleList = modules;
+    };
+});
+
+kyokaiNavigation.filter('isEmpty', [function () {
+    return function (object) {
+        return angular.equals({}, object);
+    }
+}])
+
+
+var kyokaiHeader = angular.module('kyokaiHeader', [], function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+});
+
+kyokaiHeader.controller('kyokaiHeaderCtrl', function ($scope, $http) {
+    $scope.isKyokaiAccountant = false;
+
+    $scope.setHeader = function(){
+        $scope.isKyokaiAccountant = (localStorage.getItem('isKyokaiAccountant') == 'true');
+    }
+});
+
+angular.bootstrap(document.getElementById("headerModule"), ['kyokaiHeader']);

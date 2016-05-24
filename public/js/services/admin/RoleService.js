@@ -1,4 +1,4 @@
-angular.module('roleRepository', []).service('RoleService', ['$http', function ($http) {
+angular.module('RoleRepository', []).service('RoleService', ['$http', function ($http) {
 
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 

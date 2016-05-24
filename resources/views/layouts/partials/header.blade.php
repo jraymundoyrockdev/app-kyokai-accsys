@@ -1,5 +1,6 @@
-<div class="row border-bottom">
-    <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+<div class="row border-bottom" ng-app="kyokaiHeader" id="headerModule" ng-controller="kyokaiHeaderCtrl"
+     ng-init="setHeader()">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
@@ -8,7 +9,7 @@
                 <span class="m-r-sm text-muted welcome-message">Kyokai Accouting System</span>
             </li>
 
-            <li class="dropdown">
+            <li class="dropdown" ng-if="isKyokaiAccountant">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-wrench"></i> Admin Settings
                 </a>

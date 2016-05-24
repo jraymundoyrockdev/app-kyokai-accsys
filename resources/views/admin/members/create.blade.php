@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Members'])@endsection
 @section('main-body')
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMembers">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminMembers" id="mainModule">
         <div class="row" ng-controller="AdminMembersCtrl" ng-init="getAllMinistry()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">

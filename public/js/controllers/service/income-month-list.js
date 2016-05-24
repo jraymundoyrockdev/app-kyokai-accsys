@@ -1,28 +1,32 @@
-var incomeService = angular.module('incomeServiceMonthList', ['commons'], function ($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-});
+var incomeService = angular.module(
+    'incomeServiceMonthList',
+    ['commons', 'IncomeServiceRepository'],
+    function ($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    }
+);
 
-incomeService.controller('incomeServiceMonthListCtrl', function ($scope, $http, toastBoxMsg) {
+incomeService.controller(
+    'incomeServiceMonthListCtrl', 
+    function ($scope, $http, toastBoxMsg, ValidatorErrorService, IncomeServiceService) {
 
-    $scope.services = {};
-    $scope.token = localStorage.getItem('userJWT');
+        $scope.services = {};
 
-    $scope.init = function (year, month) {
-        $scope.getAllIncomeServices(year, month);
-    };
+        $scope.init = function (year, month) {
+            IncomeServiceService.getAllIncomeServices(year, month).then(
+                (res) => {
+                    $scope.services = res.data.IncomeServiceLists;
+                },
+                handleErrors
+            )
+        };
 
-    $scope.getAllIncomeServices = function (year, month) {
+        function handleErrors(res) {
+            $scope.validationError = ValidatorErrorService.mapErrors(res.data.errors);
+            toastBoxMsg.popUp('error', res.data, res.status);
+        }
+    }
+);
 
-        $http({
-            method: 'GET',
-            url: BASE + 'income-services/list/' + year + '/' + month,
-            headers: {'Authorization': 'Bearer ' + $scope.token}
-        }).success(function (data, status) {
-            $scope.services = data.IncomeServiceLists;
-        }).error(function (data, statusCode) {
-            toastBoxMsg.popUp('error', data, statusCode);
-        })
-    };
-
-});
+angular.bootstrap(document.getElementById("mainModule"), ['incomeServiceMonthList']);

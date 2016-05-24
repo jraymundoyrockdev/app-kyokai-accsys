@@ -71,28 +71,4 @@ angular.module('commons', [])
 
             return false;
         };
-    }])/*
- .service('IncomeServiceDashboardApp', ['$http', function ($http) {
-
- this.getTotalPerMonth = function (yearToday) {
-
- $http.defaults.headers.common['Authorization'] = 'Bearer         ' + localStorage.getItem('userJWT'); // jshint ignore:line
-
- return $http.get(BASE + 'income-services/total/' + yearToday).then(handleSuccess, handleError('Error getting all users'));
-
- };
-
- // private functions
-
- function handleSuccess(res) {
- return res.data;
- }
-
- function handleError(error) {
- return function () {
- return {success: false, message: error};
- };
- }
-
- }])*/;
-
+    }]);

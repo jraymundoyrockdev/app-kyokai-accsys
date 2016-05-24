@@ -2,8 +2,8 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs',['title' => 'Income'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight editIncomeService" ng-app="incomeService">
-        <div ng-controller="IncomeServiceCtrl" ng-init="init()">
+    <div class="wrapper wrapper-content animated fadeInRight editIncomeService" ng-app="incomeService" id="mainModule">
+        <div ng-controller="IncomeServiceCtrl" ng-init="init()" >
 
             @include('income.services.edit-partials.members-typehead-template')
 

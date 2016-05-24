@@ -273,3 +273,5 @@ incomeService.controller('IncomeServiceCtrl', function ($scope, $http, toastBoxM
     };
 
 });
+
+angular.bootstrap(document.getElementById("mainModule"), ['incomeService']);

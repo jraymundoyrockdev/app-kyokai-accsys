@@ -6,7 +6,7 @@
     {!! Html::style('css/vendor/bootstrap/bootstrap-datetimepicker.min.css') !!}
 @endsection
 
-<div class="wrapper wrapper-content animated fadeInRight" ng-app="incomeServiceCreate">
+<div class="wrapper wrapper-content animated fadeInRight" ng-app="incomeServiceCreate" id="mainModule">
     <div ng-controller="incomeServiceCreateCtrl" ng-init="init()">
         <div class="row">
             <div class="col-sm-12">
@@ -65,5 +65,7 @@
 @endsection
 
 @section('module-scripts')
+    {!! Html::script('js/services/admin/ServiceService.js') !!}
+    {!! Html::script('js/services/IncomeServiceService.js') !!}
     {!! Html::script('js/controllers/service/income-create.js') !!}
 @endsection

@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Services'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminServices">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminServices" id="mainModule">
         <div class="row" ng-controller="AdminServicesCtrl" ng-init="getAll()">
             <div class="col-lg-12">
 

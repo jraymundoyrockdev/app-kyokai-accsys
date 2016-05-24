@@ -2,8 +2,9 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Income Services'])@endsection
 @section('main-body')
 
-    <div ng-app="incomeServiceMonthList">
-        <div class="wrapper wrapper-content" ng-controller="incomeServiceMonthListCtrl"
+    <div ng-app="incomeServiceMonthList" id="mainModule">
+        <div class="wrapper wrapper-content"
+             ng-controller="incomeServiceMonthListCtrl"
              ng-init="init({!! $year !!}, {!! $month !!})">
             <div class="row">
                 <div class="col-lg-12">
@@ -76,5 +77,6 @@
 @endsection
 
 @section('module-scripts')
+    {!! Html::script('js/services/IncomeServiceService.js') !!}
     {!! Html::script('js/controllers/service/income-month-list.js') !!}
 @endsection

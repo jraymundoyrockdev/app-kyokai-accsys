@@ -1,4 +1,4 @@
-angular.module('ministryTransactionRepository', []).service('MinistryTransactionService', ['$http', function ($http) {
+angular.module('MinistryTransactionRepository', []).service('MinistryTransactionService', ['$http', function ($http) {
 
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 

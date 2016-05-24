@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Denominations'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminDenominations">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminDenominations" id="mainModule">
         <div class="row" ng-controller="AdminDenominationsCtrl">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">

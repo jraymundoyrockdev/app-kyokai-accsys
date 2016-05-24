@@ -3,7 +3,10 @@
 @section('main-body')
 
     <div ng-app="AdminServices">
-        <div class="wrapper wrapper-content animated fadeInRight" ng-controller="AdminServicesCtrl" ng-init="init()">
+        <div class="wrapper wrapper-content animated fadeInRight"
+             ng-controller="AdminServicesCtrl"
+             ng-init="init()"
+             id="mainModule">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">

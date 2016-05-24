@@ -1,4 +1,4 @@
-angular.module('serviceRepository', []).service('ServiceService', ['$http', function ($http) {
+angular.module('ServiceRepository', []).service('ServiceService', ['$http', function ($http) {
 
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 

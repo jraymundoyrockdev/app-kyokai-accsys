@@ -1,6 +1,6 @@
 var ministryTransactions = angular.module(
     'MinistryTransactions',
-    ['commons', 'ministryTransactionRepository'],
+    ['commons', 'MinistryTransactionRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
@@ -10,11 +10,7 @@ var ministryTransactions = angular.module(
 
 ministryTransactions.controller(
     'MinistryTransactionsCtrl',
-    function ($scope,
-              $http,
-              toastBoxMsg,
-              ValidatorErrorService,
-              MinistryTransactionService) {
+    function ($scope, $http, toastBoxMsg, ValidatorErrorService, MinistryTransactionService) {
 
         $scope.ministryTransactionModel = {};
         $scope.validationError = [];
@@ -67,10 +63,10 @@ ministryTransactions.controller(
         };
 
         function handleErrors(res) {
-            if (res.status == 422) {
-                $scope.validationError = ValidatorErrorService.mapErrors(res.data.errors);
-            }
-
+            $scope.validationError = ValidatorErrorService.mapErrors(res.data.errors);
             toastBoxMsg.popUp('error', res.data, res.status);
         }
-    });
+    }
+);
+
+angular.bootstrap(document.getElementById("mainModule"), ['MinistryTransactions']);

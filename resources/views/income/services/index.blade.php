@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Income Services'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="incomeServiceTotals">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="incomeServiceTotals" id="mainModule">
 
         <div class="row">
             <div class="col-lg-4"></div>
@@ -100,6 +100,7 @@
 @endsection
 
 @section('module-scripts')
+    {!! Html::script('js/services/IncomeServiceService.js') !!}
     {!! Html::script('js/controllers/service/income-index.js') !!}
 @endsection
 

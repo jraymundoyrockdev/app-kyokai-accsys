@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Denominations'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminDenominations">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminDenominations" id="mainModule">
         <div class="row" ng-controller="AdminDenominationsCtrl" ng-init="getAll()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -25,7 +25,7 @@
                             <tbody>
                             <tr ng-repeat="denomination in denominations">
                                 <td><%denomination.amount%></td>
-                                <td><%denomination.description%></td>
+                                <td><%denomination. description%></td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-xs"
                                        ng-href="/admin/denominations/<%denomination.id%>/edit">Edit</a>

@@ -1,4 +1,4 @@
-angular.module('fundRepository', []).service('FundService', ['$http', function ($http) {
+angular.module('FundRepository', []).service('FundService', ['$http', function ($http) {
 
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 

@@ -1,19 +1,15 @@
 var adminSettingFundItems = angular.module(
     'AdminFundItems',
-    ['commons', 'fundRepository', 'fundItemRepository'],
+    ['commons', 'FundRepository', 'FundItemRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
-    });
+    }
+);
 
 adminSettingFundItems.controller(
     'AdminItemFundsCtrl',
-    function ($scope,
-              $http,
-              toastBoxMsg,
-              ValidatorErrorService,
-              FundService,
-              FundItemService) {
+    function ($scope, $http, toastBoxMsg, ValidatorErrorService, FundService, FundItemService) {
 
         $scope.fundItems = {};
         $scope.fundModel = {};
@@ -61,10 +57,10 @@ adminSettingFundItems.controller(
         };
 
         function handleErrors(res) {
-            if (res.status == 422) {
-                $scope.validationError = ValidatorErrorService.mapErrors(res.data.errors);
-            }
-
+            $scope.validationError = ValidatorErrorService.mapErrors(res.data.errors);
             toastBoxMsg.popUp('error', res.data, res.status);
         }
-    });
+    }
+);
+
+angular.bootstrap(document.getElementById("mainModule"), ['AdminFundItems']);

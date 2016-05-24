@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Users Account'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminUsers">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminUsers" id="mainModule">
         <div class="row" ng-controller="AdminUsersCtrl" ng-init="getAll()">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">

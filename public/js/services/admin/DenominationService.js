@@ -1,4 +1,4 @@
-angular.module('denominationRepository', []).service('DenominationService', ['$http', function ($http) {
+angular.module('DenominationRepository', []).service('DenominationService', ['$http', function ($http) {
 
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 

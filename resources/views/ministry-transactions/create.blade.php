@@ -2,7 +2,7 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs', ['title' => 'Ministry Transactions'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight" ng-app="MinistryTransactions">
+    <div class="wrapper wrapper-content animated fadeInRight" ng-app="MinistryTransactions" id="mainModule">
         <div class="row" ng-controller="MinistryTransactionsCtrl" ng-init="initCreate({!! $ministryId !!})">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
