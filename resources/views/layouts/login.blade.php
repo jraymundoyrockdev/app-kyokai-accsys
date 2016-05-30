@@ -39,6 +39,7 @@
 
     {!! Html::script('js/libraries.js') !!}
     {!! Html::script('js/services/commons.js') !!}
+    <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 
     @section('module-scripts')@show
 

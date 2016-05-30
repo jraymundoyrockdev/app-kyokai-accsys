@@ -1,6 +1,6 @@
 var kyokaiLogin = angular.module(
     'kyokaiLogin',
-    ['commons', 'LoginRepository'],
+    ['commons', 'LoginRepository', 'angular-jwt'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
@@ -9,7 +9,7 @@ var kyokaiLogin = angular.module(
 
 kyokaiLogin.controller(
     'kyokaiLoginCtrl',
-    function ($scope, $http, toastBoxMsg, LoginService, ValidatorErrorService) {
+    function ($scope, $http, toastBoxMsg, LoginService, ValidatorErrorService, jwtHelper) {
 
         $scope.loginModel = {};
 
@@ -21,23 +21,25 @@ kyokaiLogin.controller(
         $scope.login = function () {
             LoginService.login($scope.loginModel).then(
                 (res) => {
-                    localStorage.setItem('userJWT', res.data.token);
-                    localStorage.setItem('modules', JSON.stringify(getModuleByUserRole(res.data.user_roles)));
-                    localStorage.setItem('isKyokaiAccountant', isKyokaiAccountant(res.data.user_roles));
-
+                    setLocalStorageData(res.data.token);
                     window.location.href = '/income-services';
                 },
                 handleErrors
             )
         };
 
+        function setLocalStorageData(token) {
+
+            var decodedJWT = jwtHelper.decodeToken(token);
+
+            localStorage.setItem('userJWT', token);
+            localStorage.setItem('username', decodedJWT.username);
+            localStorage.setItem('modules', JSON.stringify(getModuleByUserRole(decodedJWT.userRoles)));
+            localStorage.setItem('isKyokaiAccountant', isKyokaiAccountant(decodedJWT.userRoles));
+        }
+
         function isKyokaiAccountant(userRoles) {
-
-            if (angular.element.inArray("3", userRoles) > -1) {
-                return true;
-            }
-
-            return false;
+            return (angular.element.inArray("3", userRoles) > -1) ? true : false;
         }
 
         function getModuleByUserRole(userRoles) {

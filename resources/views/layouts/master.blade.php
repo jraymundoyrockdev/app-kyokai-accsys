@@ -35,6 +35,11 @@
     {!! Html::script('js/libraries.js') !!}
     {!! Html::script('js/services/commons.js') !!}
 
+
+    {!! Html::script('js/vendor/angular-jwt/dist/angular-jwt.js') !!}
+
+    {!! Html::script('js/services/JWTService.js') !!}
+
     @section('module-scripts')@show
 
     {!! Html::script('js/main.js') !!}
