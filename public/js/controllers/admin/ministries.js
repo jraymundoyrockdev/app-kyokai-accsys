@@ -1,6 +1,6 @@
 var adminSettingMinistries = angular.module(
     'AdminMinistries',
-    ['commons', 'MinistryRepository', 'angular-jwt', 'JWTServiceRepository'],
+    ['commons', 'MinistryRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
@@ -8,29 +8,11 @@ var adminSettingMinistries = angular.module(
 );
 
 adminSettingMinistries
-    .config(function Config($httpProvider, JWTServiceRepository) {
-        /*$httpProvider.interceptors.push('$location', function ($location) {
-            return {
-                'request': function (config) {
-
-                    config.headers = config.headers || {};
-
-                    var jwt = localStorage.getItem('userJWT');
-
-                    config.headers.Authorization = 'Bearer ' + jwt;
-
-                    //JWTService.authenticateUserJWT();
-
-                    return config;
-                },
-                'responseError': function (response) {
-                    if (response.status === 401 || response.status === 403) {
-                        $location.path('/signin');
-                    }
-                }
-            };
-
-        });*/
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
     });
 
 adminSettingMinistries.controller(

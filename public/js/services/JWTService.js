@@ -1,21 +1,18 @@
-angular.module('JWTServiceRepository', ['angular-jwt']).factory('JWTService', ['$http', 'jwtHelper', function ($http, jwtHelper) {
+angular.module('JWTServiceRepository', ['angular-jwt']).service('JWTService', ['$http', 'jwtHelper', function ($http, jwtHelper) {
 
-    //$http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 
-    function test(){
-        alert('asdf');
-    }
-    /*this.authenticateUserJWT = function () {
+    this.authenticateUserJWT = function () {
+        if (jwtHelper.isTokenExpired(localStorage.getItem('userJWT'))) {
 
-        var jwtToken = localStorage.getItem('userJWT');
-
-        if (!jwtHelper.isTokenExpired(jwtToken)) {
-            $http.post(BASE + 'api-token-refresh').then(
+            return $http.post(BASE + 'api-token-refresh').then(
                 (res) => {
-                    localStorage.setItem('userJWT', res.token);
+                    localStorage.setItem('userJWT', res.data.token);
+                    return localStorage.getItem('userJWT');
                 }
             );
+        } else {
+            return localStorage.getItem('userJWT');
         }
-    }*/
-
+    }
 }]);

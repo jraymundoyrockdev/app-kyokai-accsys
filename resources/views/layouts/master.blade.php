@@ -36,7 +36,7 @@
     {!! Html::script('js/services/commons.js') !!}
 
 
-    {!! Html::script('js/vendor/angular-jwt/dist/angular-jwt.js') !!}
+    <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 
     {!! Html::script('js/services/JWTService.js') !!}
 
