@@ -3,7 +3,7 @@
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminFundItems" id="mainModule">
-        <div class="row" ng-controller="AdminItemFundsCtrl" ng-init="getFund({!! $id !!})">
+        <div class="row" ng-controller="AdminItemFundsCtrl" ng-init="getFund({!!$id!!})">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">

@@ -1,11 +1,19 @@
 var adminSettingsRoles = angular.module(
     'AdminRoles',
-    ['commons', 'RoleRepository'],
+    ['commons', 'RoleRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingsRoles
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 adminSettingsRoles.controller('AdminRolesCtrl', function ($scope, $http, toastBoxMsg, RoleService) {
 

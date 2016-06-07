@@ -1,7 +1,5 @@
 angular.module('IncomeServiceRepository', []).service('IncomeServiceService', ['$http', function ($http) {
 
-    $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
-
     this.getAllIncomeServices = function (year, month) {
         return $http.get(BASE + 'income-services/list/' + year + '/' + month);
     };
@@ -13,16 +11,20 @@ angular.module('IncomeServiceRepository', []).service('IncomeServiceService', ['
     this.createIncomeService = function (incomeService) {
         return $http.post(BASE + 'income-services', incomeService);
     };
-    /* this.getAllMinistriesCurrentBalance = function () {
-     return $http.get(BASE + 'ministry-transactions/running-balance');
-     };
 
-     this.getMinistryCashFlow = function (id, year) {
-     return $http.get(BASE + 'ministry-transactions/' + id + '/cash-flow/' + year);
-     };
+    this.getIncomeService = function (incomeServiceId) {
+        return $http.get(BASE + 'income-services/' + incomeServiceId);
+    };
 
-     this.insert = function (ministryTransactions) {
-     return $http.post(BASE + 'ministry-transactions', ministryTransactions);
-     }
-     */
+    this.saveIncomeService = function (incomeServiceId, memberId, incomeService) {
+        return $http.post(BASE + 'income-services/' + incomeServiceId + '/member-fund/' + memberId + '/update', incomeService)
+    };
+
+    this.removeMember = function (incomeServiceId, memberId) {
+        return $http.delete(BASE + 'income-services/' + incomeServiceId + '/member-fund/' + memberId);
+    };
+
+    this.saveDenomination = function (incomeServiceId, denomination) {
+        return $http.post(BASE + 'income-services/' + incomeServiceId + '/denomination', denomination)
+    };
 }]);

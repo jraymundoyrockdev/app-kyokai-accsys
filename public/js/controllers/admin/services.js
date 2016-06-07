@@ -1,11 +1,20 @@
 var adminSettingServices = angular.module(
     'AdminServices',
-    ['commons', 'ServiceRepository'],
+    ['commons', 'ServiceRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingServices
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
+
 
 adminSettingServices.controller(
     'AdminServicesCtrl',

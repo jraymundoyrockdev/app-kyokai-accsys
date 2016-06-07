@@ -2,8 +2,8 @@
 @section('breadcrumbs')@include('layouts.partials.breadcrumbs',['title' => 'Income'])@endsection
 @section('main-body')
 
-    <div class="wrapper wrapper-content animated fadeInRight editIncomeService" ng-app="incomeService" id="mainModule">
-        <div ng-controller="IncomeServiceCtrl" ng-init="init()" >
+    <div class="wrapper wrapper-content animated fadeInRight editIncomeService" ng-app="incomeServiceEdit" id="mainModule">
+        <div ng-controller="IncomeServiceEditCtrl" ng-init="init({!!$id!!})">
 
             @include('income.services.edit-partials.members-typehead-template')
 
@@ -94,8 +94,7 @@
 @endsection
 
 @section('module-scripts')
-    <script type="text/javascript">
-        var incomeServiceId = parseInt({!!$id!!});
-    </script>
+    {!! Html::script('js/services/admin/MemberService.js') !!}
+    {!! Html::script('js/services/IncomeServiceService.js') !!}
     {!! Html::script('js/controllers/service/income-edit.js') !!}
 @endsection

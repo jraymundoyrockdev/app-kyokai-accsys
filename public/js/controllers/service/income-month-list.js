@@ -1,11 +1,19 @@
 var incomeService = angular.module(
     'incomeServiceMonthList',
-    ['commons', 'IncomeServiceRepository'],
+    ['commons', 'IncomeServiceRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+incomeService
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 incomeService.controller(
     'incomeServiceMonthListCtrl', 

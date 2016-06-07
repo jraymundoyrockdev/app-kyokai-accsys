@@ -1,7 +1,5 @@
 angular.module('FundItemRepository', []).service('FundItemService', ['$http', function ($http) {
-
-    $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
-
+    
     this.getById = function (id) {
         return $http.get(BASE + 'fund-items/' + id);
     };

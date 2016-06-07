@@ -1,11 +1,19 @@
 var adminSettingDenominations = angular.module(
     'AdminDenominations',
-    ['commons', 'DenominationRepository'],
+    ['commons', 'DenominationRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingDenominations
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 adminSettingDenominations.controller(
     'AdminDenominationsCtrl',

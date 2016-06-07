@@ -1,11 +1,19 @@
 var adminSettingFundItems = angular.module(
     'AdminFundItems',
-    ['commons', 'FundRepository', 'FundItemRepository'],
+    ['commons', 'FundRepository', 'FundItemRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingFundItems
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 adminSettingFundItems.controller(
     'AdminItemFundsCtrl',

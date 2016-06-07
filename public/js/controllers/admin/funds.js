@@ -1,11 +1,19 @@
 var adminSettingFunds = angular.module(
     'AdminFunds',
-    ['commons', 'FundRepository'],
+    ['commons', 'FundRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingFunds
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 adminSettingFunds.controller(
     'AdminFundsCtrl',

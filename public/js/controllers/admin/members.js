@@ -1,11 +1,19 @@
 var adminSettingMembers = angular.module(
     'AdminMembers',
-    ['commons', 'MemberRepository', 'MinistryRepository'],
+    ['commons', 'MemberRepository', 'MinistryRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
+
+adminSettingMembers
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
 
 adminSettingMembers.controller(
     'AdminMembersCtrl',

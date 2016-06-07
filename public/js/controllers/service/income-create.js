@@ -1,15 +1,23 @@
 var incomeService = angular.module(
     'incomeServiceCreate',
-    ['commons', 'IncomeServiceRepository', 'ServiceRepository'],
+    ['commons', 'IncomeServiceRepository', 'ServiceRepository', 'JWTServiceRepository'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }
 );
 
+incomeService
+    .config(function Config($httpProvider, jwtInterceptorProvider) {
+        jwtInterceptorProvider.tokenGetter = ['JWTService', function (JWTService) {
+            return JWTService.authenticateUserJWT();
+        }];
+        $httpProvider.interceptors.push('jwtInterceptor');
+    });
+
 incomeService.controller(
     'incomeServiceCreateCtrl',
-    function ($scope, $http, ValidatorErrorService, toastBoxMsg, IncomeServiceService, ServiceService) {
+    function ($scope, ValidatorErrorService, toastBoxMsg, IncomeServiceService, ServiceService) {
 
         $scope.services = {};
         $scope.incomeServiceModel = {};
