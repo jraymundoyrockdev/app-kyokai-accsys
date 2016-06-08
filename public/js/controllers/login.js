@@ -1,6 +1,6 @@
 var kyokaiLogin = angular.module(
     'kyokaiLogin',
-    ['commons', 'LoginRepository', 'angular-jwt'],
+    ['commons', 'AuthRepository', 'angular-jwt'],
     function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
@@ -9,7 +9,7 @@ var kyokaiLogin = angular.module(
 
 kyokaiLogin.controller(
     'kyokaiLoginCtrl',
-    function ($scope, $http, toastBoxMsg, LoginService, ValidatorErrorService, jwtHelper) {
+    function ($scope, $http, toastBoxMsg, AuthService, ValidatorErrorService, jwtHelper) {
 
         $scope.loginModel = {};
 
@@ -19,7 +19,7 @@ kyokaiLogin.controller(
         };
 
         $scope.login = function () {
-            LoginService.login($scope.loginModel).then(
+            AuthService.login($scope.loginModel).then(
                 (res) => {
                     setLocalStorageData(res.data.token);
                     window.location.href = '/income-services';
@@ -34,6 +34,7 @@ kyokaiLogin.controller(
 
             localStorage.setItem('userJWT', token);
             localStorage.setItem('username', decodedJWT.username);
+            localStorage.setItem('userAvatar', decodedJWT.userAvatar);
             localStorage.setItem('modules', JSON.stringify(getModuleByUserRole(decodedJWT.userRoles)));
             localStorage.setItem('isKyokaiAccountant', isKyokaiAccountant(decodedJWT.userRoles));
         }

@@ -38,6 +38,7 @@
 
     <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 
+    {!! Html::script('js/services/AuthService.js') !!}
     {!! Html::script('js/services/JWTService.js') !!}
 
     @section('module-scripts')@show

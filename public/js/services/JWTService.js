@@ -3,7 +3,7 @@ angular.module('JWTServiceRepository', ['angular-jwt']).service('JWTService', ['
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userJWT');
 
     this.authenticateUserJWT = function () {
-        if (!jwtHelper.isTokenExpired(localStorage.getItem('userJWT'))) {
+        if (jwtHelper.isTokenExpired(localStorage.getItem('userJWT'))) {
 
             return $http.post(BASE + 'api-token-refresh').then(
                 (res) => {

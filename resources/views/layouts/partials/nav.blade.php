@@ -5,7 +5,13 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="images/profile_small.jpg"/></span>
+                        <span>
+                            <img alt="image"
+                                 class="img-circle"
+                                 width="43"
+                                 height="43"
+                                 src="/images/avatar/<%userAvatar%>"/>
+                        </span>
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
@@ -29,7 +35,6 @@
                         KA+
                     </div>
                 </li>
-
 
                 <li ng-repeat="module in moduleList">
                     <a ng-href="<%module.link%>">

@@ -23,6 +23,7 @@ incomeServiceEdit.controller(
         $scope.members = {};
         $scope.selectedMember = '';
         $scope.showMinistriesMemberFund = false;
+        $scope.showSpecialFund = false;
         $scope.totalTithes = 0;
         $scope.totalOffering = 0;
         $scope.totalOtherFund = 0;
@@ -86,7 +87,7 @@ incomeServiceEdit.controller(
                         if (res.data.errors.hasOwnProperty('member_id')) {
                             $scope.selectedMember = '';
                             angular.element('[name=selectedMember]').addClass('error').focus();
-                            angular.element('#selectedMember-error').removeClass('hide-me').show().text(data.errors.member_id[0]);
+                            angular.element('#selectedMember-error').removeClass('hide-me').show().text(res.data.errors.member_id[0]);
                         }
                     }
                     toastBoxMsg.popUp('error', res.data, res.status);
@@ -196,6 +197,10 @@ incomeServiceEdit.controller(
 
         $scope.toggleMinistriesMemberFund = function (toggleValue) {
             $scope.showMinistriesMemberFund = (!toggleValue) ? false : true;
+        };
+
+        $scope.toggleSpecialFund = function (toggleValue) {
+            $scope.showSpecialFund = (!toggleValue) ? false : true;
         };
 
         function setUpDenominationValidation(denomination) {
