@@ -10,7 +10,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">DavidWilliams</strong>
+                                    <strong class="font-bold"><%userLoggedIn%></strong>
                                 </span>
                                 <span class="text-muted text-xs block">
                                     Art Director <b class="caret"></b>
