@@ -1,13 +1,28 @@
-var kyokaiNavigation = angular.module('kyokaiNavigation', [], function ($interpolateProvider) {
+var kyokaiNavigation = angular.module('kyokaiNavigation', ['AuthRepository'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-kyokaiNavigation.controller('kyokaiNavigationCtrl', function ($scope, $http) {
+kyokaiNavigation.controller('kyokaiNavigationCtrl', function ($scope, AuthService) {
 
     $scope.moduleList = {};
     $scope.userLoggedIn = '';
+    $scope.userAvatar = 'default-avatar.jpg';
 
+    $scope.logOut = function () {
+        AuthService.logout().then(
+            (res) => {
+                localStorage.setItem('username', '');
+                localStorage.setItem('modules', '');
+                localStorage.setItem('isKyokaiAccountant', false);
+
+                window.location.href = '/auth/login';
+            },
+            () => {
+                window.location.href = '/auth/login';
+            }
+        );
+    };
     $scope.setNavigation = function () {
         setNavigationModules();
         setUserLoggedIn();
@@ -36,17 +51,32 @@ kyokaiNavigation.filter('isEmpty', [function () {
 }]);
 
 
-var kyokaiHeader = angular.module('kyokaiHeader', [], function ($interpolateProvider) {
+var kyokaiHeader = angular.module('kyokaiHeader', ['AuthRepository'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-kyokaiHeader.controller('kyokaiHeaderCtrl', function ($scope, $http) {
+kyokaiHeader.controller('kyokaiHeaderCtrl', function ($scope, AuthService) {
     $scope.isKyokaiAccountant = false;
 
     $scope.setHeader = function () {
         $scope.isKyokaiAccountant = (localStorage.getItem('isKyokaiAccountant') == 'true');
-    }
+    };
+
+    $scope.logOut = function () {
+        AuthService.logout().then(
+            (res) => {
+                localStorage.setItem('username', '');
+                localStorage.setItem('modules', '');
+                localStorage.setItem('isKyokaiAccountant', false);
+
+                window.location.href = '/auth/login';
+            },
+            () => {
+                window.location.href = '/auth/login';
+            }
+        );
+    };
 });
 
 angular.bootstrap(document.getElementById("headerModule"), ['kyokaiHeader']);

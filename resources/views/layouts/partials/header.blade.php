@@ -78,7 +78,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/auth/logout">
+                <a ng-click="logOut()">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
