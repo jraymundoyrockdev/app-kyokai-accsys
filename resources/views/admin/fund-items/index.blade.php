@@ -3,11 +3,11 @@
 @section('main-body')
 
     <div class="wrapper wrapper-content animated fadeInRight" ng-app="AdminFundItems" id="mainModule">
-        <div class="row" ng-controller="AdminItemFundsCtrl" ng-init="getFund({!!$id!!})">
+        <div class="row" ng-controller="AdminItemFundsCtrl" ng-init="getFundItemsByFundId({!!$id!!})">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Fund Items List - <% fundModel.name %></h5>
+                        <h5>Fund Items List - <% fundItemModel[0].fund.name %></h5>
                         <a class="btn btn-primary btn-xs pull-right" ng-href="/admin/funds/{!! $id !!}/items/create">
                             Create New Item
                         </a>
@@ -24,7 +24,7 @@
                             </thead>
 
                             <tbody>
-                            <tr ng-repeat="item in fundModel.item">
+                            <tr ng-repeat="item in fundItemModel">
                                 <td><%item.name%></td>
                                 <td class="text-center"><%item.status%></td>
                                 <td class="text-center">
@@ -33,7 +33,7 @@
                                 </td>
                             </tr>
 
-                            <tr ng-hide="fundModel.item.length">
+                            <tr ng-hide="fundItemModel.length">
                                 <td colspan="2">No Data Found</td>
                             </tr>
                             </tbody>

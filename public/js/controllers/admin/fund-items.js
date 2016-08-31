@@ -17,17 +17,18 @@ adminSettingFundItems
 
 adminSettingFundItems.controller(
     'AdminItemFundsCtrl',
-    function ($scope, $http, toastBoxMsg, ValidatorErrorService, FundService, FundItemService) {
+    function ($scope, $http, toastBoxMsg, ValidatorErrorService, FundItemService) {
 
         $scope.fundItems = {};
         $scope.fundModel = {};
         $scope.fundItemModel = {};
         $scope.validationError = [];
 
-        $scope.getFund = function (id) {
-            FundService.getById(id).then(
+        $scope.getFundItemsByFundId = function (fundId) {
+            FundItemService.getByFundId(fundId).then(
                 (res) => {
-                    $scope.fundModel = res.data.Fund.shift();
+                    console.log(res.data.FundItems);
+                    $scope.fundItemModel = res.data.FundItems;
                 },
                 handleErrors
             )

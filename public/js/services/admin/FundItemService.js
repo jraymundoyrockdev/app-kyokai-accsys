@@ -1,7 +1,7 @@
 angular.module('FundItemRepository', []).service('FundItemService', ['$http', function ($http) {
-    
-    this.getById = function (id) {
-        return $http.get(BASE + 'fund-items/' + id);
+
+    this.getByFundId = function (fundId) {
+        return $http.get(BASE + 'fund/' + fundId + '/items');
     };
 
     this.insert = function (fundItem) {
